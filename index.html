@@ -521,12 +521,39 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .gal-grid{grid-template-columns:repeat(3,1fr);gap:6px}
   .gal-item{height:80px}
 
+  /* Bottom sections stack to 1 column */
   .bottom4{grid-template-columns:1fr}
   .bot-col{border-right:none!important;border-bottom:1px solid #ebebeb;padding:28px 20px}
   .bot-col:last-child{border-bottom:none}
-  .bot-title{font-size:15px;margin-bottom:14px}
-  .map-wrap{height:160px}
+  .bot-title{font-size:16px;margin-bottom:14px}
 
+  /* Reviews on tablet */
+  .stars-row{gap:3px;margin-bottom:6px}
+  .review-card{padding:14px 12px 10px}
+  .review-text{font-size:12.5px;line-height:1.7}
+  .reviewer{font-size:12px}
+  .rarrow{width:34px;height:34px;font-size:14px}
+  .rdot{width:10px;height:10px}
+
+  /* Delivery on tablet */
+  .map-wrap{height:180px;border-radius:10px}
+  .del-area{font-size:18px}
+  .del-tag{padding:10px 16px;font-size:13px;border-radius:10px}
+
+  /* FAQ on tablet */
+  .faq-item{border-radius:10px;margin-bottom:10px}
+  .faq-q{padding:14px 16px;font-size:13px;min-height:48px}
+  .faq-a{font-size:13px;line-height:1.7}
+
+  /* Contact on tablet */
+  .ct-icon{width:38px;height:38px;font-size:14px}
+  .ct-name{font-size:14px}
+  .ct-val{font-size:14px}
+  .ct-addr{font-size:12.5px;line-height:1.6}
+  .ct-btns{gap:10px;margin-top:16px!important}
+  .ct-btns .btn{padding:13px 16px;font-size:13px;min-height:48px;border-radius:10px}
+
+  /* Footer */
   .foot-grid{grid-template-columns:1fr 1fr;gap:18px}
   footer{padding:28px 18px 20px}
   .foot-bottom{flex-direction:column;text-align:center;gap:14px;align-items:center}
@@ -536,18 +563,13 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .float-wa{width:46px;height:46px;font-size:21px;bottom:68px;left:14px}
   .float-ph{width:46px;height:46px;font-size:18px;bottom:14px;left:14px}
   .scroll-top{width:42px;height:42px;font-size:16px;bottom:14px;right:14px}
-
-  /* Bigger touch targets for FAQ */
-  .faq-q{padding:14px 16px;font-size:13px;min-height:48px}
-  .ct-btns .btn{padding:13px 16px;font-size:13px;min-height:48px}
-  .rarrow{width:34px;height:34px;font-size:14px}
-  .rdot{width:10px;height:10px}
 }
 
-/* ── Mobile Phones (≤480px) ── */
-@media(max-width:480px){
+/* ── Mobile Phones (≤600px) ── */
+@media(max-width:600px){
   nav{padding:0 12px;height:52px}
   .logo img{height:34px}
+  nav.scrolled{height:48px}
   nav.scrolled .logo img{height:30px}
 
   .hero h1{font-size:24px;line-height:1.15}
@@ -569,6 +591,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .sec-row{gap:8px}
   .view-link{font-size:11.5px;padding:4px 10px}
 
+  /* 2-col spec grid */
   .spec-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .spec-card{padding:14px 8px 12px;border-radius:10px}
   .spec-card svg,.spec-card img.sicon{width:32px;height:32px;margin-bottom:6px}
@@ -584,6 +607,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .m-price strong{font-size:16px}
   .m-arrow{width:32px;height:32px;font-size:14px}
 
+  /* Single column plans */
   .plans-wrap{padding:16px 12px;border-radius:10px}
   .plans-head{margin-bottom:18px}
   .plans-head h2{font-size:16px}
@@ -604,37 +628,28 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .gal-grid{grid-template-columns:1fr 1fr;gap:6px}
   .gal-item{height:110px;border-radius:8px}
 
-  .bottom4{grid-template-columns:1fr}
-  .bot-col{padding:24px 16px;border-right:none!important;border-bottom:1px solid #ebebeb}
-  .bot-col:last-child{border-bottom:none}
+  /* Bottom sections */
+  .bot-col{padding:24px 16px}
   .bot-title{font-size:16px;margin-bottom:14px}
 
   /* Reviews */
-  .stars-row{gap:3px;margin-bottom:6px}
   .review-card{padding:14px 12px 10px}
   .review-text{font-size:12px;line-height:1.7}
-  .reviewer{font-size:12px}
   .review-avatar{width:36px;height:36px}
   .rarrow{width:36px;height:36px;font-size:15px}
-  .rdot{width:10px;height:10px}
 
   /* Delivery */
-  .map-wrap{height:140px;border-radius:8px}
+  .map-wrap{height:160px;border-radius:10px}
   .del-area{font-size:17px}
-  .del-tag{padding:10px 16px;font-size:12.5px;border-radius:10px}
+  .del-tag{padding:10px 16px;font-size:12.5px;border-radius:10px;width:100%;justify-content:center}
 
   /* FAQ */
-  .faq-item{border-radius:10px;margin-bottom:10px}
-  .faq-q{font-size:13px;padding:13px 14px;min-height:48px}
+  .faq-q{font-size:13px;padding:13px 14px}
   .faq-a{font-size:12.5px;line-height:1.7}
 
   /* Contact */
-  .ct-icon{width:38px;height:38px;font-size:14px}
-  .ct-name{font-size:14px}
-  .ct-val{font-size:14px}
-  .ct-addr{font-size:12px;line-height:1.6}
-  .ct-btns{gap:10px;margin-top:16px!important}
   .ct-btns .btn{font-size:13px;padding:13px 16px;border-radius:10px;min-height:48px}
+  .ct-addr{font-size:12px;line-height:1.6}
 
   /* Footer */
   footer{padding:24px 14px 18px}
@@ -699,6 +714,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .bot-title{font-size:15px}
   .faq-q{font-size:12.5px;padding:12px}
   .ct-btns .btn{font-size:12.5px;padding:12px 14px}
+  .map-wrap{height:140px}
 
   footer{padding:20px 12px 16px}
   .foot-logo img{height:38px}
