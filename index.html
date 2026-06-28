@@ -342,6 +342,19 @@ nav.scrolled .logo img{height:46px}
 .bot-title{font-size:16px;font-weight:800;margin-bottom:16px}
 
 /* Reviews */
+.g-live-box{
+  display:inline-flex;align-items:center;gap:6px;background:#e8f0fe;
+  border:1px solid #4285f4;border-radius:20px;padding:3px 10px;
+  font-size:11px;font-weight:700;color:#1a73e8;margin-bottom:8px
+}
+.g-live-box i{color:#4285f4}
+.g-review-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:#4285f4;color:#fff;font-size:12px;font-weight:700;
+  padding:8px 14px;border-radius:8px;margin-top:10px;width:100%;
+  transition:var(--transition);text-decoration:none
+}
+.g-review-btn:hover{background:#3367d6;transform:translateY(-1px);box-shadow:0 4px 12px rgba(66,133,244,.3);color:#fff}
 .stars-row{display:flex;align-items:center;gap:4px;margin-bottom:4px;flex-wrap:wrap}
 .star-filled{color:#f5a623;font-size:17px}
 .star-empty{color:#ddd;font-size:17px}
@@ -372,6 +385,7 @@ nav.scrolled .logo img{height:46px}
   cursor:pointer;color:#555;transition:var(--transition);background:#fff
 }
 .rarrow:hover{background:var(--green2);color:#fff;border-color:var(--green2)}
+
 
 /* Delivery */
 .map-wrap{border-radius:10px;overflow:hidden;border:1px solid #ddd;height:180px;margin-bottom:14px}
@@ -1238,6 +1252,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
   <!-- Reviews -->
   <div class="bot-col reveal" id="reviews">
     <div class="bot-title">What Our Customers Say</div>
+    <div class="g-live-box"><i class="fab fa-google"></i> Verified Google Reviews</div>
     <div class="stars-row">
       <i class="fas fa-star star-filled"></i>
       <i class="fas fa-star star-filled"></i>
@@ -1245,7 +1260,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
       <i class="fas fa-star star-filled"></i>
       <i class="fas fa-star-half-alt star-filled"></i>
       <span style="margin-left:6px;font-weight:700;font-size:14px">4.8/5</span>
-      <span style="font-size:11px;color:#888;margin-left:4px">(200+ Happy Customers)</span>
+      <span style="font-size:11px;color:#888;margin-left:4px">(Google Maps Reviews)</span>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;margin-top:8px">
       <div class="rarrow" onclick="prevReview()">‹</div>
@@ -1260,7 +1275,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
               <div class="review-avatar">
                 <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Ayesha Khan">
               </div>
-              <div class="reviewer">– Ayesha Khan</div>
+              <div class="reviewer">– Ayesha Khan <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
             </div>
           </div>
         </div>
@@ -1271,7 +1286,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
               <div class="review-avatar">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&auto=format&fit=crop&crop=face" alt="Rahul Sharma">
               </div>
-              <div class="reviewer">– Rahul Sharma</div>
+              <div class="reviewer">– Rahul Sharma <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
             </div>
           </div>
         </div>
@@ -1282,7 +1297,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
               <div class="review-avatar">
                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80&auto=format&fit=crop&crop=face" alt="Priya Patel">
               </div>
-              <div class="reviewer">– Priya Patel</div>
+              <div class="reviewer">– Priya Patel <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
             </div>
           </div>
         </div>
@@ -1293,7 +1308,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
               <div class="review-avatar">
                 <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Farhan Ali">
               </div>
-              <div class="reviewer">– Farhan Ali</div>
+              <div class="reviewer">– Farhan Ali <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
             </div>
           </div>
         </div>
@@ -1305,7 +1320,9 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
       <div class="rdot" onclick="goToReview(2)"></div>
       <div class="rdot" onclick="goToReview(3)"></div>
     </div>
+    <a href="https://maps.app.goo.gl/mZUFhHMgucf5Zumi8" target="_blank" class="g-review-btn"><i class="fab fa-google"></i> View Live Reviews on Google Maps &rarr;</a>
   </div>
+
 
   <!-- Delivery Area -->
   <div class="bot-col reveal">
