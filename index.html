@@ -429,6 +429,12 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
    RESPONSIVE BREAKPOINTS
    ═══════════════════════════════════════════ */
 
+/* ── Footer bottom row (override inline styles) ── */
+.foot-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid #1a3020;padding-top:18px;flex-wrap:wrap;gap:16px
+}
+
 /* ── Large Laptops / Wide Screens (≤1280px) ── */
 @media(max-width:1280px){
   .hero-left{flex:0 0 400px;padding:40px 36px 30px}
@@ -447,7 +453,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .hamburger{display:flex}
   .nav-links,.nav-btns,.sun-icon{display:none}
   nav{padding:0 20px;height:58px}
-  .logo img{height:42px}
+  .logo img{height:44px}
 
   .hero{flex-direction:column;min-height:auto}
   .hero-left{
@@ -455,10 +461,10 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   }
   .hero-left::after{display:none}
   .hero h1{font-size:32px}
-  .hero-sub{font-size:13.5px}
+  .hero-sub{font-size:14px}
   .hero-btns{justify-content:center}
   .hero-feats{justify-content:center}
-  .hero-right{height:260px;position:relative}
+  .hero-right{height:280px;position:relative}
   .hero-right img{position:absolute}
   .hero-right::before{
     width:100%;height:60px;background:linear-gradient(to bottom,var(--green-nav),transparent);
@@ -470,124 +476,264 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 
   .two-col-wrap{grid-template-columns:1fr}
   .sec{padding:28px 24px}
-  .spec-grid{grid-template-columns:repeat(4,1fr)}
+  .spec-grid{grid-template-columns:repeat(4,1fr);gap:10px}
   .menu-grid{grid-template-columns:repeat(2,1fr)}
   .plans-grid{grid-template-columns:repeat(3,1fr)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
 
   .bottom4{grid-template-columns:1fr 1fr}
+  .bot-col{border-right:none;border-bottom:1px solid #ebebeb}
+  .bot-col:nth-child(2){border-right:1px solid #ebebeb}
+  .bot-col:nth-last-child(-n+2){border-bottom:none}
   .foot-grid{grid-template-columns:1fr 1fr;gap:20px}
 }
 
 /* ── Tablets Portrait (≤768px) ── */
 @media(max-width:768px){
+  nav{padding:0 16px;height:56px}
+  .logo img{height:40px}
+
   .hero h1{font-size:28px}
+  .hero-sub{font-size:13px}
   .hero-left{padding:28px 20px 24px}
-  .hero-right{height:220px}
-  .hero-badge-img{width:120px;padding:8px 8px}
+  .hero-right{height:240px}
+  .hero-badge-img{width:120px;padding:8px}
   .khajrana-badge{width:85px;height:85px;bottom:12px;right:12px}
   .khajrana-badge .city{font-size:12px}
   .khajrana-badge .small{font-size:8px}
 
-  .sec{padding:24px 18px}
-  .sec-title{font-size:20px}
+  .sec{padding:24px 16px}
+  .sec-title{font-size:20px;margin-bottom:16px}
   .spec-grid{grid-template-columns:repeat(4,1fr);gap:8px}
-  .plans-wrap{padding:20px 16px;border-radius:12px}
-  .plans-grid{grid-template-columns:1fr 1fr}
-  .plans-head h2{font-size:17px}
+  .spec-card{padding:14px 6px 12px}
+  .spec-card svg,.spec-card img.sicon{width:32px;height:32px}
+  .spec-label{font-size:10.5px}
 
-  .menu-grid{grid-template-columns:1fr 1fr}
+  .menu-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .mcard-img{height:90px}
+
+  .plans-wrap{padding:20px 16px;border-radius:12px}
+  .plans-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .plans-head h2{font-size:17px}
+  .pcard{padding:18px 14px}
+
+  .why-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .gal-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+  .gal-item{height:80px}
 
   .bottom4{grid-template-columns:1fr}
   .bot-col{border-right:none!important;border-bottom:1px solid #ebebeb;padding:28px 20px}
   .bot-col:last-child{border-bottom:none}
-  .bot-title{font-size:15px}
+  .bot-title{font-size:15px;margin-bottom:14px}
+  .map-wrap{height:160px}
 
   .foot-grid{grid-template-columns:1fr 1fr;gap:18px}
   footer{padding:28px 18px 20px}
-  .foot-bot{flex-direction:column;text-align:center;gap:14px}
-  .foot-bot>*{width:auto}
+  .foot-bottom{flex-direction:column;text-align:center;gap:14px;align-items:center}
+  .foot-bottom>div{text-align:center!important}
+  .foot-bottom>div>div{justify-content:center!important}
 
-  .float-wa{width:44px;height:44px;font-size:20px;bottom:66px;left:14px}
-  .float-ph{width:44px;height:44px;font-size:17px;bottom:14px;left:14px}
-  .scroll-top{width:40px;height:40px;font-size:16px;bottom:14px;right:14px}
+  .float-wa{width:46px;height:46px;font-size:21px;bottom:68px;left:14px}
+  .float-ph{width:46px;height:46px;font-size:18px;bottom:14px;left:14px}
+  .scroll-top{width:42px;height:42px;font-size:16px;bottom:14px;right:14px}
+
+  /* Bigger touch targets for FAQ */
+  .faq-q{padding:14px 16px;font-size:13px;min-height:48px}
+  .ct-btns .btn{padding:13px 16px;font-size:13px;min-height:48px}
+  .rarrow{width:34px;height:34px;font-size:14px}
+  .rdot{width:10px;height:10px}
 }
 
 /* ── Mobile Phones (≤480px) ── */
 @media(max-width:480px){
-  nav{padding:0 14px;height:54px}
-  .logo img{height:36px}
+  nav{padding:0 12px;height:52px}
+  .logo img{height:34px}
+  nav.scrolled .logo img{height:30px}
 
-  .hero h1{font-size:24px}
+  .hero h1{font-size:24px;line-height:1.15}
   .hero-sub{font-size:12.5px;margin-bottom:18px}
-  .hero-left{padding:24px 16px 20px}
-  .hero-btns{flex-direction:column;gap:10px}
-  .hero-btns .btn{width:100%;justify-content:center;padding:12px 16px;font-size:13px}
-  .hero-feats{gap:10px 16px}
+  .hero-left{padding:22px 16px 18px}
+  .hero-btns{flex-direction:column;gap:10px;width:100%}
+  .hero-btns .btn{width:100%;justify-content:center;padding:13px 16px;font-size:14px;border-radius:10px}
+  .hero-feats{gap:8px 14px}
   .feat{font-size:11px}
   .hero-right{height:200px}
   .hero-badge-img{display:none}
-  .khajrana-badge{width:75px;height:75px;bottom:10px;right:10px}
+  .khajrana-badge{width:72px;height:72px;bottom:10px;right:10px}
   .khajrana-badge .city{font-size:11px}
   .khajrana-badge .small{font-size:7.5px}
   .khajrana-badge i{font-size:10px}
 
   .sec{padding:20px 14px}
   .sec-title{font-size:18px;margin-bottom:14px}
-  .spec-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .spec-card{padding:12px 6px 10px;border-radius:10px}
-  .spec-card svg,.spec-card img.sicon{width:30px;height:30px}
-  .spec-label{font-size:10px}
+  .sec-row{gap:8px}
+  .view-link{font-size:11.5px;padding:4px 10px}
 
-  .menu-grid{grid-template-columns:1fr;gap:12px}
-  .mcard-img{height:120px}
+  .spec-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .spec-card{padding:14px 8px 12px;border-radius:10px}
+  .spec-card svg,.spec-card img.sicon{width:32px;height:32px;margin-bottom:6px}
+  .spec-label{font-size:10.5px}
+
+  /* Horizontal menu cards on mobile */
+  .menu-grid{grid-template-columns:1fr;gap:10px}
+  .mcard{display:flex;flex-direction:row;align-items:stretch}
+  .mcard-img{height:auto;width:120px;min-height:100px;flex-shrink:0}
+  .mcard-body{padding:12px;display:flex;flex-direction:column;justify-content:center;flex:1}
+  .m-name{font-size:14px}
+  .m-desc{font-size:11.5px;margin-bottom:6px}
+  .m-price strong{font-size:16px}
+  .m-arrow{width:32px;height:32px;font-size:14px}
 
   .plans-wrap{padding:16px 12px;border-radius:10px}
-  .plans-head h2{font-size:15px}
-  .plans-grid{grid-template-columns:1fr}
-  .pcard{padding:16px 12px}
-  .p-price{font-size:22px}
+  .plans-head{margin-bottom:18px}
+  .plans-head h2{font-size:16px}
+  .plans-grid{grid-template-columns:1fr;gap:14px}
+  .pcard{padding:18px 14px;border-radius:10px}
+  .p-title{font-size:15px}
+  .p-sub{font-size:12px}
+  .p-feat{font-size:12.5px;margin-bottom:7px}
+  .p-price{font-size:26px}
+  .p-btn{padding:12px;font-size:14px;border-radius:10px;min-height:48px}
+  .pbadge{font-size:11px;padding:4px 16px}
 
   .why-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .wcard{padding:14px 8px}
-  .wcard svg{width:36px;height:36px}
-  .w-title{font-size:11px}
+  .wcard{padding:16px 10px;border-radius:10px}
+  .wcard svg{width:38px;height:38px;margin-bottom:8px}
+  .w-title{font-size:11.5px}
 
   .gal-grid{grid-template-columns:1fr 1fr;gap:6px}
-  .gal-item{height:100px}
+  .gal-item{height:110px;border-radius:8px}
 
-  .bot-col{padding:22px 14px}
-  .bot-title{font-size:14px;margin-bottom:12px}
-  .review-text{font-size:11.5px}
-  .map-wrap{height:130px}
-  .del-area{font-size:16px}
-  .faq-q{font-size:12px;padding:10px 12px}
-  .ct-btns .btn{font-size:12px;padding:10px 12px}
-  .ct-addr{font-size:11px}
+  .bottom4{grid-template-columns:1fr}
+  .bot-col{padding:24px 16px;border-right:none!important;border-bottom:1px solid #ebebeb}
+  .bot-col:last-child{border-bottom:none}
+  .bot-title{font-size:16px;margin-bottom:14px}
 
+  /* Reviews */
+  .stars-row{gap:3px;margin-bottom:6px}
+  .review-card{padding:14px 12px 10px}
+  .review-text{font-size:12px;line-height:1.7}
+  .reviewer{font-size:12px}
+  .review-avatar{width:36px;height:36px}
+  .rarrow{width:36px;height:36px;font-size:15px}
+  .rdot{width:10px;height:10px}
+
+  /* Delivery */
+  .map-wrap{height:140px;border-radius:8px}
+  .del-area{font-size:17px}
+  .del-tag{padding:10px 16px;font-size:12.5px;border-radius:10px}
+
+  /* FAQ */
+  .faq-item{border-radius:10px;margin-bottom:10px}
+  .faq-q{font-size:13px;padding:13px 14px;min-height:48px}
+  .faq-a{font-size:12.5px;line-height:1.7}
+
+  /* Contact */
+  .ct-icon{width:38px;height:38px;font-size:14px}
+  .ct-name{font-size:14px}
+  .ct-val{font-size:14px}
+  .ct-addr{font-size:12px;line-height:1.6}
+  .ct-btns{gap:10px;margin-top:16px!important}
+  .ct-btns .btn{font-size:13px;padding:13px 16px;border-radius:10px;min-height:48px}
+
+  /* Footer */
   footer{padding:24px 14px 18px}
-  .foot-grid{grid-template-columns:1fr;gap:20px}
-  .foot-logo img{height:40px}
-  .foot-desc{font-size:11px}
-  .foot-col h4{font-size:12px;margin-bottom:10px}
-  .foot-col a{font-size:11px}
+  .foot-grid{grid-template-columns:1fr;gap:24px;text-align:center}
+  .foot-logo{text-align:center}
+  .foot-logo img{height:44px;margin:0 auto}
+  .foot-desc{font-size:12px;text-align:center}
+  .foot-col h4{font-size:13px;margin-bottom:12px;text-align:center}
+  .foot-col ul{text-align:center}
+  .foot-col a{font-size:12px}
+  .foot-col a:hover{padding-left:0}
+  .socials{justify-content:center}
+  .soc-btn{width:42px;height:42px;font-size:17px}
   .foot-seal{width:70px;height:70px}
   .foot-seal .line{font-size:8px}
+  .foot-bottom{flex-direction:column;text-align:center;gap:16px;align-items:center}
+  .foot-bottom>div{text-align:center!important}
+  .foot-bottom>div>div{justify-content:center!important}
 
-  .float-wa{width:42px;height:42px;font-size:18px;bottom:60px;left:12px}
-  .float-ph{width:42px;height:42px;font-size:16px;bottom:12px;left:12px}
-  .scroll-top{width:38px;height:38px;font-size:15px;bottom:12px;right:12px}
+  /* Float buttons */
+  .float-wa{width:48px;height:48px;font-size:22px;bottom:66px;left:12px}
+  .float-ph{width:48px;height:48px;font-size:18px;bottom:12px;left:12px}
+  .scroll-top{width:42px;height:42px;font-size:16px;bottom:12px;right:12px}
+
+  /* Mobile overlay tweaks */
+  .mobile-overlay a{font-size:17px;padding:12px 24px}
+  .mobile-overlay .mobile-btns .btn{padding:14px 20px;font-size:15px;min-height:50px}
+  .mobile-overlay .mobile-logo{width:140px}
 }
 
-/* ── Very small phones (≤360px) ── */
-@media(max-width:360px){
-  .hero h1{font-size:21px}
+/* ── Small Mobile Phones (≤400px) ── */
+@media(max-width:400px){
+  nav{padding:0 10px;height:50px}
+  .logo img{height:30px}
+
+  .hero h1{font-size:22px}
   .hero-sub{font-size:12px}
+  .hero-left{padding:20px 14px 16px}
+  .hero-right{height:180px}
+  .khajrana-badge{width:65px;height:65px;bottom:8px;right:8px}
+  .khajrana-badge .city{font-size:10px}
+  .khajrana-badge .small{font-size:7px}
+
+  .sec{padding:18px 12px}
+  .sec-title{font-size:17px}
+  .spec-grid{gap:6px}
+  .spec-card{padding:12px 6px 10px}
+  .spec-card svg,.spec-card img.sicon{width:28px;height:28px}
+  .spec-label{font-size:10px}
+
+  .mcard-img{width:100px;min-height:90px}
+  .m-name{font-size:13px}
+  .m-price strong{font-size:15px}
+
+  .plans-head h2{font-size:15px}
+  .pcard{padding:16px 12px}
+  .p-title{font-size:14px}
+  .p-price{font-size:24px}
+  .p-btn{font-size:13px}
+
+  .bot-col{padding:20px 12px}
+  .bot-title{font-size:15px}
+  .faq-q{font-size:12.5px;padding:12px}
+  .ct-btns .btn{font-size:12.5px;padding:12px 14px}
+
+  footer{padding:20px 12px 16px}
+  .foot-logo img{height:38px}
+  .foot-col h4{font-size:12px}
+
+  .float-wa{width:44px;height:44px;font-size:20px;bottom:60px;left:10px}
+  .float-ph{width:44px;height:44px;font-size:16px;bottom:10px;left:10px}
+  .scroll-top{width:38px;height:38px;font-size:14px;bottom:10px;right:10px}
+}
+
+/* ── Very Small Phones (≤360px) ── */
+@media(max-width:360px){
+  .hero h1{font-size:20px}
+  .hero-sub{font-size:11.5px}
+  .hero-left{padding:18px 12px 14px}
+  .hero-btns .btn{padding:12px 14px;font-size:13px}
+  .hero-right{height:160px}
+
+  .sec{padding:16px 10px}
   .sec-title{font-size:16px}
-  .spec-grid{grid-template-columns:repeat(2,1fr)}
+
+  .mcard-img{width:90px;min-height:80px}
+
   .plans-head h2{font-size:14px}
-  .p-price{font-size:20px}
-  .bot-title{font-size:13px}
+  .p-price{font-size:22px}
+
+  .gal-item{height:90px}
+
+  .bot-col{padding:18px 10px}
+  .bot-title{font-size:14px}
+  .map-wrap{height:120px}
+  .review-text{font-size:11.5px}
+
+  footer{padding:18px 10px 14px}
+  .foot-grid{gap:18px}
 }
 </style>
 </head>
@@ -1116,7 +1262,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   </div>
 
   <!-- Bottom row -->
-  <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #1a3020;padding-top:18px;flex-wrap:wrap;gap:16px">
+  <div class="foot-bottom" style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #1a3020;padding-top:18px;flex-wrap:wrap;gap:16px">
     <p style="font-size:11px;color:#444">© 2024 MealMitra Tiffin Center. All Rights Reserved.</p>
     <div class="foot-seal">
       <div class="line">FRESH</div>
