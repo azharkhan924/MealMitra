@@ -120,57 +120,109 @@ nav.scrolled .logo img{height:46px}
 .mobile-overlay .mobile-btns .btn{justify-content:center;padding:12px 18px;border-radius:10px;font-size:14px}
 
 /* ─── HERO ─── */
+.hero-wrapper{position:relative;background:var(--green-nav);overflow:hidden}
 .hero{
-  position:relative;background:var(--green-nav);min-height:430px;
+  position:relative;min-height:480px;
   display:flex;align-items:stretch;overflow:hidden
 }
 .hero-left{
-  flex:0 0 440px;padding:48px 44px 36px;display:flex;flex-direction:column;
+  flex:0 0 520px;padding:40px 44px 36px;display:flex;flex-direction:column;
   justify-content:center;z-index:2;position:relative
 }
 .hero-left::after{
-  content:'';position:absolute;right:-60px;top:0;bottom:0;width:120px;
-  background:var(--green-nav);transform:skewX(-6deg);transform-origin:top right;z-index:1
+  content:'';position:absolute;right:-50px;top:0;bottom:0;width:100px;
+  background:var(--green-nav);transform:skewX(-5deg);transform-origin:top right;z-index:1
 }
 .hero-left>*{position:relative;z-index:2}
-.hero h1{font-size:40px;font-weight:900;color:#fff;line-height:1.08;margin-bottom:10px}
+.hero-top-tag{
+  display:inline-flex;align-items:center;gap:6px;background:rgba(212,160,23,.15);
+  border:1px solid var(--gold2);color:var(--gold3);font-size:11px;font-weight:700;
+  padding:4px 12px;border-radius:20px;margin-bottom:12px;width:fit-content;letter-spacing:.5px
+}
+.hero h1{font-size:36px;font-weight:900;color:#fff;line-height:1.12;margin-bottom:8px}
 .hero h1 span{color:var(--gold2)}
-.hero-sub{color:#b2dfb9;font-size:14.5px;font-weight:400;margin-bottom:26px}
-.hero-btns{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-.hero-btns .btn{padding:12px 20px;font-size:13.5px;border-radius:8px}
-.hero-feats{display:flex;flex-wrap:wrap;gap:14px 22px}
-.feat{display:flex;align-items:center;gap:6px;color:#a5d6a7;font-size:12px;font-weight:500}
-.feat i{color:var(--gold2);font-size:12px}
+.hero-sub{color:#c8e6c9;font-size:15px;font-weight:500;margin-bottom:20px}
 
-.hero-right{flex:1;position:relative;overflow:hidden}
-.hero-right img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+/* 5 Feature Badges Grid */
+.hero-badge-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.h-badge{
+  background:rgba(255,255,255,.95);border-radius:24px;padding:6px 12px;
+  display:flex;align-items:center;gap:7px;box-shadow:0 4px 12px rgba(0,0,0,.15);
+  transition:transform .2s ease
+}
+.h-badge:hover{transform:translateY(-2px)}
+.h-badge-icon{
+  width:24px;height:24px;border-radius:50%;background:#e8f5e9;color:var(--green2);
+  display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0
+}
+.h-badge-text{font-size:11px;font-weight:700;color:#1b431e;white-space:nowrap}
+
+.hero-btns{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.hero-btns .btn{padding:12px 22px;font-size:14px;border-radius:8px;font-weight:700}
+
+.hero-right{flex:1;position:relative;overflow:hidden;min-height:420px}
+.hero-right img.main-hero-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;
   transition:transform 8s ease-in-out
 }
-.hero-right:hover img{transform:scale(1.04)}
+.hero-right:hover img.main-hero-img{transform:scale(1.03)}
 .hero-right::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:90px;
+  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;
   background:linear-gradient(to right,var(--green-nav),transparent);z-index:1
 }
-.hero-badge-img{
-  position:absolute;top:0;right:0;width:160px;background:rgba(0,0,0,.52);
-  padding:14px 12px;z-index:3;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)
+
+/* Brushstroke quote banner */
+.brushstroke-tag{
+  position:absolute;top:20px;right:20px;z-index:3;
+  background:linear-gradient(135deg,#0f3813,#19521e);color:#fff;
+  padding:10px 18px;border-radius:8px 20px 8px 20px;border-left:4px solid var(--gold2);
+  box-shadow:0 8px 25px rgba(0,0,0,.4);max-width:250px;backdrop-filter:blur(4px)
 }
-.hero-badge-img img{width:100%;height:auto;object-fit:contain}
+.brushstroke-tag p{font-size:12.5px;font-weight:700;line-height:1.35;color:#fff;font-style:italic}
+.brushstroke-tag span.brand-hl{color:var(--gold2);font-weight:900;font-style:normal}
+
+/* Free delivery badge */
+.free-delivery-badge{
+  position:absolute;bottom:20px;left:20px;z-index:4;
+  background:#111;border:2px solid var(--gold2);border-radius:30px;
+  padding:6px 14px 6px 8px;display:flex;align-items:center;gap:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);animation:badgePulse 3s ease-in-out infinite
+}
+.fd-icon-box{
+  width:34px;height:34px;border-radius:50%;background:var(--gold2);color:#111;
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0
+}
+.fd-text{display:flex;flex-direction:column}
+.fd-title{font-size:11.5px;font-weight:900;color:var(--gold2);text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
+.fd-sub{font-size:9.5px;color:#ddd;font-weight:500}
+
 .khajrana-badge{
-  position:absolute;bottom:28px;right:26px;z-index:4;
-  width:115px;height:115px;border-radius:50%;
+  position:absolute;bottom:20px;right:20px;z-index:4;
+  width:100px;height:100px;border-radius:50%;
   background:linear-gradient(135deg,#b8860b,var(--gold2));
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.4);border:3px solid var(--gold3);
-  animation:badgePulse 3s ease-in-out infinite
+  text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.4);border:3px solid var(--gold3)
 }
 @keyframes badgePulse{0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.4)}50%{box-shadow:0 4px 30px rgba(240,180,41,.5)}}
-.khajrana-badge .small{font-size:9px;color:#fff;font-weight:500;line-height:1.3}
-.khajrana-badge .city{font-size:16px;font-weight:900;color:#fff;line-height:1.1}
-.khajrana-badge i{color:#fff;font-size:13px;margin-bottom:2px}
+.khajrana-badge .small{font-size:8.5px;color:#fff;font-weight:500;line-height:1.3}
+.khajrana-badge .city{font-size:15px;font-weight:900;color:#fff;line-height:1.1}
+.khajrana-badge i{color:#fff;font-size:12px;margin-bottom:2px}
+
+/* Bottom highlight strip */
+.hero-strip{
+  background:#0b290f;border-top:1px solid rgba(255,255,255,.1);
+  padding:16px 44px;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;position:relative;z-index:5
+}
+.strip-item{display:flex;align-items:center;gap:12px;color:#fff}
+.strip-icon{
+  width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);
+  border:1px solid rgba(240,180,41,.4);color:var(--gold2);
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0
+}
+.strip-title{font-size:12px;font-weight:800;letter-spacing:.5px;color:var(--gold2);text-transform:uppercase;line-height:1.2}
+.strip-sub{font-size:11px;color:#a5d6a7}
+
 
 /* ─── SECTION WRAPPERS ─── */
 .sec{padding:48px 44px;overflow-x:hidden}
@@ -440,8 +492,8 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
 
 /* ── Large Laptops / Wide Screens (≤1280px) ── */
 @media(max-width:1280px){
-  .hero-left{flex:0 0 400px;padding:40px 36px 30px}
-  .hero h1{font-size:36px}
+  .hero-left{flex:0 0 460px;padding:36px 32px 30px}
+  .hero h1{font-size:32px}
   .sec{padding:36px}
   .bottom4{grid-template-columns:1fr 1fr}
   .bot-col{border-right:none;border-bottom:1px solid #ebebeb}
@@ -463,19 +515,21 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
     flex:none;width:100%;padding:36px 28px 28px;text-align:center;align-items:center
   }
   .hero-left::after{display:none}
-  .hero h1{font-size:32px}
+  .hero-top-tag{margin:0 auto 12px auto}
+  .hero h1{font-size:30px}
   .hero-sub{font-size:14px}
+  .hero-badge-grid{justify-content:center}
   .hero-btns{justify-content:center}
-  .hero-feats{justify-content:center}
-  .hero-right{height:280px;position:relative}
-  .hero-right img{position:absolute}
+  .hero-right{height:340px;min-height:auto;position:relative}
+  .hero-right img.main-hero-img{position:absolute}
   .hero-right::before{
     width:100%;height:60px;background:linear-gradient(to bottom,var(--green-nav),transparent);
     left:0;top:0;right:0;bottom:auto
   }
-  .hero-badge-img{width:140px;padding:10px}
-  .khajrana-badge{width:100px;height:100px;bottom:16px;right:16px}
-  .khajrana-badge .city{font-size:14px}
+  .khajrana-badge{width:90px;height:90px;bottom:16px;right:16px}
+  .khajrana-badge .city{font-size:13px}
+
+  .hero-strip{padding:14px 28px;grid-template-columns:repeat(3,1fr);gap:14px}
 
   .two-col-wrap{grid-template-columns:1fr}
   .sec{padding:28px 24px}
@@ -496,14 +550,21 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
   nav{padding:0 16px;height:56px}
   .logo img{height:40px}
 
-  .hero h1{font-size:28px}
+  .hero h1{font-size:26px}
   .hero-sub{font-size:13px}
   .hero-left{padding:28px 20px 24px}
-  .hero-right{height:240px}
-  .hero-badge-img{width:120px;padding:8px}
-  .khajrana-badge{width:85px;height:85px;bottom:12px;right:12px}
+  .hero-right{height:290px}
+  .brushstroke-tag{padding:8px 14px;max-width:210px;top:14px;right:14px}
+  .brushstroke-tag p{font-size:11px}
+  .free-delivery-badge{padding:4px 12px 4px 6px;bottom:14px;left:14px}
+  .fd-icon-box{width:28px;height:28px;font-size:13px}
+  .fd-title{font-size:10px}
+  .fd-sub{font-size:8.5px}
+  .khajrana-badge{width:80px;height:80px;bottom:14px;right:14px}
   .khajrana-badge .city{font-size:12px}
   .khajrana-badge .small{font-size:8px}
+
+  .hero-strip{grid-template-columns:1fr;gap:12px;padding:14px 20px}
 
   .sec{padding:24px 16px}
   .sec-title{font-size:20px;margin-bottom:16px}
@@ -577,19 +638,26 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
   nav.scrolled .logo img{height:34px}
   .hamburger{position:absolute;right:16px;top:50%;transform:translateY(-50%)}
 
-  .hero h1{font-size:24px;line-height:1.15}
-  .hero-sub{font-size:12.5px;margin-bottom:18px}
-  .hero-left{padding:22px 16px 18px}
+  .hero h1{font-size:22px;line-height:1.15}
+  .hero-sub{font-size:12px;margin-bottom:14px}
+  .hero-left{padding:20px 14px 16px}
+  .hero-badge-grid{gap:6px;margin-bottom:18px}
+  .h-badge{padding:4px 9px}
+  .h-badge-text{font-size:10px}
   .hero-btns{flex-direction:column;gap:10px;width:100%}
-  .hero-btns .btn{width:100%;justify-content:center;padding:13px 16px;font-size:14px;border-radius:10px}
-  .hero-feats{gap:8px 14px}
-  .feat{font-size:11px}
-  .hero-right{height:200px}
-  .hero-badge-img{display:none}
-  .khajrana-badge{width:72px;height:72px;bottom:10px;right:10px}
-  .khajrana-badge .city{font-size:11px}
-  .khajrana-badge .small{font-size:7.5px}
-  .khajrana-badge i{font-size:10px}
+  .hero-btns .btn{width:100%;justify-content:center;padding:12px 16px;font-size:13.5px;border-radius:10px}
+  .hero-right{height:250px}
+  .brushstroke-tag{max-width:170px;padding:6px 10px;top:10px;right:10px;border-left-width:3px}
+  .brushstroke-tag p{font-size:9.5px;line-height:1.3}
+  .free-delivery-badge{padding:4px 10px 4px 6px;bottom:10px;left:10px}
+  .fd-icon-box{width:26px;height:26px;font-size:11px}
+  .fd-title{font-size:9px}
+  .fd-sub{font-size:7.5px}
+  .khajrana-badge{width:68px;height:68px;bottom:10px;right:10px}
+  .khajrana-badge .city{font-size:10.5px}
+  .khajrana-badge .small{font-size:7px}
+  .khajrana-badge i{font-size:9px}
+
 
   .sec{padding:20px 14px}
   .sec-title{font-size:18px;margin-bottom:14px}
@@ -819,33 +887,94 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
 </nav>
 
 <!-- ── HERO ── -->
-<section id="home" class="hero">
-  <div class="hero-left">
-    <h1>Fresh, Hygienic &<br><span>Tasty Food</span></h1>
-    <p class="hero-sub">Ghar Jaisa Taste Delivered Fresh Every Day</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
-      <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
+<div class="hero-wrapper" id="home">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-top-tag"><i class="fas fa-crown"></i> SERVING SINCE 2023</div>
+      <h1>TIFFIN CENTER<br><span>MealMitra</span><br>Fresh, Hygienic & Tasty Food</h1>
+      <p class="hero-sub">Ghar Jaisa Taste, Delivered Fresh Everyday!</p>
+      
+      <!-- 5 Feature Badges Grid -->
+      <div class="hero-badge-grid">
+        <div class="h-badge">
+          <div class="h-badge-icon"><i class="fas fa-leaf"></i></div>
+          <div class="h-badge-text">Fresh & Hygienic Food</div>
+        </div>
+        <div class="h-badge">
+          <div class="h-badge-icon"><i class="fas fa-home"></i></div>
+          <div class="h-badge-text">Ghar Jaisa Taste</div>
+        </div>
+        <div class="h-badge">
+          <div class="h-badge-icon"><i class="fas fa-drumstick-bite"></i></div>
+          <div class="h-badge-text">Veg & Non-Veg</div>
+        </div>
+        <div class="h-badge">
+          <div class="h-badge-icon"><i class="fas fa-calendar-alt"></i></div>
+          <div class="h-badge-text">Monthly Tiffin Service</div>
+        </div>
+        <div class="h-badge">
+          <div class="h-badge-icon"><i class="fas fa-star"></i></div>
+          <div class="h-badge-text">Sunday Special Menu</div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+        <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
+      </div>
     </div>
-    <div class="hero-feats">
-      <div class="feat"><i class="fas fa-location-dot"></i> Hygienic Kitchen</div>
-      <div class="feat"><i class="fas fa-calendar-days"></i> Fresh Ingredients</div>
-      <div class="feat"><i class="fas fa-truck"></i> On-Time Delivery</div>
-      <div class="feat"><i class="fas fa-house"></i> Ghar Jaisa Taste</div>
+
+    <div class="hero-right">
+      <img src="student-tiffin.png" alt="MealMitra Students Holding Tiffin" class="main-hero-img">
+      
+      <!-- Brushstroke quote banner -->
+      <div class="brushstroke-tag">
+        <p>Koi nahi ho jinke paas <span class="brand-hl">MealMitra</span> hai unke saath.</p>
+      </div>
+
+      <!-- Free delivery badge -->
+      <div class="free-delivery-badge">
+        <div class="fd-icon-box"><i class="fas fa-motorcycle"></i></div>
+        <div class="fd-text">
+          <span class="fd-title">FREE DELIVERY</span>
+          <span class="fd-sub">on Monthly Plan</span>
+        </div>
+      </div>
+
+      <div class="khajrana-badge">
+        <i class="fas fa-location-dot"></i>
+        <span class="small">Currently Delivering<br>Only in</span>
+        <span class="city">Khajrana</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom highlight strip -->
+  <div class="hero-strip">
+    <div class="strip-item">
+      <div class="strip-icon"><i class="fas fa-seedling"></i></div>
+      <div>
+        <div class="strip-title">FRESH INGREDIENTS</div>
+        <div class="strip-sub">Selected Daily</div>
+      </div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon"><i class="fas fa-shield-alt"></i></div>
+      <div>
+        <div class="strip-title">HYGIENIC KITCHEN</div>
+        <div class="strip-sub">Clean & Safe</div>
+      </div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon"><i class="fas fa-clock"></i></div>
+      <div>
+        <div class="strip-title">ON TIME DELIVERY</div>
+        <div class="strip-sub">Always on Time</div>
+      </div>
     </div>
   </div>
-  <div class="hero-right">
-    <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=900&q=85&auto=format&fit=crop" alt="Indian Tiffin Food">
-    <div class="hero-badge-img">
-      <img src="mealmitra-logo.png" alt="MealMitra Badge Logo">
-    </div>
-    <div class="khajrana-badge">
-      <i class="fas fa-location-dot"></i>
-      <span class="small">Currently Delivering<br>Only in</span>
-      <span class="city">Khajrana</span>
-    </div>
-  </div>
-</section>
+</div>
+
 
 <!-- ── SPECIALITY + MENU ── -->
 <section id="about" class="sec sec-light">
@@ -1292,9 +1421,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
       <div class="line">TASTY</div>
       <div style="font-size:14px;margin-top:2px">🌿</div>
     </div>
-    <div style="width:90px;height:70px;border-radius:8px;overflow:hidden">
-      <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=200&q=80&auto=format&fit=crop" alt="MealMitra Food" style="width:100%;height:100%;object-fit:cover">
-    </div>
+
     <div style="text-align:right">
       <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:6px">
         <img src="mealmitra-logo.png" alt="MealMitra Logo" style="height: 28px; width: auto; object-fit: contain;">
