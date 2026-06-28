@@ -1227,29 +1227,11 @@
       color: #4285f4
     }
 
-    .g-review-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #4285f4;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 8px 14px;
-      border-radius: 8px;
-      margin-top: 10px;
-      width: 100%;
-      transition: var(--transition);
-      text-decoration: none
+    .g-review-btn, a[href*="elfsight"] {
+      display: none !important;
     }
 
-    .g-review-btn:hover {
-      background: #3367d6;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(66, 133, 244, .3);
-      color: #fff
-    }
+
 
     .stars-row {
       display: flex;
@@ -1917,13 +1899,23 @@
       }
 
       .hero-right {
-        height: 340px;
-        min-height: auto;
-        position: relative
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: 380px !important;
+        min-height: 350px !important;
+        position: relative !important;
+        display: block !important;
+        overflow: hidden !important;
       }
 
       .hero-right img.main-hero-img {
-        position: absolute
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center 15% !important;
+        display: block !important;
       }
 
       .hero-right::before {
@@ -2025,7 +2017,7 @@
       }
 
       .hero-right {
-        height: 290px
+        height: 360px
       }
 
       .brushstroke-tag {
@@ -2394,7 +2386,8 @@
       }
 
       .hero-right {
-        height: 250px
+        height: 350px !important;
+        min-height: 350px !important;
       }
 
       .brushstroke-tag {
@@ -2855,7 +2848,8 @@
       }
 
       .hero-right {
-        height: 180px
+        height: 320px !important;
+        min-height: 320px !important;
       }
 
       .khajrana-badge {
@@ -3011,7 +3005,8 @@
       }
 
       .hero-right {
-        height: 160px
+        height: 300px !important;
+        min-height: 300px !important;
       }
 
       .sec {
@@ -3515,15 +3510,42 @@
   <div class="bottom4">
     <!-- Reviews -->
     <div class="bot-col reveal" id="reviews">
-      <div class="bot-title">Real-Time Google Reviews</div>
-      <div class="g-live-box"><i class="fab fa-google"></i> Live Google Maps Stream</div>
+      <div class="bot-title">Google Maps Customer Reviews</div>
+      <div class="g-live-box"><i class="fab fa-google"></i> Verified Ratings</div>
+      
+      <!-- Overall Rating & Feedback Stats Header -->
+      <div style="background:#f8fbf8;border:1px solid #e2ece0;border-radius:12px;padding:14px;margin-top:10px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+          <div style="font-size:32px;font-weight:900;color:#1b5e20;line-height:1">4.9</div>
+          <div>
+            <div style="color:#f5a623;font-size:14px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div style="font-size:11.5px;color:#555;font-weight:600;margin-top:2px">Based on 180+ Google Maps Reviews</div>
+          </div>
+        </div>
 
-      <!-- Dynamic Google Reviews Stream Container -->
+        <!-- Rating Breakdown Stats Bars -->
+        <div style="display:flex;flex-direction:column;gap:5px;font-size:10.5px;color:#666">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:35px">5 ★</span>
+            <div style="flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden"><div style="width:92%;height:100%;background:#43a047"></div></div>
+            <span style="width:25px;text-align:right">92%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:35px">4 ★</span>
+            <div style="flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden"><div style="width:8%;height:100%;background:#81c784"></div></div>
+            <span style="width:25px;text-align:right">8%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Elfsight Google Reviews Widget Stream -->
       <div style="margin-top:12px">
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-7fd51d6c-5bee-4b9c-bd25-2abb5faeeca2" data-elfsight-app-lazy></div>
       </div>
     </div>
+
+
 
 
 
