@@ -1251,77 +1251,19 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;ma
 <div class="bottom4">
   <!-- Reviews -->
   <div class="bot-col reveal" id="reviews">
-    <div class="bot-title">What Our Customers Say</div>
-    <div class="g-live-box"><i class="fab fa-google"></i> Verified Google Reviews</div>
-    <div class="stars-row">
-      <i class="fas fa-star star-filled"></i>
-      <i class="fas fa-star star-filled"></i>
-      <i class="fas fa-star star-filled"></i>
-      <i class="fas fa-star star-filled"></i>
-      <i class="fas fa-star-half-alt star-filled"></i>
-      <span style="margin-left:6px;font-weight:700;font-size:14px">4.8/5</span>
-      <span style="font-size:11px;color:#888;margin-left:4px">(Google Maps Reviews)</span>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;margin-top:8px">
-      <div class="rarrow" onclick="prevReview()">‹</div>
-      <div class="rarrow" onclick="nextReview()">›</div>
-    </div>
-    <div class="review-carousel">
-      <div class="review-track" id="reviewTrack">
-        <div class="review-slide">
-          <div class="review-card">
-            <div class="review-text">"The food is always fresh, tasty and feels just like home cooked. Best tiffin service in Khajrana!"</div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
-              <div class="review-avatar">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Ayesha Khan">
-              </div>
-              <div class="reviewer">– Ayesha Khan <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
-            </div>
-          </div>
-        </div>
-        <div class="review-slide">
-          <div class="review-card">
-            <div class="review-text">"Amazing quality and taste! My family loves the non-veg tiffin. Timely delivery every single day."</div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
-              <div class="review-avatar">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&auto=format&fit=crop&crop=face" alt="Rahul Sharma">
-              </div>
-              <div class="reviewer">– Rahul Sharma <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
-            </div>
-          </div>
-        </div>
-        <div class="review-slide">
-          <div class="review-card">
-            <div class="review-text">"Very affordable and hygienic. Sunday specials are the highlight of our week. Highly recommended!"</div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
-              <div class="review-avatar">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80&auto=format&fit=crop&crop=face" alt="Priya Patel">
-              </div>
-              <div class="reviewer">– Priya Patel <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
-            </div>
-          </div>
-        </div>
-        <div class="review-slide">
-          <div class="review-card">
-            <div class="review-text">"Best tiffin in Indore! The roti is always soft and fresh. Monthly plan is totally worth it."</div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
-              <div class="review-avatar">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Farhan Ali">
-              </div>
-              <div class="reviewer">– Farhan Ali <i class="fas fa-check-circle" style="color:#4285f4;font-size:11px"></i></div>
-            </div>
-          </div>
-        </div>
+    <div class="bot-title">Live Google Maps Reviews</div>
+    <div class="g-live-box"><i class="fab fa-google"></i> Real-Time Google Reviews</div>
+    
+    <!-- Live Google Maps Place Embed Card -->
+    <div class="g-embed-card" style="border-radius:12px;overflow:hidden;border:1px solid #dadce0;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-top:10px;background:#fff">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.129674062544!2d75.90771637599026!3d22.7328140274154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962e36ca4f3be07%3A0x8763f1d7d7f80dd6!2sMealMitra!5e0!3m2!1sen!2sin!4v1719600000000!5m2!1sen!2sin" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div style="padding:12px 14px;text-align:center;background:#fafafa;border-top:1px solid #eee">
+        <p style="font-size:12px;color:#555;margin-bottom:8px;font-weight:500">Read & write live customer reviews directly on Google Maps</p>
+        <a href="https://maps.app.goo.gl/mZUFhHMgucf5Zumi8" target="_blank" class="g-review-btn" style="margin-top:0"><i class="fab fa-google"></i> Open Live Reviews on Google Maps &rarr;</a>
       </div>
     </div>
-    <div class="review-nav-dots" id="reviewDots">
-      <div class="rdot active" onclick="goToReview(0)"></div>
-      <div class="rdot" onclick="goToReview(1)"></div>
-      <div class="rdot" onclick="goToReview(2)"></div>
-      <div class="rdot" onclick="goToReview(3)"></div>
-    </div>
-    <a href="https://maps.app.goo.gl/mZUFhHMgucf5Zumi8" target="_blank" class="g-review-btn"><i class="fab fa-google"></i> View Live Reviews on Google Maps &rarr;</a>
   </div>
+
 
 
   <!-- Delivery Area -->
@@ -1527,32 +1469,7 @@ const revealObserver=new IntersectionObserver((entries)=>{
 },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
 revealEls.forEach(el=>revealObserver.observe(el));
 
-// ── Review Carousel ──
-let currentReview=0;
-const totalReviews=4;
-const track=document.getElementById('reviewTrack');
-const dots=document.querySelectorAll('#reviewDots .rdot');
 
-function goToReview(idx){
-  currentReview=idx;
-  track.style.transform=`translateX(-${idx*100}%)`;
-  dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
-}
-function nextReview(){goToReview((currentReview+1)%totalReviews)}
-function prevReview(){goToReview((currentReview-1+totalReviews)%totalReviews)}
-
-// Auto-rotate reviews
-let reviewInterval=setInterval(nextReview,5000);
-track.closest('.review-carousel').addEventListener('mouseenter',()=>clearInterval(reviewInterval));
-track.closest('.review-carousel').addEventListener('mouseleave',()=>{reviewInterval=setInterval(nextReview,5000)});
-
-// Touch swipe support for reviews
-let touchStartX=0;
-track.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX},{passive:true});
-track.addEventListener('touchend',e=>{
-  const diff=touchStartX-e.changedTouches[0].clientX;
-  if(Math.abs(diff)>40){diff>0?nextReview():prevReview()}
-},{passive:true});
 </script>
 </body>
 </html>
