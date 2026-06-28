@@ -27,39 +27,41 @@ img{display:block;width:100%;object-fit:cover}
   transition:opacity .5s,visibility .5s
 }
 .loader-wrap.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{
+  width:160px;height:auto;margin-bottom:20px;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
 .loader-spinner{
-  width:56px;height:56px;border:4px solid rgba(255,255,255,.15);
+  width:40px;height:40px;border:3px solid rgba(255,255,255,.15);
   border-top-color:var(--gold2);border-radius:50%;
   animation:spin .8s linear infinite
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-.loader-brand{color:var(--gold2);font-size:22px;font-weight:800;margin-top:16px;letter-spacing:1px}
 
 /* ─── SCROLL ANIMATIONS ─── */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s,transform .7s}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .6s,transform .6s}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s,transform .7s}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .6s,transform .6s}
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
 /* ─── NAVBAR ─── */
 nav{
   background:var(--green-nav);position:sticky;top:0;z-index:1000;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 28px;height:62px;box-shadow:0 2px 14px rgba(0,0,0,.35);
+  padding:0 28px;height:70px;box-shadow:0 2px 14px rgba(0,0,0,.35);
   transition:var(--transition)
 }
-nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.logo{display:flex;align-items:center;gap:9px}
-.logo-icon{
-  width:44px;height:44px;background:linear-gradient(135deg,#b8860b,var(--gold2));
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:20px;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .3s
-}
-.logo:hover .logo-icon{transform:rotate(15deg) scale(1.08)}
-.logo-text .t1{font-size:18px;font-weight:800;color:var(--gold2);line-height:1}
-.logo-text .t2{font-size:9px;color:#bbb;letter-spacing:1.4px;font-weight:500}
+nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);height:62px}
+.logo{display:flex;align-items:center;transition:transform .3s}
+.logo:hover{transform:scale(1.03)}
+.logo img{height:54px;width:auto;object-fit:contain}
+nav.scrolled .logo img{height:46px}
 .nav-links{display:flex;gap:22px;list-style:none}
 .nav-links a{
   color:#ccc;font-size:13px;font-weight:500;transition:var(--transition);
@@ -105,8 +107,9 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
 }
 .mobile-overlay.open{opacity:1;visibility:visible}
+.mobile-overlay .mobile-logo{width:160px;margin-bottom:24px}
 .mobile-overlay a{
-  color:#ccc;font-size:18px;font-weight:600;padding:12px 28px;border-radius:10px;
+  color:#ccc;font-size:18px;font-weight:600;padding:10px 24px;border-radius:10px;
   transition:var(--transition);width:220px;text-align:center
 }
 .mobile-overlay a:hover,.mobile-overlay a.active{color:var(--gold2);background:rgba(255,255,255,.06)}
@@ -115,7 +118,7 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
 
 /* ─── HERO ─── */
 .hero{
-  position:relative;background:var(--green-nav);min-height:420px;
+  position:relative;background:var(--green-nav);min-height:430px;
   display:flex;align-items:stretch;overflow:hidden
 }
 .hero-left{
@@ -147,13 +150,12 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
   background:linear-gradient(to right,var(--green-nav),transparent);z-index:1
 }
 .hero-badge-img{
-  position:absolute;top:0;right:0;width:170px;background:rgba(0,0,0,.52);
+  position:absolute;top:0;right:0;width:160px;background:rgba(0,0,0,.52);
   padding:14px 12px;z-index:3;
-  display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)
 }
-.hero-badge-img .brand-name{color:var(--gold2);font-size:17px;font-weight:800;line-height:1}
-.hero-badge-img .brand-sub{color:#ddd;font-size:11px;font-weight:500}
+.hero-badge-img img{width:100%;height:auto;object-fit:contain}
 .khajrana-badge{
   position:absolute;bottom:28px;right:26px;z-index:4;
   width:115px;height:115px;border-radius:50%;
@@ -168,12 +170,12 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
 .khajrana-badge i{color:#fff;font-size:13px;margin-bottom:2px}
 
 /* ─── SECTION WRAPPERS ─── */
-.sec{padding:44px}
+.sec{padding:48px 44px}
 .sec-light{background:var(--bg)}
 .sec-white{background:#fff}
-.sec-title{font-size:22px;font-weight:800;margin-bottom:20px}
+.sec-title{font-size:24px;font-weight:800;margin-bottom:24px}
 .sec-title .gold{color:var(--gold)}
-.sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
 .sec-row .sec-title{margin-bottom:0}
 .view-link{
   font-size:12.5px;color:var(--green2);font-weight:600;
@@ -183,15 +185,15 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
 .view-link:hover{background:var(--green2);color:#fff;border-color:var(--green2)}
 
 /* ─── SPECIALITY ─── */
-.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .spec-card{
-  background:#fff;border-radius:12px;padding:16px 6px 12px;
+  background:#fff;border-radius:12px;padding:16px 8px 14px;
   text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);border:1px solid #ececec;
   transition:var(--transition);cursor:pointer
 }
 .spec-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12);border-color:var(--green3)}
 .spec-card svg,.spec-card img.sicon{width:36px;height:36px;margin:0 auto 8px}
-.spec-label{font-size:11px;font-weight:600;color:#222;line-height:1.35}
+.spec-label{font-size:11.5px;font-weight:600;color:#222;line-height:1.35}
 
 .ic-flame{color:#ff6b35}.ic-kitchen{color:var(--green2)}.ic-bowl{color:#8d6e63}
 .ic-leaf{color:#43a047}.ic-cal{color:#1565c0}.ic-star{color:#ffa000}
@@ -201,19 +203,19 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
 .two-col-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 
 /* ─── PLANS ─── */
-.plans-wrap{background:#1c2f1e;border-radius:16px;padding:26px}
-.plans-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:10px}
-.plans-head h2{color:#fff;font-size:19px;font-weight:800}
+.plans-wrap{background:#1c2f1e;border-radius:16px;padding:28px}
+.plans-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+.plans-head h2{color:#fff;font-size:20px;font-weight:800}
 .plans-head h2 span{color:var(--gold2)}
 .plans-head a{
   font-size:12px;color:var(--gold2);border:1px solid var(--gold2);
   padding:5px 12px;border-radius:20px;font-weight:600;transition:var(--transition)
 }
 .plans-head a:hover{background:var(--gold2);color:#fff}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .pcard{
-  background:#fff;border-radius:12px;padding:18px 14px;position:relative;
-  border:2px solid transparent;transition:var(--transition)
+  background:#fff;border-radius:12px;padding:20px 16px;position:relative;
+  border:2px solid transparent;transition:var(--transition);text-align:left
 }
 .pcard:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.15)}
 .pcard.featured{border-color:var(--gold2)}
@@ -222,18 +224,18 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
   background:var(--gold2);color:#fff;font-size:10px;font-weight:700;
   padding:3px 13px;border-radius:20px;white-space:nowrap
 }
-.p-title{font-size:13.5px;font-weight:700;text-align:center;margin-bottom:1px}
-.p-sub{font-size:11px;color:#888;text-align:center;margin-bottom:12px}
-.p-feat{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#333;margin-bottom:5px}
-.p-feat i{color:var(--green2);font-size:11px}
-.p-price{font-size:24px;font-weight:900;margin:12px 0 2px}
+.p-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:2px}
+.p-sub{font-size:11.5px;color:#888;text-align:center;margin-bottom:14px}
+.p-feat{display:flex;align-items:center;gap:7px;font-size:12px;color:#333;margin-bottom:6px}
+.p-feat i{color:var(--green2);font-size:12px}
+.p-price{font-size:24px;font-weight:900;margin:14px 0 2px;text-align:center}
 .p-price.g{color:var(--green2)}
 .p-price.gd{color:var(--gold)}
 .p-price span{font-size:12px;font-weight:400;color:#888}
 .p-btn{
-  width:100%;padding:10px;border-radius:8px;font-size:12.5px;font-weight:700;
+  width:100%;padding:10px;border-radius:8px;font-size:13px;font-weight:700;
   cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;
-  gap:6px;margin-top:10px;transition:var(--transition)
+  gap:6px;margin-top:12px;transition:var(--transition)
 }
 .p-btn.green{background:var(--green2);color:#fff}
 .p-btn.green:hover{background:var(--green);transform:translateY(-1px)}
@@ -247,17 +249,17 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
   box-shadow:0 2px 10px rgba(0,0,0,.08);border:1px solid #ececec;transition:var(--transition)
 }
 .mcard:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
-.mcard-img{height:90px;overflow:hidden;position:relative}
+.mcard-img{height:100px;overflow:hidden;position:relative}
 .mcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .mcard:hover .mcard-img img{transform:scale(1.08)}
-.mcard-body{padding:10px 10px 12px}
-.m-name{font-size:13px;font-weight:700;margin-bottom:1px}
-.m-desc{font-size:11px;color:#888;margin-bottom:6px}
+.mcard-body{padding:12px}
+.m-name{font-size:13.5px;font-weight:700;margin-bottom:2px}
+.m-desc{font-size:11px;color:#888;margin-bottom:8px}
 .m-footer{display:flex;align-items:center;justify-content:space-between}
-.m-price{font-size:11.5px;color:#333;font-weight:500}
-.m-price strong{font-size:14px;color:var(--green2);font-weight:800}
+.m-price{font-size:12px;color:#333;font-weight:500}
+.m-price strong{font-size:15px;color:var(--green2);font-weight:800}
 .m-arrow{
-  width:26px;height:26px;border-radius:50%;background:var(--gold2);
+  width:28px;height:28px;border-radius:50%;background:var(--gold2);
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;
   cursor:pointer;flex-shrink:0;transition:var(--transition)
 }
@@ -367,13 +369,8 @@ nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-ba
 /* ─── FOOTER ─── */
 footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px}
-.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.foot-logo .fi{
-  width:44px;height:44px;background:linear-gradient(135deg,#b8860b,var(--gold2));
-  border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px
-}
-.foot-brand{color:var(--gold2);font-size:18px;font-weight:800;line-height:1}
-.foot-brand-sub{color:#666;font-size:9.5px;letter-spacing:1.2px}
+.foot-logo{margin-bottom:12px}
+.foot-logo img{height:54px;width:auto;object-fit:contain}
 .foot-desc{font-size:12px;color:#666;line-height:1.7;margin-bottom:14px}
 .foot-col h4{
   color:#ddd;font-size:13px;font-weight:700;margin-bottom:14px;
@@ -450,6 +447,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .hamburger{display:flex}
   .nav-links,.nav-btns,.sun-icon{display:none}
   nav{padding:0 20px;height:58px}
+  .logo img{height:42px}
 
   .hero{flex-direction:column;min-height:auto}
   .hero-left{
@@ -467,7 +465,6 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
     left:0;top:0;right:0;bottom:auto
   }
   .hero-badge-img{width:140px;padding:10px}
-  .hero-badge-img .brand-name{font-size:15px}
   .khajrana-badge{width:100px;height:100px;bottom:16px;right:16px}
   .khajrana-badge .city{font-size:14px}
 
@@ -488,8 +485,6 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   .hero-left{padding:28px 20px 24px}
   .hero-right{height:220px}
   .hero-badge-img{width:120px;padding:8px 8px}
-  .hero-badge-img .brand-name{font-size:13px}
-  .hero-badge-img .brand-sub{font-size:10px}
   .khajrana-badge{width:85px;height:85px;bottom:12px;right:12px}
   .khajrana-badge .city{font-size:12px}
   .khajrana-badge .small{font-size:8px}
@@ -521,9 +516,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 /* ── Mobile Phones (≤480px) ── */
 @media(max-width:480px){
   nav{padding:0 14px;height:54px}
-  .logo-icon{width:38px;height:38px;font-size:17px}
-  .logo-text .t1{font-size:16px}
-  .logo-text .t2{font-size:8px}
+  .logo img{height:36px}
 
   .hero h1{font-size:24px}
   .hero-sub{font-size:12.5px;margin-bottom:18px}
@@ -574,8 +567,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 
   footer{padding:24px 14px 18px}
   .foot-grid{grid-template-columns:1fr;gap:20px}
-  .foot-logo .fi{width:38px;height:38px;font-size:18px}
-  .foot-brand{font-size:16px}
+  .foot-logo img{height:40px}
   .foot-desc{font-size:11px}
   .foot-col h4{font-size:12px;margin-bottom:10px}
   .foot-col a{font-size:11px}
@@ -603,8 +595,8 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 
 <!-- Loader -->
 <div class="loader-wrap" id="loader">
+  <img src="mealmitra-logo.png" alt="MealMitra Logo" class="loader-logo">
   <div class="loader-spinner"></div>
-  <div class="loader-brand">MealMitra</div>
 </div>
 
 <!-- Float Buttons -->
@@ -616,6 +608,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 
 <!-- Mobile Menu Overlay -->
 <div class="mobile-overlay" id="mobileMenu">
+  <img src="mealmitra-logo.png" alt="MealMitra Logo" class="mobile-logo">
   <a href="#home" class="active">Home</a>
   <a href="#about">About</a>
   <a href="#menu">Menu</a>
@@ -632,13 +625,9 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 
 <!-- ── NAVBAR ── -->
 <nav id="navbar">
-  <div class="logo">
-    <div class="logo-icon">🍱</div>
-    <div class="logo-text">
-      <div class="t1">MealMitra</div>
-      <div class="t2">TIFFIN CENTER</div>
-    </div>
-  </div>
+  <a href="#home" class="logo">
+    <img src="mealmitra-logo.png" alt="MealMitra Logo">
+  </a>
   <ul class="nav-links">
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -680,8 +669,7 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
   <div class="hero-right">
     <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=900&q=85&auto=format&fit=crop" alt="Indian Tiffin Food">
     <div class="hero-badge-img">
-      <div class="brand-name">MealMitra</div>
-      <div class="brand-sub">Tiffin Service</div>
+      <img src="mealmitra-logo.png" alt="MealMitra Badge Logo">
     </div>
     <div class="khajrana-badge">
       <i class="fas fa-location-dot"></i>
@@ -1091,12 +1079,8 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
 <footer>
   <div class="foot-grid">
     <div class="reveal">
-      <div class="foot-logo">
-        <div class="fi">🍱</div>
-        <div>
-          <div class="foot-brand">MealMitra</div>
-          <div class="foot-brand-sub">TIFFIN CENTER</div>
-        </div>
+      <div class="foot-logo" style="margin-bottom: 12px;">
+        <img src="mealmitra-logo.png" alt="MealMitra Logo">
       </div>
       <p class="foot-desc">Fresh, hygienic &amp; tasty food<br>delivered with love.</p>
     </div>
@@ -1146,9 +1130,8 @@ footer{background:#0d1f10;color:#888;padding:42px 44px 28px}
       <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=200&q=80&auto=format&fit=crop" alt="MealMitra Food" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div style="text-align:right">
-      <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:2px">
-        <span style="font-size:16px">🍱</span>
-        <span style="color:var(--gold2);font-size:14px;font-weight:800">MealMitra</span>
+      <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:6px">
+        <img src="mealmitra-logo.png" alt="MealMitra Logo" style="height: 28px; width: auto; object-fit: contain;">
       </div>
       <div style="font-size:10px;color:#555">Tiffin Service</div>
       <p class="made" style="margin-top:4px">Made with <span>❤</span> for Khajrana</p>
