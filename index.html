@@ -1,1614 +1,3803 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MealMitra Tiffin Center – Fresh, Hygienic & Tasty Food</title>
-<meta name="description" content="MealMitra Tiffin Center delivers fresh, hygienic & tasty home-style food in Khajrana, Indore. Veg & Non-Veg monthly tiffin plans starting ₹2400.">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#1b5e20;--green2:#2e7d32;--green3:#388e3c;--green-nav:#14401a;
-  --gold:#d4a017;--gold2:#f0b429;--gold3:#ffc94a;
-  --white:#fff;--bg:#f5f7f2;--dark:#111;--gray:#555;--border:#e0e0e0;
-  --transition:all .3s cubic-bezier(.4,0,.2,1);
-}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Poppins',sans-serif;color:#222;background:#fff;overflow-x:hidden;max-width:100vw}
-a{text-decoration:none}
-img{display:block;max-width:100%;object-fit:cover}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MealMitra Tiffin Center – Fresh, Hygienic & Tasty Food</title>
+  <meta name="description"
+    content="MealMitra Tiffin Center delivers fresh, hygienic & tasty home-style food in Khajrana, Indore. Veg & Non-Veg monthly tiffin plans starting ₹2400.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ─── LOADER ─── */
-.loader-wrap{
-  position:fixed;inset:0;background:var(--green-nav);z-index:9999;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity .5s,visibility .5s;width:100vw;height:100vh;
-  box-sizing:border-box;text-align:center
-}
-.loader-wrap.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.loader-logo{
-  width:180px!important;max-width:65vw!important;height:auto!important;
-  margin:0 auto 24px auto!important;display:block!important;
-  object-fit:contain!important;align-self:center!important;
-  animation:pulse 1.8s ease-in-out infinite;
-}
-@keyframes pulse{
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
-}
-.loader-spinner{
-  width:40px;height:40px;border:3px solid rgba(255,255,255,.15);
-  border-top-color:var(--gold2);border-radius:50%;
-  animation:spin .8s linear infinite
-}
-@keyframes spin{to{transform:rotate(360deg)}}
+    :root {
+      --green: #1b5e20;
+      --green2: #2e7d32;
+      --green3: #388e3c;
+      --green-nav: #14401a;
+      --gold: #d4a017;
+      --gold2: #f0b429;
+      --gold3: #ffc94a;
+      --white: #fff;
+      --bg: #f5f7f2;
+      --dark: #111;
+      --gray: #555;
+      --border: #e0e0e0;
+      --transition: all .3s cubic-bezier(.4, 0, .2, 1);
+    }
 
-/* ─── SCROLL ANIMATIONS ─── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
-.reveal-left.visible{opacity:1;transform:translateY(0)}
-.reveal-right{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
-.reveal-right.visible{opacity:1;transform:translateY(0)}
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden
+    }
 
-/* ─── NAVBAR ─── */
-nav{
-  background:var(--green-nav);position:sticky;top:0;z-index:1000;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 28px;height:70px;box-shadow:0 2px 14px rgba(0,0,0,.35);
-  transition:var(--transition)
-}
-nav.scrolled{background:rgba(20,64,26,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);height:62px}
-.logo{display:flex;align-items:center;transition:transform .3s}
-.logo:hover{transform:scale(1.03)}
-.logo img{height:54px;width:auto;object-fit:contain}
-nav.scrolled .logo img{height:46px}
-.nav-links{display:flex;gap:22px;list-style:none}
-.nav-links a{
-  color:#ccc;font-size:13px;font-weight:500;transition:var(--transition);
-  padding-bottom:2px;border-bottom:2px solid transparent;position:relative
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;
-  background:var(--gold2);transition:width .3s
-}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
-.nav-links a.active,.nav-links a:hover{color:var(--gold2)}
-.nav-btns{display:flex;gap:9px}
-.btn{
-  display:inline-flex;align-items:center;gap:6px;padding:8px 17px;border-radius:7px;
-  font-size:13px;font-weight:600;cursor:pointer;border:none;transition:var(--transition);
-  white-space:normal;word-break:keep-all
-}
-.btn-call{background:var(--gold);color:#fff}
-.btn-call:hover{background:#b8860b;transform:translateY(-1px);box-shadow:0 4px 12px rgba(212,160,23,.4)}
-.btn-wa{background:#1fad4e;color:#fff}
-.btn-wa:hover{background:#178a3e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(31,173,78,.4)}
-.sun-icon{color:#ccc;font-size:18px;cursor:pointer;margin-left:6px;transition:var(--transition)}
-.sun-icon:hover{color:var(--gold2);transform:rotate(30deg)}
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #222;
+      background: #fff;
+      overflow-x: hidden;
+      max-width: 100vw
+    }
 
-/* ─── HAMBURGER ─── */
-.hamburger{
-  display:none;flex-direction:column;gap:5px;cursor:pointer;
-  padding:6px;z-index:1002;background:none;border:none
-}
-.hamburger span{
-  width:24px;height:2.5px;background:var(--gold2);border-radius:3px;
-  transition:var(--transition);display:block
-}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    a {
+      text-decoration: none
+    }
 
-/* Mobile overlay menu */
-.mobile-overlay{
-  position:fixed;inset:0;background:rgba(10,30,12,.97);z-index:999;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:8px;opacity:0;visibility:hidden;transition:var(--transition);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
-}
-.mobile-overlay.open{opacity:1;visibility:visible}
-.mobile-overlay .mobile-logo{width:160px;margin-bottom:24px}
-.mobile-overlay a{
-  color:#ccc;font-size:18px;font-weight:600;padding:10px 24px;border-radius:10px;
-  transition:var(--transition);width:220px;text-align:center
-}
-.mobile-overlay a:hover,.mobile-overlay a.active{color:var(--gold2);background:rgba(255,255,255,.06)}
-.mobile-overlay .mobile-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px;width:220px}
-.mobile-overlay .mobile-btns .btn{justify-content:center;padding:12px 18px;border-radius:10px;font-size:14px}
+    img {
+      display: block;
+      max-width: 100%;
+      object-fit: cover
+    }
 
-/* ─── HERO ─── */
-.hero-wrapper{position:relative;background:var(--green-nav);overflow:hidden}
-.hero{
-  position:relative;min-height:480px;
-  display:flex;align-items:stretch;overflow:hidden
-}
-.hero-left{
-  flex:0 0 520px;padding:40px 44px 36px;display:flex;flex-direction:column;
-  justify-content:center;z-index:2;position:relative
-}
-.hero-left::after{
-  content:'';position:absolute;right:-50px;top:0;bottom:0;width:100px;
-  background:var(--green-nav);transform:skewX(-5deg);transform-origin:top right;z-index:1
-}
-.hero-left>*{position:relative;z-index:2}
-.hero-top-tag{
-  display:inline-flex;align-items:center;gap:6px;background:rgba(212,160,23,.15);
-  border:1px solid var(--gold2);color:var(--gold3);font-size:11px;font-weight:700;
-  padding:4px 12px;border-radius:20px;margin-bottom:12px;width:fit-content;letter-spacing:.5px
-}
-.hero h1{font-size:36px;font-weight:900;color:#fff;line-height:1.12;margin-bottom:8px}
-.hero h1 span{color:var(--gold2)}
-.hero-sub{color:#c8e6c9;font-size:15px;font-weight:500;margin-bottom:20px}
+    /* ─── LOADER ─── */
+    .loader-wrap {
+      position: fixed;
+      inset: 0;
+      background: var(--green-nav);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .5s, visibility .5s;
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
+      text-align: center
+    }
 
-/* 5 Feature Badges Grid */
-.hero-badge-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.h-badge{
-  background:rgba(255,255,255,.95);border-radius:24px;padding:6px 12px;
-  display:flex;align-items:center;gap:7px;box-shadow:0 4px 12px rgba(0,0,0,.15);
-  transition:transform .2s ease
-}
-.h-badge:hover{transform:translateY(-2px)}
-.h-badge-icon{
-  width:24px;height:24px;border-radius:50%;background:#e8f5e9;color:var(--green2);
-  display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0
-}
-.h-badge-text{font-size:11px;font-weight:700;color:#1b431e;white-space:nowrap}
+    .loader-wrap.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
 
-.hero-btns{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-.hero-btns .btn{padding:12px 22px;font-size:14px;border-radius:8px;font-weight:700}
+    .loader-logo {
+      width: 180px !important;
+      max-width: 65vw !important;
+      height: auto !important;
+      margin: 0 auto 24px auto !important;
+      display: block !important;
+      object-fit: contain !important;
+      align-self: center !important;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
 
-.hero-right{flex:1;position:relative;overflow:hidden;min-height:420px}
-.hero-right img.main-hero-img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;
-  transition:transform 8s ease-in-out
-}
-.hero-right:hover img.main-hero-img{transform:scale(1.03)}
-.hero-right::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;
-  background:linear-gradient(to right,var(--green-nav),transparent);z-index:1
-}
+    @keyframes pulse {
 
-/* Brushstroke quote banner */
-.brushstroke-tag{
-  position:absolute;top:20px;right:20px;z-index:3;
-  background:linear-gradient(135deg,#0f3813,#19521e);color:#fff;
-  padding:10px 18px;border-radius:8px 20px 8px 20px;border-left:4px solid var(--gold2);
-  box-shadow:0 8px 25px rgba(0,0,0,.4);max-width:250px;backdrop-filter:blur(4px)
-}
-.brushstroke-tag p{font-size:12.5px;font-weight:700;line-height:1.35;color:#fff;font-style:italic}
-.brushstroke-tag span.brand-hl{color:var(--gold2);font-weight:900;font-style:normal}
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
 
-/* Free delivery badge */
-.free-delivery-badge{
-  position:absolute;bottom:20px;left:20px;z-index:4;
-  background:#111;border:2px solid var(--gold2);border-radius:30px;
-  padding:6px 14px 6px 8px;display:flex;align-items:center;gap:10px;
-  box-shadow:0 6px 20px rgba(0,0,0,.5);animation:badgePulse 3s ease-in-out infinite
-}
-.fd-icon-box{
-  width:34px;height:34px;border-radius:50%;background:var(--gold2);color:#111;
-  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0
-}
-.fd-text{display:flex;flex-direction:column}
-.fd-title{font-size:11.5px;font-weight:900;color:var(--gold2);text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
-.fd-sub{font-size:9.5px;color:#ddd;font-weight:500}
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
 
-.khajrana-badge{
-  position:absolute;bottom:20px;right:20px;z-index:4;
-  width:100px;height:100px;border-radius:50%;
-  background:linear-gradient(135deg,#b8860b,var(--gold2));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.4);border:3px solid var(--gold3)
-}
-@keyframes badgePulse{0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.4)}50%{box-shadow:0 4px 30px rgba(240,180,41,.5)}}
-.khajrana-badge .small{font-size:8.5px;color:#fff;font-weight:500;line-height:1.3}
-.khajrana-badge .city{font-size:15px;font-weight:900;color:#fff;line-height:1.1}
-.khajrana-badge i{color:#fff;font-size:12px;margin-bottom:2px}
+    .loader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, .15);
+      border-top-color: var(--gold2);
+      border-radius: 50%;
+      animation: spin .8s linear infinite
+    }
 
-/* Bottom highlight strip */
-.hero-strip{
-  background:#0b290f;border-top:1px solid rgba(255,255,255,.1);
-  padding:16px 44px;display:grid;grid-template-columns:repeat(3,1fr);
-  gap:20px;position:relative;z-index:5
-}
-.strip-item{display:flex;align-items:center;gap:12px;color:#fff}
-.strip-icon{
-  width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);
-  border:1px solid rgba(240,180,41,.4);color:var(--gold2);
-  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0
-}
-.strip-title{font-size:12px;font-weight:800;letter-spacing:.5px;color:var(--gold2);text-transform:uppercase;line-height:1.2}
-.strip-sub{font-size:11px;color:#a5d6a7}
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s cubic-bezier(.4, 0, .2, 1), transform .6s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s, transform .6s
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s, transform .6s
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      background: var(--green-nav);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      height: 70px;
+      box-shadow: 0 2px 14px rgba(0, 0, 0, .35);
+      transition: var(--transition)
+    }
+
+    nav.scrolled {
+      background: rgba(20, 64, 26, .97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      height: 62px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      transition: transform .3s
+    }
+
+    .logo:hover {
+      transform: scale(1.03)
+    }
+
+    .logo img {
+      height: 54px;
+      width: auto;
+      object-fit: contain
+    }
+
+    nav.scrolled .logo img {
+      height: 46px
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none
+    }
+
+    .nav-links a {
+      color: #ccc;
+      font-size: 13px;
+      font-weight: 500;
+      transition: var(--transition);
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      position: relative
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold2);
+      transition: width .3s
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--gold2)
+    }
+
+    .nav-btns {
+      display: flex;
+      gap: 9px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 17px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      white-space: normal;
+      word-break: keep-all
+    }
+
+    .btn-call {
+      background: var(--gold);
+      color: #fff
+    }
+
+    .btn-call:hover {
+      background: #b8860b;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(212, 160, 23, .4)
+    }
+
+    .btn-wa {
+      background: #1fad4e;
+      color: #fff
+    }
+
+    .btn-wa:hover {
+      background: #178a3e;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(31, 173, 78, .4)
+    }
+
+    .sun-icon {
+      color: #ccc;
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: 6px;
+      transition: var(--transition)
+    }
+
+    .sun-icon:hover {
+      color: var(--gold2);
+      transform: rotate(30deg)
+    }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1002;
+      background: none;
+      border: none
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--gold2);
+      border-radius: 3px;
+      transition: var(--transition);
+      display: block
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px)
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0)
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px)
+    }
+
+    /* Mobile overlay menu */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 30, 12, .97);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px)
+    }
+
+    .mobile-overlay.open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .mobile-overlay .mobile-logo {
+      width: 160px;
+      margin-bottom: 24px
+    }
+
+    .mobile-overlay a {
+      color: #ccc;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 10px;
+      transition: var(--transition);
+      width: 220px;
+      text-align: center
+    }
+
+    .mobile-overlay a:hover,
+    .mobile-overlay a.active {
+      color: var(--gold2);
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .mobile-overlay .mobile-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+      width: 220px
+    }
+
+    .mobile-overlay .mobile-btns .btn {
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14px
+    }
+
+    /* ─── HERO ─── */
+    .hero-wrapper {
+      position: relative;
+      background: var(--green-nav);
+      overflow: hidden
+    }
+
+    .hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden
+    }
+
+    .hero-left {
+      flex: 0 0 520px;
+      padding: 40px 44px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+      position: relative
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: -50px;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      background: var(--green-nav);
+      transform: skewX(-5deg);
+      transform-origin: top right;
+      z-index: 1
+    }
+
+    .hero-left>* {
+      position: relative;
+      z-index: 2
+    }
+
+    .hero-top-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 160, 23, .15);
+      border: 1px solid var(--gold2);
+      color: var(--gold3);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      width: fit-content;
+      letter-spacing: .5px
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 8px
+    }
+
+    .hero h1 span {
+      color: var(--gold2)
+    }
+
+    .hero-sub {
+      color: #c8e6c9;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 20px
+    }
+
+    /* 5 Feature Badges Grid */
+    .hero-badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px
+    }
+
+    .h-badge {
+      background: rgba(255, 255, 255, .95);
+      border-radius: 24px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+      transition: transform .2s ease
+    }
+
+    .h-badge:hover {
+      transform: translateY(-2px)
+    }
+
+    .h-badge-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #e8f5e9;
+      color: var(--green2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0
+    }
+
+    .h-badge-text {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1b431e;
+      white-space: nowrap
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap
+    }
+
+    .hero-btns .btn {
+      padding: 12px 22px;
+      font-size: 14px;
+      border-radius: 8px;
+      font-weight: 700
+    }
+
+    .hero-right {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 420px
+    }
+
+    .hero-right img.main-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 8s ease-in-out
+    }
+
+    .hero-right:hover img.main-hero-img {
+      transform: scale(1.03)
+    }
+
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      background: linear-gradient(to right, var(--green-nav), transparent);
+      z-index: 1
+    }
+
+    /* Brushstroke quote banner */
+    .brushstroke-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+      background: linear-gradient(135deg, #0f3813, #19521e);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px 20px 8px 20px;
+      border-left: 4px solid var(--gold2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, .4);
+      max-width: 250px;
+      backdrop-filter: blur(4px)
+    }
+
+    .brushstroke-tag p {
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #fff;
+      font-style: italic
+    }
+
+    .brushstroke-tag span.brand-hl {
+      color: var(--gold2);
+      font-weight: 900;
+      font-style: normal
+    }
+
+    /* Free delivery badge */
+    .free-delivery-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 4;
+      background: #111;
+      border: 2px solid var(--gold2);
+      border-radius: 30px;
+      padding: 6px 14px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .5);
+      animation: badgePulse 3s ease-in-out infinite
+    }
+
+    .fd-icon-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--gold2);
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0
+    }
+
+    .fd-text {
+      display: flex;
+      flex-direction: column
+    }
+
+    .fd-title {
+      font-size: 11.5px;
+      font-weight: 900;
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      line-height: 1.1
+    }
+
+    .fd-sub {
+      font-size: 9.5px;
+      color: #ddd;
+      font-weight: 500
+    }
+
+    .khajrana-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 4;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b8860b, var(--gold2));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .4);
+      border: 3px solid var(--gold3)
+    }
+
+    @keyframes badgePulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, .4)
+      }
+
+      50% {
+        box-shadow: 0 4px 30px rgba(240, 180, 41, .5)
+      }
+    }
+
+    .khajrana-badge .small {
+      font-size: 8.5px;
+      color: #fff;
+      font-weight: 500;
+      line-height: 1.3
+    }
+
+    .khajrana-badge .city {
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1
+    }
+
+    .khajrana-badge i {
+      color: #fff;
+      font-size: 12px;
+      margin-bottom: 2px
+    }
+
+    /* Bottom highlight strip */
+    .hero-strip {
+      background: #0b290f;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      padding: 16px 44px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 5
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff
+    }
+
+    .strip-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(240, 180, 41, .4);
+      color: var(--gold2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0
+    }
+
+    .strip-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      color: var(--gold2);
+      text-transform: uppercase;
+      line-height: 1.2
+    }
+
+    .strip-sub {
+      font-size: 11px;
+      color: #a5d6a7
+    }
 
 
-/* ─── SECTION WRAPPERS ─── */
-.sec{padding:48px 44px;overflow-x:hidden}
-.sec-light{background:var(--bg)}
-.sec-white{background:#fff}
-.sec-title{font-size:24px;font-weight:800;margin-bottom:24px}
-.sec-title .gold{color:var(--gold)}
-.sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
-.sec-row .sec-title{margin-bottom:0}
-.view-link{
-  font-size:12.5px;color:var(--green2);font-weight:600;
-  display:flex;align-items:center;gap:4px;border:1px solid #ccc;
-  padding:5px 12px;border-radius:20px;transition:var(--transition)
-}
-.view-link:hover{background:var(--green2);color:#fff;border-color:var(--green2)}
+    /* ─── SECTION WRAPPERS ─── */
+    .sec {
+      padding: 48px 44px;
+      overflow-x: hidden
+    }
 
-/* ─── SPECIALITY ─── */
-.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.spec-card{
-  background:#fff;border-radius:12px;padding:16px 8px 14px;
-  text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);border:1px solid #ececec;
-  transition:var(--transition);cursor:pointer
-}
-.spec-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12);border-color:var(--green3)}
-.spec-card svg,.spec-card img.sicon{width:36px;height:36px;margin:0 auto 8px}
-.spec-label{font-size:11.5px;font-weight:600;color:#222;line-height:1.35}
+    .sec-light {
+      background: var(--bg)
+    }
 
-.ic-flame{color:#ff6b35}.ic-kitchen{color:var(--green2)}.ic-bowl{color:#8d6e63}
-.ic-leaf{color:#43a047}.ic-cal{color:#1565c0}.ic-star{color:#ffa000}
-.ic-tag{color:var(--green2)}.ic-truck{color:#37474f}
+    .sec-white {
+      background: #fff
+    }
 
-/* ─── 2-COL ─── */
-.two-col-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .sec-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 24px
+    }
 
-/* ─── PLANS ─── */
-.plans-wrap{background:#1c2f1e;border-radius:16px;padding:28px}
-.plans-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
-.plans-head h2{color:#fff;font-size:20px;font-weight:800}
-.plans-head h2 span{color:var(--gold2)}
-.plans-head a{
-  font-size:12px;color:var(--gold2);border:1px solid var(--gold2);
-  padding:5px 12px;border-radius:20px;font-weight:600;transition:var(--transition)
-}
-.plans-head a:hover{background:var(--gold2);color:#fff}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pcard{
-  background:#fff;border-radius:12px;padding:20px 16px;position:relative;
-  border:2px solid transparent;transition:var(--transition);text-align:left
-}
-.pcard:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.15)}
-.pcard.featured{border-color:var(--gold2)}
-.pbadge{
-  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
-  background:var(--gold2);color:#fff;font-size:10px;font-weight:700;
-  padding:3px 13px;border-radius:20px;white-space:nowrap
-}
-.p-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:2px}
-.p-sub{font-size:11.5px;color:#888;text-align:center;margin-bottom:14px}
-.p-feat{display:flex;align-items:center;gap:7px;font-size:12px;color:#333;margin-bottom:6px}
-.p-feat i{color:var(--green2);font-size:12px}
-.p-price{font-size:24px;font-weight:900;margin:14px 0 2px;text-align:center}
-.p-price.g{color:var(--green2)}
-.p-price.gd{color:var(--gold)}
-.p-price span{font-size:12px;font-weight:400;color:#888}
-.p-btn{
-  width:100%;padding:10px;border-radius:8px;font-size:13px;font-weight:700;
-  cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;
-  gap:6px;margin-top:12px;transition:var(--transition)
-}
-.p-btn.green{background:var(--green2);color:#fff}
-.p-btn.green:hover{background:var(--green);transform:translateY(-1px)}
-.p-btn.gold{background:var(--gold);color:#fff}
-.p-btn.gold:hover{background:#b8860b;transform:translateY(-1px)}
+    .sec-title .gold {
+      color: var(--gold)
+    }
 
-/* ─── MENU ─── */
-.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.mcard{
-  background:#fff;border-radius:12px;overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);border:1px solid #ececec;transition:var(--transition)
-}
-.mcard:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
-.mcard-img{height:100px;overflow:hidden;position:relative}
-.mcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.mcard:hover .mcard-img img{transform:scale(1.08)}
-.mcard-body{padding:12px}
-.m-name{font-size:13.5px;font-weight:700;margin-bottom:2px}
-.m-desc{font-size:11px;color:#888;margin-bottom:8px}
-.m-footer{display:flex;align-items:center;justify-content:space-between}
-.m-price{font-size:12px;color:#333;font-weight:500}
-.m-price strong{font-size:15px;color:var(--green2);font-weight:800}
-.m-arrow{
-  width:28px;height:28px;border-radius:50%;background:var(--gold2);
-  display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;
-  cursor:pointer;flex-shrink:0;transition:var(--transition)
-}
-.m-arrow:hover{background:var(--green2);transform:scale(1.1)}
+    .sec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px
+    }
 
-/* ─── WHY + GALLERY ─── */
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
-.wcard{
-  background:#fff;border-radius:12px;padding:18px 10px;text-align:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.07);transition:var(--transition)
-}
-.wcard:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
-.wcard svg{width:42px;height:42px;margin:0 auto 10px}
-.w-title{font-size:12px;font-weight:700;line-height:1.35}
+    .sec-row .sec-title {
+      margin-bottom: 0
+    }
 
-.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.gal-item{border-radius:10px;overflow:hidden;height:88px;cursor:pointer;transition:var(--transition)}
-.gal-item:hover{transform:scale(1.04)}
-.gal-item img{width:100%;height:100%;object-fit:cover}
+    .view-link {
+      font-size: 12.5px;
+      color: var(--green2);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid #ccc;
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: var(--transition)
+    }
 
-/* ─── BOTTOM 4-COL ─── */
-.bottom4{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);gap:0;background:#fff;border-top:1px solid #ebebeb;width:100%;max-width:100vw;overflow:hidden}
-.bot-col{padding:36px 28px;border-right:1px solid #ebebeb;min-width:0;max-width:100%;width:100%;box-sizing:border-box;overflow:hidden}
-.bot-col:last-child{border-right:none}
-.bot-title{font-size:16px;font-weight:800;margin-bottom:16px}
+    .view-link:hover {
+      background: var(--green2);
+      color: #fff;
+      border-color: var(--green2)
+    }
 
-/* Reviews */
-.g-live-box{
-  display:inline-flex;align-items:center;gap:6px;background:#e8f0fe;
-  border:1px solid #4285f4;border-radius:20px;padding:3px 10px;
-  font-size:11px;font-weight:700;color:#1a73e8;margin-bottom:8px
-}
-.g-live-box i{color:#4285f4}
-.g-review-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:#4285f4;color:#fff;font-size:12px;font-weight:700;
-  padding:8px 14px;border-radius:8px;margin-top:10px;width:100%;
-  transition:var(--transition);text-decoration:none
-}
-.g-review-btn:hover{background:#3367d6;transform:translateY(-1px);box-shadow:0 4px 12px rgba(66,133,244,.3);color:#fff}
-.stars-row{display:flex;align-items:center;gap:4px;margin-bottom:4px;flex-wrap:wrap}
-.star-filled{color:#f5a623;font-size:17px}
-.star-empty{color:#ddd;font-size:17px}
-.rating-num{font-size:20px;font-weight:800}
-.rating-sub{font-size:11px;color:#888;margin-bottom:12px}
-.review-carousel{position:relative;overflow:hidden;width:100%;max-width:100%;min-width:0}
-.review-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);width:100%;min-width:0}
-.review-slide{width:100%;min-width:100%;max-width:100%;flex-shrink:0;box-sizing:border-box}
-.review-card{
-  background:#f5f7f2;border-radius:10px;border-left:3px solid var(--green2);
-  padding:14px 14px 12px;margin-bottom:12px
-}
-.review-avatar{width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0}
-.review-avatar img{width:100%;height:100%;object-fit:cover}
-.review-info{display:flex;align-items:flex-start;gap:10px}
-.review-text{font-size:13px;color:#333;font-style:italic;line-height:1.65;margin-bottom:8px}
-.reviewer{font-size:12px;font-weight:700;color:var(--green2)}
-.review-nav-dots{display:flex;gap:7px;margin-top:10px}
-.rdot{
-  width:10px;height:10px;border-radius:50%;background:#ddd;cursor:pointer;
-  transition:var(--transition)
-}
-.rdot.active{background:var(--green2);transform:scale(1.2)}
-.review-arrows{display:flex;gap:8px;margin-top:0}
-.rarrow{
-  width:32px;height:32px;border-radius:50%;border:1px solid #ccc;
-  display:flex;align-items:center;justify-content:center;font-size:14px;
-  cursor:pointer;color:#555;transition:var(--transition);background:#fff
-}
-.rarrow:hover{background:var(--green2);color:#fff;border-color:var(--green2)}
+    /* ─── SPECIALITY ─── */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px
+    }
+
+    .spec-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px 8px 14px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .07);
+      border: 1px solid #ececec;
+      transition: var(--transition);
+      cursor: pointer
+    }
+
+    .spec-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+      border-color: var(--green3)
+    }
+
+    .spec-card svg,
+    .spec-card img.sicon {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 8px
+    }
+
+    .spec-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #222;
+      line-height: 1.35
+    }
+
+    .ic-flame {
+      color: #ff6b35
+    }
+
+    .ic-kitchen {
+      color: var(--green2)
+    }
+
+    .ic-bowl {
+      color: #8d6e63
+    }
+
+    .ic-leaf {
+      color: #43a047
+    }
+
+    .ic-cal {
+      color: #1565c0
+    }
+
+    .ic-star {
+      color: #ffa000
+    }
+
+    .ic-tag {
+      color: var(--green2)
+    }
+
+    .ic-truck {
+      color: #37474f
+    }
+
+    /* ─── 2-COL ─── */
+    .two-col-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px
+    }
+
+    /* ─── PLANS ─── */
+    .plans-wrap {
+      background: #1c2f1e;
+      border-radius: 16px;
+      padding: 28px
+    }
+
+    .plans-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .plans-head h2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800
+    }
+
+    .plans-head h2 span {
+      color: var(--gold2)
+    }
+
+    .plans-head a {
+      font-size: 12px;
+      color: var(--gold2);
+      border: 1px solid var(--gold2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      transition: var(--transition)
+    }
+
+    .plans-head a:hover {
+      background: var(--gold2);
+      color: #fff
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .pcard {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 16px;
+      position: relative;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      text-align: left
+    }
+
+    .pcard:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .15)
+    }
+
+    .pcard.featured {
+      border-color: var(--gold2)
+    }
+
+    .pbadge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold2);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 13px;
+      border-radius: 20px;
+      white-space: nowrap
+    }
+
+    .p-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2px
+    }
+
+    .p-sub {
+      font-size: 11.5px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 14px
+    }
+
+    .p-feat {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #333;
+      margin-bottom: 6px
+    }
+
+    .p-feat i {
+      color: var(--green2);
+      font-size: 12px
+    }
+
+    .p-price {
+      font-size: 24px;
+      font-weight: 900;
+      margin: 14px 0 2px;
+      text-align: center
+    }
+
+    .p-price.g {
+      color: var(--green2)
+    }
+
+    .p-price.gd {
+      color: var(--gold)
+    }
+
+    .p-price span {
+      font-size: 12px;
+      font-weight: 400;
+      color: #888
+    }
+
+    .p-btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+      transition: var(--transition)
+    }
+
+    .p-btn.green {
+      background: var(--green2);
+      color: #fff
+    }
+
+    .p-btn.green:hover {
+      background: var(--green);
+      transform: translateY(-1px)
+    }
+
+    .p-btn.gold {
+      background: var(--gold);
+      color: #fff
+    }
+
+    .p-btn.gold:hover {
+      background: #b8860b;
+      transform: translateY(-1px)
+    }
+
+    /* ─── MENU ─── */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px
+    }
+
+    .mcard {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+      border: 1px solid #ececec;
+      transition: var(--transition)
+    }
+
+    .mcard:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .12)
+    }
+
+    .mcard-img {
+      height: 100px;
+      overflow: hidden;
+      position: relative
+    }
+
+    .mcard-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s
+    }
+
+    .mcard:hover .mcard-img img {
+      transform: scale(1.08)
+    }
+
+    .mcard-body {
+      padding: 12px
+    }
+
+    .m-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 2px
+    }
+
+    .m-desc {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 8px
+    }
+
+    .m-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .m-price {
+      font-size: 12px;
+      color: #333;
+      font-weight: 500
+    }
+
+    .m-price strong {
+      font-size: 15px;
+      color: var(--green2);
+      font-weight: 800
+    }
+
+    .m-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: var(--transition)
+    }
+
+    .m-arrow:hover {
+      background: var(--green2);
+      transform: scale(1.1)
+    }
+
+    /* ─── WHY + GALLERY ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 10px
+    }
+
+    .wcard {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .07);
+      transition: var(--transition)
+    }
+
+    .wcard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .12)
+    }
+
+    .wcard svg {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 10px
+    }
+
+    .w-title {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35
+    }
+
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px
+    }
+
+    .gal-item {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 88px;
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .gal-item:hover {
+      transform: scale(1.04)
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    /* ─── BOTTOM 4-COL ─── */
+    .bottom4 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 0;
+      background: #fff;
+      border-top: 1px solid #ebebeb;
+      width: 100%;
+      max-width: 100vw;
+      overflow: hidden
+    }
+
+    .bot-col {
+      padding: 36px 28px;
+      border-right: 1px solid #ebebeb;
+      min-width: 0;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden
+    }
+
+    .bot-col:last-child {
+      border-right: none
+    }
+
+    .bot-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 16px
+    }
+
+    /* Reviews */
+    .g-live-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f0fe;
+      border: 1px solid #4285f4;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a73e8;
+      margin-bottom: 8px
+    }
+
+    .g-live-box i {
+      color: #4285f4
+    }
+
+    .g-review-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #4285f4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin-top: 10px;
+      width: 100%;
+      transition: var(--transition);
+      text-decoration: none
+    }
+
+    .g-review-btn:hover {
+      background: #3367d6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(66, 133, 244, .3);
+      color: #fff
+    }
+
+    .stars-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 4px;
+      flex-wrap: wrap
+    }
+
+    .star-filled {
+      color: #f5a623;
+      font-size: 17px
+    }
+
+    .star-empty {
+      color: #ddd;
+      font-size: 17px
+    }
+
+    .rating-num {
+      font-size: 20px;
+      font-weight: 800
+    }
+
+    .rating-sub {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 12px
+    }
+
+    .review-carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0
+    }
+
+    .review-track {
+      display: flex;
+      transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+      width: 100%;
+      min-width: 0
+    }
+
+    .review-slide {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      flex-shrink: 0;
+      box-sizing: border-box
+    }
+
+    .review-card {
+      background: #f5f7f2;
+      border-radius: 10px;
+      border-left: 3px solid var(--green2);
+      padding: 14px 14px 12px;
+      margin-bottom: 12px
+    }
+
+    .review-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .review-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .review-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px
+    }
+
+    .review-text {
+      font-size: 13px;
+      color: #333;
+      font-style: italic;
+      line-height: 1.65;
+      margin-bottom: 8px
+    }
+
+    .reviewer {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green2)
+    }
+
+    .review-nav-dots {
+      display: flex;
+      gap: 7px;
+      margin-top: 10px
+    }
+
+    .rdot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .rdot.active {
+      background: var(--green2);
+      transform: scale(1.2)
+    }
+
+    .review-arrows {
+      display: flex;
+      gap: 8px;
+      margin-top: 0
+    }
+
+    .rarrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+      color: #555;
+      transition: var(--transition);
+      background: #fff
+    }
+
+    .rarrow:hover {
+      background: var(--green2);
+      color: #fff;
+      border-color: var(--green2)
+    }
 
 
-/* Delivery */
-.map-wrap{border-radius:10px;overflow:hidden;border:1px solid #ddd;height:180px;margin-bottom:14px}
-.map-wrap img{width:100%;height:100%;object-fit:cover}
-.del-label{font-size:13px;color:#888;font-weight:500}
-.del-area{font-size:18px;font-weight:800;color:var(--green2);margin:4px 0 12px}
-.del-tag{
-  display:inline-flex;align-items:center;gap:8px;background:var(--green2);
-  color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600
-}
+    /* Delivery */
+    .map-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      height: 180px;
+      margin-bottom: 14px
+    }
 
-/* FAQ */
-.faq-item{border:1px solid #e8e8e8;border-radius:10px;margin-bottom:10px;overflow:hidden}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 16px;cursor:pointer;font-size:13.5px;font-weight:600;
-  background:#fff;transition:var(--transition);gap:8px;min-height:48px
-}
-.faq-q:hover{background:#f5f7f2}
-.faq-q i{color:var(--green2);font-size:12px;flex-shrink:0;transition:transform .3s}
-.faq-a{
-  max-height:0;overflow:hidden;padding:0 16px;
-  font-size:13px;color:#666;line-height:1.7;
-  transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .4s
-}
-.faq-item.open .faq-a{max-height:200px;padding:0 16px 14px}
-.faq-item.open .faq-q i{transform:rotate(180deg)}
-.faq-item.open .faq-q{background:#f5f7f2}
+    .map-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
 
-/* Contact */
-.ct-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
-.ct-icon{
-  width:38px;height:38px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;flex-shrink:0;font-size:14px;transition:var(--transition)
-}
-.ct-icon:hover{transform:scale(1.1)}
-.ct-icon.user{background:#e8f5e9;color:var(--green2)}
-.ct-icon.ph{background:#e8f5e9;color:var(--green2)}
-.ct-icon.wa{background:#e8f5e9;color:#1fad4e}
-.ct-icon.pin{background:#e8f5e9;color:var(--green2)}
-.ct-name{font-size:14px;font-weight:700;line-height:1.2}
-.ct-sub{font-size:11.5px;color:#888;font-weight:400}
-.ct-val{font-size:14px;font-weight:600}
-.ct-addr{font-size:13px;color:#444;line-height:1.6}
-.ct-btns{display:flex;flex-direction:column;gap:10px}
-.ct-btns .btn{justify-content:center;padding:13px 16px;border-radius:10px;font-size:13.5px;min-height:48px}
-.btn-dirs{background:#1a1a1a;color:#fff}
-.btn-dirs i{color:var(--gold2)}
+    .del-label {
+      font-size: 13px;
+      color: #888;
+      font-weight: 500
+    }
 
-/* ─── FOOTER ─── */
-footer{background:#0d1f10;color:#888;padding:42px 44px 28px;overflow-x:hidden;max-width:100vw}
-.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px}
-.foot-logo{margin-bottom:12px}
-.foot-logo img{height:54px;width:auto;object-fit:contain}
-.foot-desc{font-size:12px;color:#666;line-height:1.7;margin-bottom:14px}
-.foot-col h4{
-  color:#ddd;font-size:13px;font-weight:700;margin-bottom:14px;
-  padding-bottom:6px;border-bottom:1px solid #1e3520
-}
-.foot-col ul{list-style:none}
-.foot-col li{margin-bottom:7px}
-.foot-col a{color:#777;font-size:12px;transition:var(--transition)}
-.foot-col a:hover{color:var(--gold2);padding-left:4px}
-.socials{display:flex;gap:10px;margin-top:4px}
-.soc-btn{
-  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:15px;transition:var(--transition)
-}
-.soc-wa{background:#25d366;color:#fff}
-.soc-ph{background:var(--green2);color:#fff}
-.soc-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#bc1888);color:#fff}
-.soc-btn:hover{transform:scale(1.15) translateY(-2px)}
-.foot-seal{
-  width:90px;height:90px;border-radius:50%;border:2px dashed var(--gold);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;gap:2px;margin:0 auto;animation:sealSpin 20s linear infinite
-}
-@keyframes sealSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.foot-seal .line{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.5px}
-.foot-bot{
-  border-top:1px solid #1a3020;padding-top:18px;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px
-}
-.foot-bot p{font-size:11px;color:#444}
-.made{font-size:11px;color:#444}
-.made span{color:#e74c3c}
+    .del-area {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--green2);
+      margin: 4px 0 12px
+    }
 
-/* float buttons */
-.float-wa,.float-ph{
-  position:fixed;left:18px;width:50px;height:50px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;color:#fff;
-  box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:998;transition:var(--transition)
-}
-.float-wa{bottom:76px;background:#25d366;font-size:23px}
-.float-ph{bottom:18px;background:var(--gold);font-size:20px}
-.float-wa:hover,.float-ph:hover{transform:scale(1.12) translateY(-2px)}
+    .del-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green2);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600
+    }
 
-/* Scroll to top */
-.scroll-top{
-  position:fixed;bottom:18px;right:18px;width:44px;height:44px;border-radius:50%;
-  background:var(--green2);color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:18px;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:998;
-  opacity:0;visibility:hidden;transform:translateY(20px);
-  transition:var(--transition);cursor:pointer;border:none
-}
-.scroll-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
-.scroll-top:hover{background:var(--gold);transform:translateY(-3px)}
+    /* FAQ */
+    .faq-item {
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden
+    }
 
-/* ═══════════════════════════════════════════
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+      background: #fff;
+      transition: var(--transition);
+      gap: 8px;
+      min-height: 48px
+    }
+
+    .faq-q:hover {
+      background: #f5f7f2
+    }
+
+    .faq-q i {
+      color: var(--green2);
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: transform .3s
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 16px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.7;
+      transition: max-height .4s cubic-bezier(.4, 0, .2, 1), padding .4s
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding: 0 16px 14px
+    }
+
+    .faq-item.open .faq-q i {
+      transform: rotate(180deg)
+    }
+
+    .faq-item.open .faq-q {
+      background: #f5f7f2
+    }
+
+    /* Contact */
+    .ct-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px
+    }
+
+    .ct-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      transition: var(--transition)
+    }
+
+    .ct-icon:hover {
+      transform: scale(1.1)
+    }
+
+    .ct-icon.user {
+      background: #e8f5e9;
+      color: var(--green2)
+    }
+
+    .ct-icon.ph {
+      background: #e8f5e9;
+      color: var(--green2)
+    }
+
+    .ct-icon.wa {
+      background: #e8f5e9;
+      color: #1fad4e
+    }
+
+    .ct-icon.pin {
+      background: #e8f5e9;
+      color: var(--green2)
+    }
+
+    .ct-name {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2
+    }
+
+    .ct-sub {
+      font-size: 11.5px;
+      color: #888;
+      font-weight: 400
+    }
+
+    .ct-val {
+      font-size: 14px;
+      font-weight: 600
+    }
+
+    .ct-addr {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.6
+    }
+
+    .ct-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .ct-btns .btn {
+      justify-content: center;
+      padding: 13px 16px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      min-height: 48px
+    }
+
+    .btn-dirs {
+      background: #1a1a1a;
+      color: #fff
+    }
+
+    .btn-dirs i {
+      color: var(--gold2)
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d1f10;
+      color: #888;
+      padding: 42px 44px 28px;
+      overflow-x: hidden;
+      max-width: 100vw
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 28px
+    }
+
+    .foot-logo {
+      margin-bottom: 12px
+    }
+
+    .foot-logo img {
+      height: 54px;
+      width: auto;
+      object-fit: contain
+    }
+
+    .foot-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 14px
+    }
+
+    .foot-col h4 {
+      color: #ddd;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #1e3520
+    }
+
+    .foot-col ul {
+      list-style: none
+    }
+
+    .foot-col li {
+      margin-bottom: 7px
+    }
+
+    .foot-col a {
+      color: #777;
+      font-size: 12px;
+      transition: var(--transition)
+    }
+
+    .foot-col a:hover {
+      color: var(--gold2);
+      padding-left: 4px
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px
+    }
+
+    .soc-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: var(--transition)
+    }
+
+    .soc-wa {
+      background: #25d366;
+      color: #fff
+    }
+
+    .soc-ph {
+      background: var(--green2);
+      color: #fff
+    }
+
+    .soc-ig {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #bc1888);
+      color: #fff
+    }
+
+    .soc-btn:hover {
+      transform: scale(1.15) translateY(-2px)
+    }
+
+    .foot-seal {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px dashed var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 2px;
+      margin: 0 auto;
+      animation: sealSpin 20s linear infinite
+    }
+
+    @keyframes sealSpin {
+      from {
+        transform: rotate(0)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .foot-seal .line {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .5px
+    }
+
+    .foot-bot {
+      border-top: 1px solid #1a3020;
+      padding-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px
+    }
+
+    .foot-bot p {
+      font-size: 11px;
+      color: #444
+    }
+
+    .made {
+      font-size: 11px;
+      color: #444
+    }
+
+    .made span {
+      color: #e74c3c
+    }
+
+    /* float buttons */
+    .float-wa,
+    .float-ph {
+      position: fixed;
+      left: 18px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+      z-index: 998;
+      transition: var(--transition)
+    }
+
+    .float-wa {
+      bottom: 76px;
+      background: #25d366;
+      font-size: 23px
+    }
+
+    .float-ph {
+      bottom: 18px;
+      background: var(--gold);
+      font-size: 20px
+    }
+
+    .float-wa:hover,
+    .float-ph:hover {
+      transform: scale(1.12) translateY(-2px)
+    }
+
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--green2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: var(--transition);
+      cursor: pointer;
+      border: none
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0)
+    }
+
+    .scroll-top:hover {
+      background: var(--gold);
+      transform: translateY(-3px)
+    }
+
+    /* ═══════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
    ═══════════════════════════════════════════ */
 
-/* ── Footer bottom row (override inline styles) ── */
-.foot-bottom{
-  display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid #1a3020;padding-top:18px;flex-wrap:wrap;gap:16px
-}
+    /* ── Footer bottom row (override inline styles) ── */
+    .foot-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #1a3020;
+      padding-top: 18px;
+      flex-wrap: wrap;
+      gap: 16px
+    }
 
-/* ── Large Laptops / Wide Screens (≤1280px) ── */
-@media(max-width:1280px){
-  .hero-left{flex:0 0 460px;padding:36px 32px 30px}
-  .hero h1{font-size:32px}
-  .sec{padding:36px}
-  .bottom4{grid-template-columns:1fr 1fr}
-  .bot-col{border-right:none;border-bottom:1px solid #ebebeb}
-  .bot-col:nth-child(2){border-right:1px solid #ebebeb}
-  .bot-col:nth-last-child(-n+2){border-bottom:none}
-  footer{padding:36px}
-  .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
-}
+    /* ── Large Laptops / Wide Screens (≤1280px) ── */
+    @media(max-width:1280px) {
+      .hero-left {
+        flex: 0 0 460px;
+        padding: 36px 32px 30px
+      }
 
-/* ── Tablets / Small Laptops (≤1024px) ── */
-@media(max-width:1024px){
-  .hamburger{display:flex}
-  .nav-links,.nav-btns,.sun-icon{display:none}
-  nav{padding:0 20px;height:58px}
-  .logo img{height:44px}
+      .hero h1 {
+        font-size: 32px
+      }
 
-  .hero{flex-direction:column;min-height:auto}
-  .hero-left{
-    flex:none;width:100%;padding:36px 28px 28px;text-align:center;align-items:center
-  }
-  .hero-left::after{display:none}
-  .hero-top-tag{margin:0 auto 12px auto}
-  .hero h1{font-size:30px}
-  .hero-sub{font-size:14px}
-  .hero-badge-grid{justify-content:center}
-  .hero-btns{justify-content:center}
-  .hero-right{height:340px;min-height:auto;position:relative}
-  .hero-right img.main-hero-img{position:absolute}
-  .hero-right::before{
-    width:100%;height:60px;background:linear-gradient(to bottom,var(--green-nav),transparent);
-    left:0;top:0;right:0;bottom:auto
-  }
-  .khajrana-badge{width:90px;height:90px;bottom:16px;right:16px}
-  .khajrana-badge .city{font-size:13px}
+      .sec {
+        padding: 36px
+      }
 
-  .hero-strip{padding:14px 28px;grid-template-columns:repeat(3,1fr);gap:14px}
+      .bottom4 {
+        grid-template-columns: 1fr 1fr
+      }
 
-  .two-col-wrap{grid-template-columns:1fr}
-  .sec{padding:28px 24px}
-  .spec-grid{grid-template-columns:repeat(4,1fr);gap:10px}
-  .menu-grid{grid-template-columns:repeat(2,1fr)}
-  .plans-grid{grid-template-columns:repeat(3,1fr)}
-  .why-grid{grid-template-columns:repeat(2,1fr)}
+      .bot-col {
+        border-right: none;
+        border-bottom: 1px solid #ebebeb
+      }
 
-  .bottom4{grid-template-columns:1fr 1fr}
-  .bot-col{border-right:none;border-bottom:1px solid #ebebeb}
-  .bot-col:nth-child(2){border-right:1px solid #ebebeb}
-  .bot-col:nth-last-child(-n+2){border-bottom:none}
-  .foot-grid{grid-template-columns:1fr 1fr;gap:20px}
-}
+      .bot-col:nth-child(2) {
+        border-right: 1px solid #ebebeb
+      }
 
-/* ── Tablets Portrait (≤768px) ── */
-@media(max-width:768px){
-  nav{padding:0 16px;height:56px}
-  .logo img{height:40px}
+      .bot-col:nth-last-child(-n+2) {
+        border-bottom: none
+      }
 
-  .hero h1{font-size:26px}
-  .hero-sub{font-size:13px}
-  .hero-left{padding:28px 20px 24px}
-  .hero-right{height:290px}
-  .brushstroke-tag{padding:8px 14px;max-width:210px;top:14px;right:14px}
-  .brushstroke-tag p{font-size:11px}
-  .free-delivery-badge{padding:4px 12px 4px 6px;bottom:14px;left:14px}
-  .fd-icon-box{width:28px;height:28px;font-size:13px}
-  .fd-title{font-size:10px}
-  .fd-sub{font-size:8.5px}
-  .khajrana-badge{width:80px;height:80px;bottom:14px;right:14px}
-  .khajrana-badge .city{font-size:12px}
-  .khajrana-badge .small{font-size:8px}
+      footer {
+        padding: 36px
+      }
 
-  .hero-strip{grid-template-columns:1fr;gap:12px;padding:14px 20px}
+      .foot-grid {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 24px
+      }
+    }
 
-  .sec{padding:24px 16px}
-  .sec-title{font-size:20px;margin-bottom:16px}
-  .spec-grid{grid-template-columns:repeat(4,1fr);gap:8px}
-  .spec-card{padding:14px 6px 12px}
-  .spec-card svg,.spec-card img.sicon{width:32px;height:32px}
-  .spec-label{font-size:10.5px}
+    /* ── Tablets / Small Laptops (≤1024px) ── */
+    @media(max-width:1024px) {
+      .hamburger {
+        display: flex
+      }
 
-  .menu-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .mcard-img{height:90px}
+      .nav-links,
+      .nav-btns,
+      .sun-icon {
+        display: none
+      }
 
-  .plans-wrap{padding:20px 16px;border-radius:12px}
-  .plans-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .plans-head h2{font-size:17px}
-  .pcard{padding:18px 14px}
+      nav {
+        padding: 0 20px;
+        height: 58px
+      }
 
-  .why-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .gal-grid{grid-template-columns:repeat(3,1fr);gap:6px}
-  .gal-item{height:80px}
+      .logo img {
+        height: 44px
+      }
 
-  /* Bottom sections stack to 1 column */
-  .bottom4{grid-template-columns:1fr}
-  .bot-col{border-right:none!important;border-bottom:1px solid #ebebeb;padding:28px 20px}
-  .bot-col:last-child{border-bottom:none}
-  .bot-title{font-size:16px;margin-bottom:14px}
+      .hero {
+        flex-direction: column;
+        min-height: auto
+      }
 
-  /* Reviews on tablet */
-  .stars-row{gap:3px;margin-bottom:6px}
-  .review-card{padding:14px 12px 10px}
-  .review-text{font-size:12.5px;line-height:1.7}
-  .reviewer{font-size:12px}
-  .rarrow{width:34px;height:34px;font-size:14px}
-  .rdot{width:10px;height:10px}
+      .hero-left {
+        flex: none;
+        width: 100%;
+        padding: 36px 28px 28px;
+        text-align: center;
+        align-items: center
+      }
 
-  /* Delivery on tablet */
-  .map-wrap{height:180px;border-radius:10px}
-  .del-area{font-size:18px}
-  .del-tag{padding:10px 16px;font-size:13px;border-radius:10px}
+      .hero-left::after {
+        display: none
+      }
 
-  /* FAQ on tablet */
-  .faq-item{border-radius:10px;margin-bottom:10px}
-  .faq-q{padding:14px 16px;font-size:13px;min-height:48px}
-  .faq-a{font-size:13px;line-height:1.7}
+      .hero-top-tag {
+        margin: 0 auto 12px auto
+      }
 
-  /* Contact on tablet */
-  .ct-icon{width:38px;height:38px;font-size:14px}
-  .ct-name{font-size:14px}
-  .ct-val{font-size:14px}
-  .ct-addr{font-size:12.5px;line-height:1.6}
-  .ct-btns{gap:10px;margin-top:16px!important}
-  .ct-btns .btn{padding:13px 16px;font-size:13px;min-height:48px;border-radius:10px}
+      .hero h1 {
+        font-size: 30px
+      }
 
-  /* Footer */
-  .foot-grid{grid-template-columns:1fr 1fr;gap:18px}
-  footer{padding:28px 18px 20px}
-  .foot-bottom{flex-direction:column;text-align:center;gap:14px;align-items:center}
-  .foot-bottom>div{text-align:center!important}
-  .foot-bottom>div>div{justify-content:center!important}
+      .hero-sub {
+        font-size: 14px
+      }
 
-  .float-wa{width:46px;height:46px;font-size:21px;bottom:68px;left:14px}
-  .float-ph{width:46px;height:46px;font-size:18px;bottom:14px;left:14px}
-  .scroll-top{width:42px;height:42px;font-size:16px;bottom:14px;right:14px}
-}
+      .hero-badge-grid {
+        justify-content: center
+      }
 
-/* ── Mobile Phones (≤600px) ── */
-@media(max-width:600px){
-  nav{padding:0 16px;height:54px;position:relative;justify-content:center;align-items:center}
-  .logo{margin:0 auto;display:flex;justify-content:center;align-items:center}
-  .logo img{height:38px;margin:0 auto;display:block}
-  nav.scrolled{height:50px}
-  nav.scrolled .logo img{height:34px}
-  .hamburger{position:absolute;right:16px;top:50%;transform:translateY(-50%)}
+      .hero-btns {
+        justify-content: center
+      }
 
-  .hero h1{font-size:22px;line-height:1.15}
-  .hero-sub{font-size:12px;margin-bottom:14px}
-  .hero-left{padding:20px 14px 16px}
-  .hero-badge-grid{gap:6px;margin-bottom:18px}
-  .h-badge{padding:4px 9px}
-  .h-badge-text{font-size:10px}
-  .hero-btns{flex-direction:column;gap:10px;width:100%}
-  .hero-btns .btn{width:100%;justify-content:center;padding:12px 16px;font-size:13.5px;border-radius:10px}
-  .hero-right{height:250px}
-  .brushstroke-tag{max-width:170px;padding:6px 10px;top:10px;right:10px;border-left-width:3px}
-  .brushstroke-tag p{font-size:9.5px;line-height:1.3}
-  .free-delivery-badge{padding:4px 10px 4px 6px;bottom:10px;left:10px}
-  .fd-icon-box{width:26px;height:26px;font-size:11px}
-  .fd-title{font-size:9px}
-  .fd-sub{font-size:7.5px}
-  .khajrana-badge{width:68px;height:68px;bottom:10px;right:10px}
-  .khajrana-badge .city{font-size:10.5px}
-  .khajrana-badge .small{font-size:7px}
-  .khajrana-badge i{font-size:9px}
+      .hero-right {
+        height: 340px;
+        min-height: auto;
+        position: relative
+      }
+
+      .hero-right img.main-hero-img {
+        position: absolute
+      }
+
+      .hero-right::before {
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(to bottom, var(--green-nav), transparent);
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: auto
+      }
+
+      .khajrana-badge {
+        width: 90px;
+        height: 90px;
+        bottom: 16px;
+        right: 16px
+      }
+
+      .khajrana-badge .city {
+        font-size: 13px
+      }
+
+      .hero-strip {
+        padding: 14px 28px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px
+      }
+
+      .two-col-wrap {
+        grid-template-columns: 1fr
+      }
+
+      .sec {
+        padding: 28px 24px
+      }
+
+      .spec-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .plans-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .bottom4 {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .bot-col {
+        border-right: none;
+        border-bottom: 1px solid #ebebeb
+      }
+
+      .bot-col:nth-child(2) {
+        border-right: 1px solid #ebebeb
+      }
+
+      .bot-col:nth-last-child(-n+2) {
+        border-bottom: none
+      }
+
+      .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px
+      }
+    }
+
+    /* ── Tablets Portrait (≤768px) ── */
+    @media(max-width:768px) {
+      nav {
+        padding: 0 16px;
+        height: 56px
+      }
+
+      .logo img {
+        height: 40px
+      }
+
+      .hero h1 {
+        font-size: 26px
+      }
+
+      .hero-sub {
+        font-size: 13px
+      }
+
+      .hero-left {
+        padding: 28px 20px 24px
+      }
+
+      .hero-right {
+        height: 290px
+      }
+
+      .brushstroke-tag {
+        padding: 8px 14px;
+        max-width: 210px;
+        top: 14px;
+        right: 14px
+      }
+
+      .brushstroke-tag p {
+        font-size: 11px
+      }
+
+      .free-delivery-badge {
+        padding: 4px 12px 4px 6px;
+        bottom: 14px;
+        left: 14px
+      }
+
+      .fd-icon-box {
+        width: 28px;
+        height: 28px;
+        font-size: 13px
+      }
+
+      .fd-title {
+        font-size: 10px
+      }
+
+      .fd-sub {
+        font-size: 8.5px
+      }
+
+      .khajrana-badge {
+        width: 80px;
+        height: 80px;
+        bottom: 14px;
+        right: 14px
+      }
+
+      .khajrana-badge .city {
+        font-size: 12px
+      }
+
+      .khajrana-badge .small {
+        font-size: 8px
+      }
+
+      .hero-strip {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 14px 20px
+      }
+
+      .sec {
+        padding: 24px 16px
+      }
+
+      .sec-title {
+        font-size: 20px;
+        margin-bottom: 16px
+      }
+
+      .spec-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px
+      }
+
+      .spec-card {
+        padding: 14px 6px 12px
+      }
+
+      .spec-card svg,
+      .spec-card img.sicon {
+        width: 32px;
+        height: 32px
+      }
+
+      .spec-label {
+        font-size: 10.5px
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px
+      }
+
+      .mcard-img {
+        height: 90px
+      }
+
+      .plans-wrap {
+        padding: 20px 16px;
+        border-radius: 12px
+      }
+
+      .plans-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px
+      }
+
+      .plans-head h2 {
+        font-size: 17px
+      }
+
+      .pcard {
+        padding: 18px 14px
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px
+      }
+
+      .gal-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px
+      }
+
+      .gal-item {
+        height: 80px
+      }
+
+      /* Bottom sections stack to 1 column */
+      .bottom4 {
+        grid-template-columns: 1fr
+      }
+
+      .bot-col {
+        border-right: none !important;
+        border-bottom: 1px solid #ebebeb;
+        padding: 28px 20px
+      }
+
+      .bot-col:last-child {
+        border-bottom: none
+      }
+
+      .bot-title {
+        font-size: 16px;
+        margin-bottom: 14px
+      }
+
+      /* Reviews on tablet */
+      .stars-row {
+        gap: 3px;
+        margin-bottom: 6px
+      }
+
+      .review-card {
+        padding: 14px 12px 10px
+      }
+
+      .review-text {
+        font-size: 12.5px;
+        line-height: 1.7
+      }
+
+      .reviewer {
+        font-size: 12px
+      }
+
+      .rarrow {
+        width: 34px;
+        height: 34px;
+        font-size: 14px
+      }
+
+      .rdot {
+        width: 10px;
+        height: 10px
+      }
+
+      /* Delivery on tablet */
+      .map-wrap {
+        height: 180px;
+        border-radius: 10px
+      }
+
+      .del-area {
+        font-size: 18px
+      }
+
+      .del-tag {
+        padding: 10px 16px;
+        font-size: 13px;
+        border-radius: 10px
+      }
+
+      /* FAQ on tablet */
+      .faq-item {
+        border-radius: 10px;
+        margin-bottom: 10px
+      }
+
+      .faq-q {
+        padding: 14px 16px;
+        font-size: 13px;
+        min-height: 48px
+      }
+
+      .faq-a {
+        font-size: 13px;
+        line-height: 1.7
+      }
+
+      /* Contact on tablet */
+      .ct-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 14px
+      }
+
+      .ct-name {
+        font-size: 14px
+      }
+
+      .ct-val {
+        font-size: 14px
+      }
+
+      .ct-addr {
+        font-size: 12.5px;
+        line-height: 1.6
+      }
+
+      .ct-btns {
+        gap: 10px;
+        margin-top: 16px !important
+      }
+
+      .ct-btns .btn {
+        padding: 13px 16px;
+        font-size: 13px;
+        min-height: 48px;
+        border-radius: 10px
+      }
+
+      /* Footer */
+      .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px
+      }
+
+      footer {
+        padding: 28px 18px 20px
+      }
+
+      .foot-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+        align-items: center
+      }
+
+      .foot-bottom>div {
+        text-align: center !important
+      }
+
+      .foot-bottom>div>div {
+        justify-content: center !important
+      }
+
+      .float-wa {
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
+        bottom: 68px;
+        left: 14px
+      }
+
+      .float-ph {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+        bottom: 14px;
+        left: 14px
+      }
+
+      .scroll-top {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+        bottom: 14px;
+        right: 14px
+      }
+    }
+
+    /* ── Mobile Phones (≤600px) ── */
+    @media(max-width:600px) {
+      nav {
+        padding: 0 16px;
+        height: 54px;
+        position: relative;
+        justify-content: center;
+        align-items: center
+      }
+
+      .logo {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center
+      }
+
+      .logo img {
+        height: 38px;
+        margin: 0 auto;
+        display: block
+      }
+
+      nav.scrolled {
+        height: 50px
+      }
+
+      nav.scrolled .logo img {
+        height: 34px
+      }
+
+      .hamburger {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%)
+      }
+
+      .hero h1 {
+        font-size: 22px;
+        line-height: 1.15
+      }
+
+      .hero-sub {
+        font-size: 12px;
+        margin-bottom: 14px
+      }
+
+      .hero-left {
+        padding: 20px 14px 16px
+      }
+
+      .hero-badge-grid {
+        gap: 6px;
+        margin-bottom: 18px
+      }
+
+      .h-badge {
+        padding: 4px 9px
+      }
+
+      .h-badge-text {
+        font-size: 10px
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%
+      }
+
+      .hero-btns .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 13.5px;
+        border-radius: 10px
+      }
+
+      .hero-right {
+        height: 250px
+      }
+
+      .brushstroke-tag {
+        max-width: 170px;
+        padding: 6px 10px;
+        top: 10px;
+        right: 10px;
+        border-left-width: 3px
+      }
+
+      .brushstroke-tag p {
+        font-size: 9.5px;
+        line-height: 1.3
+      }
+
+      .free-delivery-badge {
+        padding: 4px 10px 4px 6px;
+        bottom: 10px;
+        left: 10px
+      }
+
+      .fd-icon-box {
+        width: 26px;
+        height: 26px;
+        font-size: 11px
+      }
+
+      .fd-title {
+        font-size: 9px
+      }
+
+      .fd-sub {
+        font-size: 7.5px
+      }
+
+      .khajrana-badge {
+        width: 68px;
+        height: 68px;
+        bottom: 10px;
+        right: 10px
+      }
+
+      .khajrana-badge .city {
+        font-size: 10.5px
+      }
+
+      .khajrana-badge .small {
+        font-size: 7px
+      }
+
+      .khajrana-badge i {
+        font-size: 9px
+      }
 
 
-  .sec{padding:20px 14px}
-  .sec-title{font-size:18px;margin-bottom:14px}
-  .sec-row{gap:8px}
-  .view-link{font-size:11.5px;padding:4px 10px}
+      .sec {
+        padding: 20px 14px
+      }
 
-  /* 2-col spec grid */
-  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .spec-card{padding:14px 8px 12px;border-radius:10px}
-  .spec-card svg,.spec-card img.sicon{width:32px;height:32px;margin-bottom:6px}
-  .spec-label{font-size:10.5px}
+      .sec-title {
+        font-size: 18px;
+        margin-bottom: 14px
+      }
 
-  /* Horizontal menu cards on mobile */
-  .menu-grid{grid-template-columns:minmax(0,1fr);gap:10px}
-  .mcard{display:flex;flex-direction:row;align-items:stretch}
-  .mcard-img{height:auto;width:120px;min-height:100px;flex-shrink:0}
-  .mcard-body{padding:12px;display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0}
-  .m-name{font-size:14px}
-  .m-desc{font-size:11.5px;margin-bottom:6px}
-  .m-price strong{font-size:16px}
-  .m-arrow{width:32px;height:32px;font-size:14px}
+      .sec-row {
+        gap: 8px
+      }
 
-  /* Single column plans */
-  .plans-wrap{padding:16px 12px;border-radius:10px}
-  .plans-head{margin-bottom:18px}
-  .plans-head h2{font-size:16px}
-  .plans-grid{grid-template-columns:minmax(0,1fr);gap:14px}
-  .pcard{padding:18px 14px;border-radius:10px}
-  .p-title{font-size:15px}
-  .p-sub{font-size:12px}
-  .p-feat{font-size:12.5px;margin-bottom:7px}
-  .p-price{font-size:26px}
-  .p-btn{padding:12px;font-size:14px;border-radius:10px;min-height:48px}
-  .pbadge{font-size:11px;padding:4px 16px}
+      .view-link {
+        font-size: 11.5px;
+        padding: 4px 10px
+      }
 
-  .why-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .wcard{padding:16px 10px;border-radius:10px}
-  .wcard svg{width:38px;height:38px;margin-bottom:8px}
-  .w-title{font-size:11.5px}
+      /* 2-col spec grid */
+      .spec-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px
+      }
 
-  .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  .gal-item{height:110px;border-radius:8px}
+      .spec-card {
+        padding: 14px 8px 12px;
+        border-radius: 10px
+      }
 
-  /* Bottom sections */
-  .bottom4{grid-template-columns:minmax(0,1fr);width:100%;max-width:100vw;overflow:hidden}
-  .bot-col{padding:24px 16px;width:100%;max-width:100%;min-width:0;box-sizing:border-box;overflow:hidden}
-  .bot-title{font-size:16px;margin-bottom:14px}
+      .spec-card svg,
+      .spec-card img.sicon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 6px
+      }
 
-  /* Reviews */
-  .review-card{padding:14px 12px 10px;box-sizing:border-box}
-  .review-text{font-size:12px;line-height:1.7}
-  .review-avatar{width:36px;height:36px}
-  .rarrow{width:36px;height:36px;font-size:15px}
+      .spec-label {
+        font-size: 10.5px
+      }
 
-  /* Delivery */
-  .map-wrap{height:160px;border-radius:10px}
-  .del-area{font-size:17px}
-  .del-tag{padding:10px 16px;font-size:12.5px;border-radius:10px;width:100%;justify-content:center;box-sizing:border-box}
+      /* Horizontal menu cards on mobile */
+      .menu-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px
+      }
 
-  /* FAQ */
-  .faq-q{font-size:13px;padding:13px 14px}
-  .faq-a{font-size:12.5px;line-height:1.7}
+      .mcard {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch
+      }
 
-  /* Contact */
-  .ct-btns .btn{font-size:13px;padding:13px 16px;border-radius:10px;min-height:48px}
-  .ct-addr{font-size:12px;line-height:1.6}
+      .mcard-img {
+        height: auto;
+        width: 120px;
+        min-height: 100px;
+        flex-shrink: 0
+      }
 
-  /* Footer */
-  footer{padding:24px 14px 18px;max-width:100vw;overflow:hidden}
-  .foot-grid{grid-template-columns:minmax(0,1fr);gap:24px;text-align:center}
-  .foot-logo{text-align:center}
-  .foot-logo img{height:44px;margin:0 auto;display:block}
-  .foot-desc{font-size:12px;text-align:center}
-  .foot-col h4{font-size:13px;margin-bottom:12px;text-align:center}
-  .foot-col ul{text-align:center}
-  .foot-col a{font-size:12px}
-  .foot-col a:hover{padding-left:0}
-  .socials{justify-content:center}
-  .soc-btn{width:42px;height:42px;font-size:17px}
-  .foot-seal{width:70px;height:70px}
-  .foot-seal .line{font-size:8px}
-  .foot-bottom{flex-direction:column;text-align:center;gap:16px;align-items:center}
-  .foot-bottom>div{text-align:center!important}
-  .foot-bottom>div>div{justify-content:center!important}
+      .mcard-body {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        min-width: 0
+      }
 
-  /* Float buttons */
-  .float-wa{width:48px;height:48px;font-size:22px;bottom:66px;left:12px}
-  .float-ph{width:48px;height:48px;font-size:18px;bottom:12px;left:12px}
-  .scroll-top{width:42px;height:42px;font-size:16px;bottom:12px;right:12px}
+      .m-name {
+        font-size: 14px
+      }
 
-  /* Mobile overlay tweaks */
-  .mobile-overlay a{font-size:17px;padding:12px 24px}
-  .mobile-overlay .mobile-btns .btn{padding:14px 20px;font-size:15px;min-height:50px}
-  .mobile-overlay .mobile-logo{width:140px;margin:0 auto 20px auto;display:block}
-}
+      .m-desc {
+        font-size: 11.5px;
+        margin-bottom: 6px
+      }
 
-/* ── Small Mobile Phones (≤400px) ── */
-@media(max-width:400px){
-  nav{padding:0 10px;height:50px}
-  .logo img{height:30px}
+      .m-price strong {
+        font-size: 16px
+      }
 
-  .hero h1{font-size:22px}
-  .hero-sub{font-size:12px}
-  .hero-left{padding:20px 14px 16px}
-  .hero-right{height:180px}
-  .khajrana-badge{width:65px;height:65px;bottom:8px;right:8px}
-  .khajrana-badge .city{font-size:10px}
-  .khajrana-badge .small{font-size:7px}
+      .m-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 14px
+      }
 
-  .sec{padding:18px 12px}
-  .sec-title{font-size:17px}
-  .spec-grid{gap:6px}
-  .spec-card{padding:12px 6px 10px}
-  .spec-card svg,.spec-card img.sicon{width:28px;height:28px}
-  .spec-label{font-size:10px}
+      /* Single column plans */
+      .plans-wrap {
+        padding: 16px 12px;
+        border-radius: 10px
+      }
 
-  .mcard-img{width:100px;min-height:90px}
-  .m-name{font-size:13px}
-  .m-price strong{font-size:15px}
+      .plans-head {
+        margin-bottom: 18px
+      }
 
-  .plans-head h2{font-size:15px}
-  .pcard{padding:16px 12px}
-  .p-title{font-size:14px}
-  .p-price{font-size:24px}
-  .p-btn{font-size:13px}
+      .plans-head h2 {
+        font-size: 16px
+      }
 
-  .bot-col{padding:20px 12px}
-  .bot-title{font-size:15px}
-  .faq-q{font-size:12.5px;padding:12px}
-  .ct-btns .btn{font-size:12.5px;padding:12px 14px}
-  .map-wrap{height:140px}
+      .plans-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px
+      }
 
-  footer{padding:20px 12px 16px}
-  .foot-logo img{height:38px}
-  .foot-col h4{font-size:12px}
+      .pcard {
+        padding: 18px 14px;
+        border-radius: 10px
+      }
 
-  .float-wa{width:44px;height:44px;font-size:20px;bottom:60px;left:10px}
-  .float-ph{width:44px;height:44px;font-size:16px;bottom:10px;left:10px}
-  .scroll-top{width:38px;height:38px;font-size:14px;bottom:10px;right:10px}
-}
+      .p-title {
+        font-size: 15px
+      }
 
-/* ── Very Small Phones (≤360px) ── */
-@media(max-width:360px){
-  .hero h1{font-size:20px}
-  .hero-sub{font-size:11.5px}
-  .hero-left{padding:18px 12px 14px}
-  .hero-btns .btn{padding:12px 14px;font-size:13px}
-  .hero-right{height:160px}
+      .p-sub {
+        font-size: 12px
+      }
 
-  .sec{padding:16px 10px}
-  .sec-title{font-size:16px}
+      .p-feat {
+        font-size: 12.5px;
+        margin-bottom: 7px
+      }
 
-  .mcard-img{width:90px;min-height:80px}
+      .p-price {
+        font-size: 26px
+      }
 
-  .plans-head h2{font-size:14px}
-  .p-price{font-size:22px}
+      .p-btn {
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 10px;
+        min-height: 48px
+      }
 
-  .gal-item{height:90px}
+      .pbadge {
+        font-size: 11px;
+        padding: 4px 16px
+      }
 
-  .bot-col{padding:18px 10px}
-  .bot-title{font-size:14px}
-  .map-wrap{height:120px}
-  .review-text{font-size:11.5px}
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px
+      }
 
-  footer{padding:18px 10px 14px}
-  .foot-grid{gap:18px}
-}
-</style>
+      .wcard {
+        padding: 16px 10px;
+        border-radius: 10px
+      }
+
+      .wcard svg {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 8px
+      }
+
+      .w-title {
+        font-size: 11.5px
+      }
+
+      .gal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px
+      }
+
+      .gal-item {
+        height: 110px;
+        border-radius: 8px
+      }
+
+      /* Bottom sections */
+      .bottom4 {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden
+      }
+
+      .bot-col {
+        padding: 24px 16px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        overflow: hidden
+      }
+
+      .bot-title {
+        font-size: 16px;
+        margin-bottom: 14px
+      }
+
+      /* Reviews */
+      .review-card {
+        padding: 14px 12px 10px;
+        box-sizing: border-box
+      }
+
+      .review-text {
+        font-size: 12px;
+        line-height: 1.7
+      }
+
+      .review-avatar {
+        width: 36px;
+        height: 36px
+      }
+
+      .rarrow {
+        width: 36px;
+        height: 36px;
+        font-size: 15px
+      }
+
+      /* Delivery */
+      .map-wrap {
+        height: 160px;
+        border-radius: 10px
+      }
+
+      .del-area {
+        font-size: 17px
+      }
+
+      .del-tag {
+        padding: 10px 16px;
+        font-size: 12.5px;
+        border-radius: 10px;
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box
+      }
+
+      /* FAQ */
+      .faq-q {
+        font-size: 13px;
+        padding: 13px 14px
+      }
+
+      .faq-a {
+        font-size: 12.5px;
+        line-height: 1.7
+      }
+
+      /* Contact */
+      .ct-btns .btn {
+        font-size: 13px;
+        padding: 13px 16px;
+        border-radius: 10px;
+        min-height: 48px
+      }
+
+      .ct-addr {
+        font-size: 12px;
+        line-height: 1.6
+      }
+
+      /* Footer */
+      footer {
+        padding: 24px 14px 18px;
+        max-width: 100vw;
+        overflow: hidden
+      }
+
+      .foot-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        text-align: center
+      }
+
+      .foot-logo {
+        text-align: center
+      }
+
+      .foot-logo img {
+        height: 44px;
+        margin: 0 auto;
+        display: block
+      }
+
+      .foot-desc {
+        font-size: 12px;
+        text-align: center
+      }
+
+      .foot-col h4 {
+        font-size: 13px;
+        margin-bottom: 12px;
+        text-align: center
+      }
+
+      .foot-col ul {
+        text-align: center
+      }
+
+      .foot-col a {
+        font-size: 12px
+      }
+
+      .foot-col a:hover {
+        padding-left: 0
+      }
+
+      .socials {
+        justify-content: center
+      }
+
+      .soc-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 17px
+      }
+
+      .foot-seal {
+        width: 70px;
+        height: 70px
+      }
+
+      .foot-seal .line {
+        font-size: 8px
+      }
+
+      .foot-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        align-items: center
+      }
+
+      .foot-bottom>div {
+        text-align: center !important
+      }
+
+      .foot-bottom>div>div {
+        justify-content: center !important
+      }
+
+      /* Float buttons */
+      .float-wa {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+        bottom: 66px;
+        left: 12px
+      }
+
+      .float-ph {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+        bottom: 12px;
+        left: 12px
+      }
+
+      .scroll-top {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+        bottom: 12px;
+        right: 12px
+      }
+
+      /* Mobile overlay tweaks */
+      .mobile-overlay a {
+        font-size: 17px;
+        padding: 12px 24px
+      }
+
+      .mobile-overlay .mobile-btns .btn {
+        padding: 14px 20px;
+        font-size: 15px;
+        min-height: 50px
+      }
+
+      .mobile-overlay .mobile-logo {
+        width: 140px;
+        margin: 0 auto 20px auto;
+        display: block
+      }
+    }
+
+    /* ── Small Mobile Phones (≤400px) ── */
+    @media(max-width:400px) {
+      nav {
+        padding: 0 10px;
+        height: 50px
+      }
+
+      .logo img {
+        height: 30px
+      }
+
+      .hero h1 {
+        font-size: 22px
+      }
+
+      .hero-sub {
+        font-size: 12px
+      }
+
+      .hero-left {
+        padding: 20px 14px 16px
+      }
+
+      .hero-right {
+        height: 180px
+      }
+
+      .khajrana-badge {
+        width: 65px;
+        height: 65px;
+        bottom: 8px;
+        right: 8px
+      }
+
+      .khajrana-badge .city {
+        font-size: 10px
+      }
+
+      .khajrana-badge .small {
+        font-size: 7px
+      }
+
+      .sec {
+        padding: 18px 12px
+      }
+
+      .sec-title {
+        font-size: 17px
+      }
+
+      .spec-grid {
+        gap: 6px
+      }
+
+      .spec-card {
+        padding: 12px 6px 10px
+      }
+
+      .spec-card svg,
+      .spec-card img.sicon {
+        width: 28px;
+        height: 28px
+      }
+
+      .spec-label {
+        font-size: 10px
+      }
+
+      .mcard-img {
+        width: 100px;
+        min-height: 90px
+      }
+
+      .m-name {
+        font-size: 13px
+      }
+
+      .m-price strong {
+        font-size: 15px
+      }
+
+      .plans-head h2 {
+        font-size: 15px
+      }
+
+      .pcard {
+        padding: 16px 12px
+      }
+
+      .p-title {
+        font-size: 14px
+      }
+
+      .p-price {
+        font-size: 24px
+      }
+
+      .p-btn {
+        font-size: 13px
+      }
+
+      .bot-col {
+        padding: 20px 12px
+      }
+
+      .bot-title {
+        font-size: 15px
+      }
+
+      .faq-q {
+        font-size: 12.5px;
+        padding: 12px
+      }
+
+      .ct-btns .btn {
+        font-size: 12.5px;
+        padding: 12px 14px
+      }
+
+      .map-wrap {
+        height: 140px
+      }
+
+      footer {
+        padding: 20px 12px 16px
+      }
+
+      .foot-logo img {
+        height: 38px
+      }
+
+      .foot-col h4 {
+        font-size: 12px
+      }
+
+      .float-wa {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+        bottom: 60px;
+        left: 10px
+      }
+
+      .float-ph {
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+        bottom: 10px;
+        left: 10px
+      }
+
+      .scroll-top {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+        bottom: 10px;
+        right: 10px
+      }
+    }
+
+    /* ── Very Small Phones (≤360px) ── */
+    @media(max-width:360px) {
+      .hero h1 {
+        font-size: 20px
+      }
+
+      .hero-sub {
+        font-size: 11.5px
+      }
+
+      .hero-left {
+        padding: 18px 12px 14px
+      }
+
+      .hero-btns .btn {
+        padding: 12px 14px;
+        font-size: 13px
+      }
+
+      .hero-right {
+        height: 160px
+      }
+
+      .sec {
+        padding: 16px 10px
+      }
+
+      .sec-title {
+        font-size: 16px
+      }
+
+      .mcard-img {
+        width: 90px;
+        min-height: 80px
+      }
+
+      .plans-head h2 {
+        font-size: 14px
+      }
+
+      .p-price {
+        font-size: 22px
+      }
+
+      .gal-item {
+        height: 90px
+      }
+
+      .bot-col {
+        padding: 18px 10px
+      }
+
+      .bot-title {
+        font-size: 14px
+      }
+
+      .map-wrap {
+        height: 120px
+      }
+
+      .review-text {
+        font-size: 11.5px
+      }
+
+      footer {
+        padding: 18px 10px 14px
+      }
+
+      .foot-grid {
+        gap: 18px
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Loader -->
-<div class="loader-wrap" id="loader">
-  <img src="mealmitra-logo.png" alt="MealMitra Logo" class="loader-logo">
-  <div class="loader-spinner"></div>
-</div>
-
-<!-- Float Buttons -->
-<a href="https://wa.me/919981811407" class="float-wa" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a href="tel:+919981811407" class="float-ph" aria-label="Call us"><i class="fas fa-phone"></i></a>
-
-<!-- Scroll to Top -->
-<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
-
-<!-- Mobile Menu Overlay -->
-<div class="mobile-overlay" id="mobileMenu">
-  <img src="mealmitra-logo.png" alt="MealMitra Logo" class="mobile-logo">
-  <a href="#home" class="active">Home</a>
-  <a href="#about">About</a>
-  <a href="#menu">Menu</a>
-  <a href="#plans">Plans</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#reviews">Reviews</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Contact</a>
-  <div class="mobile-btns">
-    <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
-    <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+  <!-- Loader -->
+  <div class="loader-wrap" id="loader">
+    <img src="mealmitra-logo.png" alt="MealMitra Logo" class="loader-logo">
+    <div class="loader-spinner"></div>
   </div>
-</div>
 
-<!-- ── NAVBAR ── -->
-<nav id="navbar">
-  <a href="#home" class="logo">
-    <img src="mealmitra-logo.png" alt="MealMitra Logo">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#plans">Plans</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:8px">
-    <div class="nav-btns">
+  <!-- Float Buttons -->
+  <a href="https://wa.me/919981811407" class="float-wa" target="_blank" aria-label="Chat on WhatsApp"><i
+      class="fab fa-whatsapp"></i></a>
+  <a href="tel:+919981811407" class="float-ph" aria-label="Call us"><i class="fas fa-phone"></i></a>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" id="mobileMenu">
+    <img src="mealmitra-logo.png" alt="MealMitra Logo" class="mobile-logo">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#plans">Plans</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <div class="mobile-btns">
       <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
-      <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+      <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on
+        WhatsApp</a>
     </div>
-    <i class="fas fa-sun sun-icon"></i>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-</nav>
 
-<!-- ── HERO ── -->
-<div class="hero-wrapper" id="home">
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-top-tag"><i class="fas fa-crown"></i> SERVING SINCE 2023</div>
-      <h1>TIFFIN CENTER<br><span>MealMitra</span><br>Fresh, Hygienic & Tasty Food</h1>
-      <p class="hero-sub">Ghar Jaisa Taste, Delivered Fresh Everyday!</p>
-      
-      <!-- 5 Feature Badges Grid -->
-      <div class="hero-badge-grid">
-        <div class="h-badge">
-          <div class="h-badge-icon"><i class="fas fa-leaf"></i></div>
-          <div class="h-badge-text">Fresh & Hygienic Food</div>
+  <!-- ── NAVBAR ── -->
+  <nav id="navbar">
+    <a href="#home" class="logo">
+      <img src="mealmitra-logo.png" alt="MealMitra Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="nav-btns">
+        <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
+        <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on
+          WhatsApp</a>
+      </div>
+      <i class="fas fa-sun sun-icon"></i>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero-wrapper" id="home">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-top-tag"><i class="fas fa-crown"></i> SERVING SINCE 2023</div>
+        <h1>TIFFIN CENTER<br><span>MealMitra</span><br>Fresh, Hygienic & Tasty Food</h1>
+        <p class="hero-sub">Ghar Jaisa Taste, Delivered Fresh Everyday!</p>
+
+        <!-- 5 Feature Badges Grid -->
+        <div class="hero-badge-grid">
+          <div class="h-badge">
+            <div class="h-badge-icon"><i class="fas fa-leaf"></i></div>
+            <div class="h-badge-text">Fresh & Hygienic Food</div>
+          </div>
+          <div class="h-badge">
+            <div class="h-badge-icon"><i class="fas fa-home"></i></div>
+            <div class="h-badge-text">Ghar Jaisa Taste</div>
+          </div>
+          <div class="h-badge">
+            <div class="h-badge-icon"><i class="fas fa-drumstick-bite"></i></div>
+            <div class="h-badge-text">Veg & Non-Veg</div>
+          </div>
+          <div class="h-badge">
+            <div class="h-badge-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="h-badge-text">Monthly Tiffin Service</div>
+          </div>
+          <div class="h-badge">
+            <div class="h-badge-icon"><i class="fas fa-star"></i></div>
+            <div class="h-badge-text">Sunday Special Menu</div>
+          </div>
         </div>
-        <div class="h-badge">
-          <div class="h-badge-icon"><i class="fas fa-home"></i></div>
-          <div class="h-badge-text">Ghar Jaisa Taste</div>
-        </div>
-        <div class="h-badge">
-          <div class="h-badge-icon"><i class="fas fa-drumstick-bite"></i></div>
-          <div class="h-badge-text">Veg & Non-Veg</div>
-        </div>
-        <div class="h-badge">
-          <div class="h-badge-icon"><i class="fas fa-calendar-alt"></i></div>
-          <div class="h-badge-text">Monthly Tiffin Service</div>
-        </div>
-        <div class="h-badge">
-          <div class="h-badge-icon"><i class="fas fa-star"></i></div>
-          <div class="h-badge-text">Sunday Special Menu</div>
+
+        <div class="hero-btns">
+          <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order
+            on WhatsApp</a>
+          <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
         </div>
       </div>
 
-      <div class="hero-btns">
-        <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
-        <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
+      <div class="hero-right">
+        <img src="student-tiffin.png" alt="MealMitra Students Holding Tiffin" class="main-hero-img">
+
+        <!-- Brushstroke quote banner -->
+        <div class="brushstroke-tag">
+          <p>Koi nahi ho jinke paas <span class="brand-hl">MealMitra</span> hai unke saath.</p>
+        </div>
+
+        <!-- Free delivery badge -->
+        <div class="free-delivery-badge">
+          <div class="fd-icon-box"><i class="fas fa-motorcycle"></i></div>
+          <div class="fd-text">
+            <span class="fd-title">FREE DELIVERY</span>
+            <span class="fd-sub">on Monthly Plan</span>
+          </div>
+        </div>
+
+        <div class="khajrana-badge">
+          <i class="fas fa-location-dot"></i>
+          <span class="small">Currently Delivering<br>Only in</span>
+          <span class="city">Khajrana</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom highlight strip -->
+    <div class="hero-strip">
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-seedling"></i></div>
+        <div>
+          <div class="strip-title">FRESH INGREDIENTS</div>
+          <div class="strip-sub">Selected Daily</div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <div class="strip-title">HYGIENIC KITCHEN</div>
+          <div class="strip-sub">Clean & Safe</div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <div class="strip-title">ON TIME DELIVERY</div>
+          <div class="strip-sub">Always on Time</div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="hero-right">
-      <img src="student-tiffin.png" alt="MealMitra Students Holding Tiffin" class="main-hero-img">
-      
-      <!-- Brushstroke quote banner -->
-      <div class="brushstroke-tag">
-        <p>Koi nahi ho jinke paas <span class="brand-hl">MealMitra</span> hai unke saath.</p>
-      </div>
 
-      <!-- Free delivery badge -->
-      <div class="free-delivery-badge">
-        <div class="fd-icon-box"><i class="fas fa-motorcycle"></i></div>
-        <div class="fd-text">
-          <span class="fd-title">FREE DELIVERY</span>
-          <span class="fd-sub">on Monthly Plan</span>
+  <!-- ── SPECIALITY + MENU ── -->
+  <section id="about" class="sec sec-light">
+    <div class="two-col-wrap">
+      <!-- Speciality -->
+      <div class="reveal">
+        <div class="sec-title">Our <span class="gold">Speciality</span></div>
+        <div class="spec-grid">
+          <!-- Fresh Ingredients -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6C12 6 6 14 6 22c0 6 4 10 14 12 10-2 14-6 14-12 0-8-6-16-14-16z" fill="#e8f5e9"
+                stroke="#2e7d32" stroke-width="1.5" />
+              <path d="M20 38V18M13 25l7-7 7 7" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M9 18c2-3 5-5 11-5" stroke="#43a047" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            <div class="spec-label">Fresh<br>Ingredients</div>
+          </div>
+          <!-- Hygienic Kitchen -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="16" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+              <rect x="10" y="20" width="8" height="6" rx="1.5" fill="#2e7d32" />
+              <rect x="22" y="20" width="8" height="6" rx="1.5" fill="#2e7d32" />
+              <path d="M12 16V10a8 8 0 0116 0v6" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round" />
+              <circle cx="20" cy="10" r="2" fill="#43a047" />
+            </svg>
+            <div class="spec-label">Hygienic<br>Kitchen</div>
+          </div>
+          <!-- Home Style -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 34V18l12-10 12 10v16H8z" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+              <rect x="15" y="24" width="10" height="10" rx="1" fill="#2e7d32" />
+              <path d="M4 18l16-14 16 14" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <div class="spec-label">Home<br>Style Taste</div>
+          </div>
+          <!-- Veg & Non-Veg -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="20" r="9" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+              <circle cx="26" cy="20" r="9" fill="#fce4e4" stroke="#c62828" stroke-width="1.5" />
+              <path d="M10 20a5 5 0 015-5M30 20a5 5 0 01-5-5" stroke="#2e7d32" stroke-width="1.2"
+                stroke-linecap="round" />
+            </svg>
+            <div class="spec-label">Veg &<br>Non-Veg</div>
+          </div>
+          <!-- Monthly Plans -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="28" height="24" rx="3" fill="#e8f5e9" stroke="#1565c0" stroke-width="1.5" />
+              <path d="M6 16h28" stroke="#1565c0" stroke-width="1.2" />
+              <rect x="12" y="7" width="3" height="6" rx="1.5" fill="#1565c0" />
+              <rect x="25" y="7" width="3" height="6" rx="1.5" fill="#1565c0" />
+              <rect x="11" y="21" width="4" height="4" rx="1" fill="#1565c0" />
+              <rect x="18" y="21" width="4" height="4" rx="1" fill="#1565c0" />
+              <rect x="25" y="21" width="4" height="4" rx="1" fill="#1565c0" />
+            </svg>
+            <div class="spec-label">Monthly<br>Plans</div>
+          </div>
+          <!-- Sunday Special -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="13" fill="#fff8e1" stroke="#ffa000" stroke-width="1.5" />
+              <path d="M20 9l2.5 7.5H30l-6 4.5 2.5 7.5L20 25l-6.5 3.5L16 21l-6-4.5h7.5z" fill="#ffa000" />
+            </svg>
+            <div class="spec-label">Sunday<br>Special</div>
+          </div>
+          <!-- Affordable -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="13" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+              <path d="M15 15h7a3 3 0 010 6h-7m0 0h9m-9 4h10" stroke="#2e7d32" stroke-width="1.5"
+                stroke-linecap="round" />
+              <path d="M20 12v3M20 25v3" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <div class="spec-label">Affordable<br>Prices</div>
+          </div>
+          <!-- On-Time Delivery -->
+          <div class="spec-card">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="14" width="26" height="14" rx="3" fill="#e8f5e9" stroke="#37474f" stroke-width="1.5" />
+              <path d="M30 18h4l4 6v4h-8V18z" fill="#e8f5e9" stroke="#37474f" stroke-width="1.5"
+                stroke-linejoin="round" />
+              <circle cx="11" cy="30" r="3" fill="#37474f" />
+              <circle cx="27" cy="30" r="3" fill="#37474f" />
+              <path d="M10 20h12M10 24h8" stroke="#37474f" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            <div class="spec-label">On-Time<br>Delivery</div>
+          </div>
         </div>
       </div>
 
-      <div class="khajrana-badge">
-        <i class="fas fa-location-dot"></i>
-        <span class="small">Currently Delivering<br>Only in</span>
-        <span class="city">Khajrana</span>
+      <!-- Menu -->
+      <div id="menu" class="reveal">
+        <div class="sec-row">
+          <div class="sec-title">Our <span class="gold">Menu</span></div>
+          <a href="#menu" class="view-link">View Full Menu &rarr;</a>
+        </div>
+        <div class="menu-grid">
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80&auto=format&fit=crop"
+                alt="Veg Tiffin">
+            </div>
+            <div class="mcard-body">
+              <div class="m-name">Veg Tiffin</div>
+              <div class="m-desc">Healthy &amp; Tasty</div>
+              <div class="m-footer">
+                <div class="m-price">From <strong>₹80</strong></div>
+                <div class="m-arrow"
+                  onclick="window.open('https://wa.me/919981811407?text=I want Veg Tiffin','_blank')"><i
+                    class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80&auto=format&fit=crop"
+                alt="Non-Veg Tiffin">
+            </div>
+            <div class="mcard-body">
+              <div class="m-name">Non-Veg Tiffin</div>
+              <div class="m-desc">Delicious &amp; Spicy</div>
+              <div class="m-footer">
+                <div class="m-price">From <strong>₹110</strong></div>
+                <div class="m-arrow"
+                  onclick="window.open('https://wa.me/919981811407?text=I want Non-Veg Tiffin','_blank')"><i
+                    class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80&auto=format&fit=crop"
+                alt="Sunday Special">
+            </div>
+            <div class="mcard-body">
+              <div class="m-name">Sunday Special</div>
+              <div class="m-desc">Special Menu</div>
+              <div class="m-footer">
+                <div class="m-price">From <strong>₹120</strong></div>
+                <div class="m-arrow"
+                  onclick="window.open('https://wa.me/919981811407?text=I want Sunday Special','_blank')"><i
+                    class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-img">
+              <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&q=80&auto=format&fit=crop"
+                alt="Bulk Orders">
+            </div>
+            <div class="mcard-body">
+              <div class="m-name">Bulk Orders</div>
+              <div class="m-desc">For All Occasions</div>
+              <div class="m-footer">
+                <div class="m-price"><strong>Custom Price</strong></div>
+                <div class="m-arrow"
+                  onclick="window.open('https://wa.me/919981811407?text=I want Bulk Order','_blank')"><i
+                    class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Bottom highlight strip -->
-  <div class="hero-strip">
-    <div class="strip-item">
-      <div class="strip-icon"><i class="fas fa-seedling"></i></div>
-      <div>
-        <div class="strip-title">FRESH INGREDIENTS</div>
-        <div class="strip-sub">Selected Daily</div>
+  <!-- ── PLANS ── -->
+  <section id="plans" class="sec sec-white">
+    <div class="plans-wrap reveal">
+      <div class="plans-head">
+        <h2>Monthly Tiffin <span>Plans</span></h2>
+        <a href="#plans">View All Plans &rarr;</a>
+      </div>
+      <div class="plans-grid">
+        <div class="pcard">
+          <div class="p-title">Basic Plan</div>
+          <div class="p-sub">Veg Tiffin</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> 1 Meal / Day</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> 30 Days</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> Home Delivery</div>
+          <div class="p-price g">₹2,400 <span>/ Month</span></div>
+          <button class="p-btn green"
+            onclick="window.open('https://wa.me/919981811407?text=Basic Plan ₹2400','_blank')"><i
+              class="fab fa-whatsapp"></i> Order Now</button>
+        </div>
+        <div class="pcard featured">
+          <div class="pbadge">Best Value</div>
+          <div class="p-title">Standard Plan</div>
+          <div class="p-sub">Veg + Non-Veg</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> 1 Meal / Day</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> 30 Days</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> Home Delivery</div>
+          <div class="p-price gd">₹3,600 <span>/ Month</span></div>
+          <button class="p-btn gold"
+            onclick="window.open('https://wa.me/919981811407?text=Standard Plan ₹3600','_blank')"><i
+              class="fab fa-whatsapp"></i> Order Now</button>
+        </div>
+        <div class="pcard">
+          <div class="p-title">Premium Plan</div>
+          <div class="p-sub">Veg + Non-Veg</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> 2 Meals / Day</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> 30 Days</div>
+          <div class="p-feat"><i class="fas fa-check-circle"></i> Home Delivery</div>
+          <div class="p-price g">₹6,200 <span>/ Month</span></div>
+          <button class="p-btn green"
+            onclick="window.open('https://wa.me/919981811407?text=Premium Plan ₹6200','_blank')"><i
+              class="fab fa-whatsapp"></i> Order Now</button>
+        </div>
       </div>
     </div>
-    <div class="strip-item">
-      <div class="strip-icon"><i class="fas fa-shield-alt"></i></div>
-      <div>
-        <div class="strip-title">HYGIENIC KITCHEN</div>
-        <div class="strip-sub">Clean & Safe</div>
-      </div>
-    </div>
-    <div class="strip-item">
-      <div class="strip-icon"><i class="fas fa-clock"></i></div>
-      <div>
-        <div class="strip-title">ON TIME DELIVERY</div>
-        <div class="strip-sub">Always on Time</div>
-      </div>
-    </div>
-  </div>
-</div>
+  </section>
 
+  <!-- ── WHY CHOOSE + GALLERY ── -->
+  <section class="sec sec-light">
+    <div class="two-col-wrap">
+      <!-- Why Choose -->
+      <div class="reveal-left">
+        <div class="sec-title">Why Choose <span class="gold">MealMitra?</span></div>
+        <p style="font-size:12.5px;color:#666;margin-bottom:14px;line-height:1.7">We are committed to providing fresh,
+          hygienic, and home-style tasty food with love and care.</p>
+        <div class="why-grid">
+          <div class="wcard">
+            <svg viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="20" fill="#e8f5e9" />
+              <path d="M22 10c-4 0-8 4-8 10 0 4 2 7 8 9 6-2 8-5 8-9 0-6-4-10-8-10z" fill="#2e7d32" />
+              <path d="M22 38V22M16 28l6-6 6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <div class="w-title">Fresh &<br>Hygienic Food</div>
+          </div>
+          <div class="wcard">
+            <svg viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="20" fill="#e8f5e9" />
+              <path d="M10 32V20l12-8 12 8v12H10z" fill="#2e7d32" />
+              <rect x="18" y="26" width="8" height="8" rx="1" fill="#fff" />
+              <path d="M6 20l16-12 16 12" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <div class="w-title">Home Style<br>Taste</div>
+          </div>
+          <div class="wcard">
+            <svg viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="20" fill="#e8f5e9" />
+              <path d="M22 12a10 10 0 100 20 10 10 0 000-20z" fill="#2e7d32" />
+              <path d="M16 22l4 4 8-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="w-title">Quality<br>Ingredients</div>
+          </div>
+          <div class="wcard">
+            <svg viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="20" fill="#e8f5e9" />
+              <rect x="10" y="16" width="18" height="14" rx="2" fill="#2e7d32" />
+              <path d="M28 20h4l4 5v3h-8V20z" fill="#2e7d32" />
+              <circle cx="16" cy="32" r="3" fill="#fff" />
+              <circle cx="28" cy="32" r="3" fill="#fff" />
+            </svg>
+            <div class="w-title">Timely<br>Delivery</div>
+          </div>
+        </div>
+      </div>
 
-<!-- ── SPECIALITY + MENU ── -->
-<section id="about" class="sec sec-light">
-  <div class="two-col-wrap">
-    <!-- Speciality -->
-    <div class="reveal">
-      <div class="sec-title">Our <span class="gold">Speciality</span></div>
-      <div class="spec-grid">
-        <!-- Fresh Ingredients -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 6C12 6 6 14 6 22c0 6 4 10 14 12 10-2 14-6 14-12 0-8-6-16-14-16z" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-            <path d="M20 38V18M13 25l7-7 7 7" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M9 18c2-3 5-5 11-5" stroke="#43a047" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          <div class="spec-label">Fresh<br>Ingredients</div>
+      <!-- Gallery -->
+      <div id="gallery" class="reveal-right">
+        <div class="sec-row">
+          <div class="sec-title">Our <span class="gold">Gallery</span></div>
+          <a href="#gallery" class="view-link">View Gallery &rarr;</a>
         </div>
-        <!-- Hygienic Kitchen -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="16" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-            <rect x="10" y="20" width="8" height="6" rx="1.5" fill="#2e7d32"/>
-            <rect x="22" y="20" width="8" height="6" rx="1.5" fill="#2e7d32"/>
-            <path d="M12 16V10a8 8 0 0116 0v6" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="20" cy="10" r="2" fill="#43a047"/>
-          </svg>
-          <div class="spec-label">Hygienic<br>Kitchen</div>
-        </div>
-        <!-- Home Style -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 34V18l12-10 12 10v16H8z" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-            <rect x="15" y="24" width="10" height="10" rx="1" fill="#2e7d32"/>
-            <path d="M4 18l16-14 16 14" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div class="spec-label">Home<br>Style Taste</div>
-        </div>
-        <!-- Veg & Non-Veg -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="14" cy="20" r="9" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-            <circle cx="26" cy="20" r="9" fill="#fce4e4" stroke="#c62828" stroke-width="1.5"/>
-            <path d="M10 20a5 5 0 015-5M30 20a5 5 0 01-5-5" stroke="#2e7d32" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          <div class="spec-label">Veg &<br>Non-Veg</div>
-        </div>
-        <!-- Monthly Plans -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="10" width="28" height="24" rx="3" fill="#e8f5e9" stroke="#1565c0" stroke-width="1.5"/>
-            <path d="M6 16h28" stroke="#1565c0" stroke-width="1.2"/>
-            <rect x="12" y="7" width="3" height="6" rx="1.5" fill="#1565c0"/>
-            <rect x="25" y="7" width="3" height="6" rx="1.5" fill="#1565c0"/>
-            <rect x="11" y="21" width="4" height="4" rx="1" fill="#1565c0"/>
-            <rect x="18" y="21" width="4" height="4" rx="1" fill="#1565c0"/>
-            <rect x="25" y="21" width="4" height="4" rx="1" fill="#1565c0"/>
-          </svg>
-          <div class="spec-label">Monthly<br>Plans</div>
-        </div>
-        <!-- Sunday Special -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="13" fill="#fff8e1" stroke="#ffa000" stroke-width="1.5"/>
-            <path d="M20 9l2.5 7.5H30l-6 4.5 2.5 7.5L20 25l-6.5 3.5L16 21l-6-4.5h7.5z" fill="#ffa000"/>
-          </svg>
-          <div class="spec-label">Sunday<br>Special</div>
-        </div>
-        <!-- Affordable -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="13" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-            <path d="M15 15h7a3 3 0 010 6h-7m0 0h9m-9 4h10" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M20 12v3M20 25v3" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div class="spec-label">Affordable<br>Prices</div>
-        </div>
-        <!-- On-Time Delivery -->
-        <div class="spec-card">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="14" width="26" height="14" rx="3" fill="#e8f5e9" stroke="#37474f" stroke-width="1.5"/>
-            <path d="M30 18h4l4 6v4h-8V18z" fill="#e8f5e9" stroke="#37474f" stroke-width="1.5" stroke-linejoin="round"/>
-            <circle cx="11" cy="30" r="3" fill="#37474f"/>
-            <circle cx="27" cy="30" r="3" fill="#37474f"/>
-            <path d="M10 20h12M10 24h8" stroke="#37474f" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          <div class="spec-label">On-Time<br>Delivery</div>
+        <div class="gal-grid">
+          <div class="gal-item"><img
+              src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=300&q=80&auto=format&fit=crop"
+              alt="Gallery 1"></div>
+          <div class="gal-item"><img
+              src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=300&q=80&auto=format&fit=crop"
+              alt="Gallery 2"></div>
+          <div class="gal-item"><img
+              src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=300&q=80&auto=format&fit=crop"
+              alt="Gallery 3"></div>
+          <div class="gal-item"><img
+              src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=300&q=80&auto=format&fit=crop"
+              alt="Gallery 4"></div>
+          <div class="gal-item"><img
+              src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=300&q=80&auto=format&fit=crop"
+              alt="Gallery 5"></div>
+          <div class="gal-item"><img
+              src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&q=80&auto=format&fit=crop"
+              alt="Gallery 6"></div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Menu -->
-    <div id="menu" class="reveal">
-      <div class="sec-row">
-        <div class="sec-title">Our <span class="gold">Menu</span></div>
-        <a href="#menu" class="view-link">View Full Menu &rarr;</a>
-      </div>
-      <div class="menu-grid">
-        <div class="mcard">
-          <div class="mcard-img">
-            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80&auto=format&fit=crop" alt="Veg Tiffin">
-          </div>
-          <div class="mcard-body">
-            <div class="m-name">Veg Tiffin</div>
-            <div class="m-desc">Healthy &amp; Tasty</div>
-            <div class="m-footer">
-              <div class="m-price">From <strong>₹80</strong></div>
-              <div class="m-arrow" onclick="window.open('https://wa.me/919981811407?text=I want Veg Tiffin','_blank')"><i class="fas fa-chevron-right"></i></div>
-            </div>
-          </div>
-        </div>
-        <div class="mcard">
-          <div class="mcard-img">
-            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80&auto=format&fit=crop" alt="Non-Veg Tiffin">
-          </div>
-          <div class="mcard-body">
-            <div class="m-name">Non-Veg Tiffin</div>
-            <div class="m-desc">Delicious &amp; Spicy</div>
-            <div class="m-footer">
-              <div class="m-price">From <strong>₹110</strong></div>
-              <div class="m-arrow" onclick="window.open('https://wa.me/919981811407?text=I want Non-Veg Tiffin','_blank')"><i class="fas fa-chevron-right"></i></div>
-            </div>
-          </div>
-        </div>
-        <div class="mcard">
-          <div class="mcard-img">
-            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80&auto=format&fit=crop" alt="Sunday Special">
-          </div>
-          <div class="mcard-body">
-            <div class="m-name">Sunday Special</div>
-            <div class="m-desc">Special Menu</div>
-            <div class="m-footer">
-              <div class="m-price">From <strong>₹120</strong></div>
-              <div class="m-arrow" onclick="window.open('https://wa.me/919981811407?text=I want Sunday Special','_blank')"><i class="fas fa-chevron-right"></i></div>
-            </div>
-          </div>
-        </div>
-        <div class="mcard">
-          <div class="mcard-img">
-            <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&q=80&auto=format&fit=crop" alt="Bulk Orders">
-          </div>
-          <div class="mcard-body">
-            <div class="m-name">Bulk Orders</div>
-            <div class="m-desc">For All Occasions</div>
-            <div class="m-footer">
-              <div class="m-price"><strong>Custom Price</strong></div>
-              <div class="m-arrow" onclick="window.open('https://wa.me/919981811407?text=I want Bulk Order','_blank')"><i class="fas fa-chevron-right"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ── BOTTOM 4-COL ── -->
+  <div class="bottom4">
+    <!-- Reviews -->
+    <div class="bot-col reveal" id="reviews">
+      <div class="bot-title">Real-Time Google Reviews</div>
+      <div class="g-live-box"><i class="fab fa-google"></i> Live Google Maps Stream</div>
 
-<!-- ── PLANS ── -->
-<section id="plans" class="sec sec-white">
-  <div class="plans-wrap reveal">
-    <div class="plans-head">
-      <h2>Monthly Tiffin <span>Plans</span></h2>
-      <a href="#plans">View All Plans &rarr;</a>
-    </div>
-    <div class="plans-grid">
-      <div class="pcard">
-        <div class="p-title">Basic Plan</div>
-        <div class="p-sub">Veg Tiffin</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> 1 Meal / Day</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> 30 Days</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> Home Delivery</div>
-        <div class="p-price g">₹2,400 <span>/ Month</span></div>
-        <button class="p-btn green" onclick="window.open('https://wa.me/919981811407?text=Basic Plan ₹2400','_blank')"><i class="fab fa-whatsapp"></i> Order Now</button>
-      </div>
-      <div class="pcard featured">
-        <div class="pbadge">Best Value</div>
-        <div class="p-title">Standard Plan</div>
-        <div class="p-sub">Veg + Non-Veg</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> 1 Meal / Day</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> 30 Days</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> Home Delivery</div>
-        <div class="p-price gd">₹3,600 <span>/ Month</span></div>
-        <button class="p-btn gold" onclick="window.open('https://wa.me/919981811407?text=Standard Plan ₹3600','_blank')"><i class="fab fa-whatsapp"></i> Order Now</button>
-      </div>
-      <div class="pcard">
-        <div class="p-title">Premium Plan</div>
-        <div class="p-sub">Veg + Non-Veg</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> 2 Meals / Day</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> 30 Days</div>
-        <div class="p-feat"><i class="fas fa-check-circle"></i> Home Delivery</div>
-        <div class="p-price g">₹6,200 <span>/ Month</span></div>
-        <button class="p-btn green" onclick="window.open('https://wa.me/919981811407?text=Premium Plan ₹6200','_blank')"><i class="fab fa-whatsapp"></i> Order Now</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── WHY CHOOSE + GALLERY ── -->
-<section class="sec sec-light">
-  <div class="two-col-wrap">
-    <!-- Why Choose -->
-    <div class="reveal-left">
-      <div class="sec-title">Why Choose <span class="gold">MealMitra?</span></div>
-      <p style="font-size:12.5px;color:#666;margin-bottom:14px;line-height:1.7">We are committed to providing fresh, hygienic, and home-style tasty food with love and care.</p>
-      <div class="why-grid">
-        <div class="wcard">
-          <svg viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="20" fill="#e8f5e9"/>
-            <path d="M22 10c-4 0-8 4-8 10 0 4 2 7 8 9 6-2 8-5 8-9 0-6-4-10-8-10z" fill="#2e7d32"/>
-            <path d="M22 38V22M16 28l6-6 6 6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div class="w-title">Fresh &<br>Hygienic Food</div>
-        </div>
-        <div class="wcard">
-          <svg viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="20" fill="#e8f5e9"/>
-            <path d="M10 32V20l12-8 12 8v12H10z" fill="#2e7d32"/>
-            <rect x="18" y="26" width="8" height="8" rx="1" fill="#fff"/>
-            <path d="M6 20l16-12 16 12" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <div class="w-title">Home Style<br>Taste</div>
-        </div>
-        <div class="wcard">
-          <svg viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="20" fill="#e8f5e9"/>
-            <path d="M22 12a10 10 0 100 20 10 10 0 000-20z" fill="#2e7d32"/>
-            <path d="M16 22l4 4 8-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div class="w-title">Quality<br>Ingredients</div>
-        </div>
-        <div class="wcard">
-          <svg viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="20" fill="#e8f5e9"/>
-            <rect x="10" y="16" width="18" height="14" rx="2" fill="#2e7d32"/>
-            <path d="M28 20h4l4 5v3h-8V20z" fill="#2e7d32"/>
-            <circle cx="16" cy="32" r="3" fill="#fff"/>
-            <circle cx="28" cy="32" r="3" fill="#fff"/>
-          </svg>
-          <div class="w-title">Timely<br>Delivery</div>
-        </div>
+      <!-- Dynamic Google Reviews Stream Container -->
+      <div style="margin-top:12px">
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-7fd51d6c-5bee-4b9c-bd25-2abb5faeeca2" data-elfsight-app-lazy></div>
       </div>
     </div>
 
-    <!-- Gallery -->
-    <div id="gallery" class="reveal-right">
-      <div class="sec-row">
-        <div class="sec-title">Our <span class="gold">Gallery</span></div>
-        <a href="#gallery" class="view-link">View Gallery &rarr;</a>
+
+
+
+
+
+
+    <!-- Delivery Area -->
+    <div class="bot-col reveal">
+      <div class="bot-title">Delivery Area</div>
+      <div class="map-wrap">
+        <img src="khajrana-map.jpeg" alt="Khajrana Indore Map">
       </div>
-      <div class="gal-grid">
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=300&q=80&auto=format&fit=crop" alt="Gallery 1"></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=300&q=80&auto=format&fit=crop" alt="Gallery 2"></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=300&q=80&auto=format&fit=crop" alt="Gallery 3"></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=300&q=80&auto=format&fit=crop" alt="Gallery 4"></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=300&q=80&auto=format&fit=crop" alt="Gallery 5"></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&q=80&auto=format&fit=crop" alt="Gallery 6"></div>
+      <div class="del-label">Currently Delivering</div>
+      <div class="del-area">Only in Khajrana, Indore</div>
+      <div class="del-tag"><i class="fas fa-motorcycle"></i> Home Delivery Available</div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="bot-col reveal" id="faq">
+      <div class="bot-title">Frequently Asked <span style="color:var(--gold)">Questions</span></div>
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I subscribe to the tiffin service? <i
+            class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Contact us via WhatsApp at 9981811407 or call directly. We'll set up your plan and start
+          delivery from the next day.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What are the delivery timings? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">Lunch: 12:00 PM – 1:30 PM, Dinner: 7:00 PM – 8:30 PM (Monday to Sunday).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you provide dinner as well? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">Yes! Our Premium Plan includes 2 meals per day — both lunch and dinner.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How can I place an order? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Click "Order on WhatsApp" or call 9981811407. We'll confirm delivery details immediately.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you serve non-veg food? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-a">Yes, both veg and non-veg tiffins available. Standard & Premium plans include non-veg
+          options.</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ── BOTTOM 4-COL ── -->
-<div class="bottom4">
-  <!-- Reviews -->
-  <div class="bot-col reveal" id="reviews">
-    <div class="bot-title">Google Maps Customer Reviews</div>
-    <div class="g-live-box"><i class="fab fa-google"></i> Live Verified Ratings</div>
-    
-    <!-- Overall Rating & Feedback Stats Header -->
-    <div style="background:#f8fbf8;border:1px solid #e2ece0;border-radius:12px;padding:14px;margin-top:10px;margin-bottom:14px">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-        <div style="font-size:32px;font-weight:900;color:#1b5e20;line-height:1">4.9</div>
+    <!-- Contact -->
+    <div class="bot-col reveal" id="contact">
+      <div class="bot-title">Contact <span style="color:var(--gold)">Us</span></div>
+      <div class="ct-item">
+        <div class="ct-icon user"><i class="fas fa-user"></i></div>
         <div>
-          <div style="color:#f5a623;font-size:14px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <div style="font-size:11.5px;color:#555;font-weight:600;margin-top:2px">Based on 180+ Google Maps Reviews</div>
+          <div class="ct-name">Suhail Khan</div>
+          <div class="ct-sub">Owner</div>
         </div>
       </div>
-
-      <!-- Rating Breakdown Stats Bars -->
-      <div style="display:flex;flex-direction:column;gap:5px;font-size:10.5px;color:#666">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="width:35px">5 ★</span>
-          <div style="flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden"><div style="width:92%;height:100%;background:#43a047"></div></div>
-          <span style="width:25px;text-align:right">92%</span>
+      <div class="ct-item">
+        <div class="ct-icon ph"><i class="fas fa-phone"></i></div>
+        <div class="ct-val"><a href="tel:+919981811407" style="color:inherit">9981811407</a></div>
+      </div>
+      <div class="ct-item">
+        <div class="ct-icon wa"><i class="fab fa-whatsapp"></i></div>
+        <div class="ct-val"><a href="https://wa.me/919981811407" style="color:inherit" target="_blank">9981811407</a>
         </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="width:35px">4 ★</span>
-          <div style="flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden"><div style="width:8%;height:100%;background:#81c784"></div></div>
-          <span style="width:25px;text-align:right">8%</span>
+      </div>
+      <div class="ct-item">
+        <div class="ct-icon pin"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="ct-addr">Mamta Colony, Gali No. 3,<br>Khan Photo Copy Ke Pass,<br>Khajrana, Indore</div>
+      </div>
+      <div class="ct-btns" style="margin-top:14px">
+        <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on
+          WhatsApp</a>
+        <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
+        <a href="https://maps.google.com/?q=Mamta+Colony+Khajrana+Indore" target="_blank" class="btn btn-dirs"><i
+            class="fas fa-location-arrow"></i> Get Directions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="foot-grid">
+      <div class="reveal">
+        <div class="foot-logo" style="margin-bottom: 12px;">
+          <img src="mealmitra-logo.png" alt="MealMitra Logo">
+        </div>
+        <p class="foot-desc">Fresh, hygienic &amp; tasty food<br>delivered with love.</p>
+      </div>
+      <div class="foot-col reveal">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#plans">Plans</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col reveal">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#menu">Veg Tiffin</a></li>
+          <li><a href="#menu">Non-Veg Tiffin</a></li>
+          <li><a href="#plans">Monthly Plans</a></li>
+          <li><a href="#menu">Sunday Special</a></li>
+          <li><a href="#menu">Bulk Orders</a></li>
+        </ul>
+      </div>
+      <div class="foot-col reveal">
+        <h4>Follow Us</h4>
+        <div class="socials">
+          <a href="https://wa.me/919981811407" class="soc-btn soc-wa" target="_blank"><i
+              class="fab fa-whatsapp"></i></a>
+          <a href="tel:+919981811407" class="soc-btn soc-ph"><i class="fas fa-phone"></i></a>
+          <a href="#" class="soc-btn soc-ig"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
 
-    <!-- Live Google Customer Reviews Feed & Cards -->
-    <div id="g-reviews-list" class="g-reviews-list">
-      <!-- Review 1 -->
+    <!-- Bottom row -->
+    <div class="foot-bottom"
+      style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #1a3020;padding-top:18px;flex-wrap:wrap;gap:16px">
+      <p style="font-size:11px;color:#444">© 2024 MealMitra Tiffin Center. All Rights Reserved.</p>
+      <div class="foot-seal">
+        <div class="line">FRESH</div>
+        <div class="line">HYGIENIC</div>
+        <div class="line">TASTY</div>
+        <div style="font-size:14px;margin-top:2px">🌿</div>
+      </div>
+
+      <div style="text-align:right">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:6px">
+          <img src="mealmitra-logo.png" alt="MealMitra Logo" style="height: 28px; width: auto; object-fit: contain;">
+        </div>
+        <div style="font-size:10px;color:#555">Tiffin Service</div>
+        <p class="made" style="margin-top:4px">Made with <span>❤</span> for Khajrana</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Loader ──
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 600);
+    });
+
+    // ── Hamburger Menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── FAQ Toggle ──
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Smooth Scroll for anchors ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+      });
+    });
+
+    // ── Active Nav Highlighting ──
+    const secs = document.querySelectorAll('[id]');
+    const nls = document.querySelectorAll('.nav-links a');
+    const mobileLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+    function updateActiveNav() {
+      let cur = '';
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id });
+      nls.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + cur) a.classList.add('active') });
+      mobileLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + cur) a.classList.add('active') });
+    }
+
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    function handleScroll() {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      // Scroll-to-top button
+      const btn = document.getElementById('scrollTop');
+      btn.classList.toggle('visible', window.scrollY > 400);
+      updateActiveNav();
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // ── Scroll to Top ──
+    document.getElementById('scrollTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── Scroll Reveal Animations ──
+    const revealEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Real-Time Google Maps Reviews Fetcher ──
+    const MEALMITRA_PLACE_ID = 'ChIJB77zpCrrYjkR1g3419fxY4c'; // Google Maps Place ID for MealMitra
+
+    function renderRealtimeReviews(reviews, rating, totalReviews) {
+      const container = document.getElementById('g-reviews-list');
+      if (!container || !reviews || reviews.length === 0) return; // Retain static HTML cards if live API is offline
+
+      let html = '';
+      reviews.forEach(r => {
+        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        html += `
       <div class="review-card" style="background:#ffffff;border-radius:12px;border:1px solid #e2ece0;border-left:5px solid #4285f4;padding:14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(0,0,0,0.05)">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
           <div style="font-size:13px;font-weight:800;color:#111;display:flex;align-items:center;gap:8px">
-            <div style="width:28px;height:28px;border-radius:50%;background:#4285f4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900">A</div>
-            Aman Sheikh <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i>
+            <img src="${r.profile_photo_url || 'https://lh3.googleusercontent.com/a/default-user'}" style="width:28px;height:28px;border-radius:50%;object-fit:cover">
+            ${r.author_name} <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i>
           </div>
-          <div style="color:#f5a623;font-size:12px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div style="color:#f5a623;font-size:12px">${stars}</div>
         </div>
         <div style="background:#f9fbf8;padding:10px 12px;border-radius:8px;border:1px solid #f0f4ef;margin-bottom:8px">
-          <p style="font-size:13px;color:#1b431e;line-height:1.6;margin:0;font-weight:600">"Best tiffin service in Khajrana! Fresh food delivered every day on time. Taste is awesome just like home cooked food. Monthly plan is very affordable for students."</p>
+          <p style="font-size:13px;color:#1b431e;line-height:1.6;margin:0;font-weight:600">"${r.text}"</p>
         </div>
         <div style="font-size:10px;color:#777;display:flex;justify-content:space-between;align-items:center">
           <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
-          <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Verified Customer</span>
+          <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">${r.relative_time_description || 'Verified Customer'}</span>
         </div>
-      </div>
+      </div>`;
+      });
 
-      <!-- Review 2 -->
-      <div class="review-card" style="background:#ffffff;border-radius:12px;border:1px solid #e2ece0;border-left:5px solid #34a853;padding:14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(0,0,0,0.05)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <div style="font-size:13px;font-weight:800;color:#111;display:flex;align-items:center;gap:8px">
-            <div style="width:28px;height:28px;border-radius:50%;background:#34a853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900">S</div>
-            Sufiyan Khan <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i>
-          </div>
-          <div style="color:#f5a623;font-size:12px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-        <div style="background:#f9fbf8;padding:10px 12px;border-radius:8px;border:1px solid #f0f4ef;margin-bottom:8px">
-          <p style="font-size:13px;color:#1b431e;line-height:1.6;margin:0;font-weight:600">"Very hygienic and delicious food. Non-veg tiffin options on weekends are amazing! Proper hot rotis and packed nicely. Highly recommended!"</p>
-        </div>
-        <div style="font-size:10px;color:#777;display:flex;justify-content:space-between;align-items:center">
-          <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
-          <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Verified Customer</span>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="review-card" style="background:#ffffff;border-radius:12px;border:1px solid #e2ece0;border-left:5px solid #fbbc05;padding:14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(0,0,0,0.05)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <div style="font-size:13px;font-weight:800;color:#111;display:flex;align-items:center;gap:8px">
-            <div style="width:28px;height:28px;border-radius:50%;background:#fbbc05;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900">R</div>
-            Rohan Sharma <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i>
-          </div>
-          <div style="color:#f5a623;font-size:12px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-        <div style="background:#f9fbf8;padding:10px 12px;border-radius:8px;border:1px solid #f0f4ef;margin-bottom:8px">
-          <p style="font-size:13px;color:#1b431e;line-height:1.6;margin:0;font-weight:600">"Clean packaging, hot rotis, and great variety in daily menu. Suhail bhai provides excellent customer service. Best tiffin center in Indore."</p>
-        </div>
-        <div style="font-size:10px;color:#777;display:flex;justify-content:space-between;align-items:center">
-          <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
-          <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Verified Customer</span>
-        </div>
-      </div>
-    </div>
-
-
-    <a href="https://maps.app.goo.gl/mZUFhHMgucf5Zumi8" target="_blank" class="g-review-btn"><i class="fab fa-google"></i> View All Live Feedback on Google Maps &rarr;</a>
-  </div>
-
-
-
-
-
-  <!-- Delivery Area -->
-  <div class="bot-col reveal">
-    <div class="bot-title">Delivery Area</div>
-    <div class="map-wrap">
-      <img src="khajrana-map.jpeg" alt="Khajrana Indore Map">
-    </div>
-    <div class="del-label">Currently Delivering</div>
-    <div class="del-area">Only in Khajrana, Indore</div>
-    <div class="del-tag"><i class="fas fa-motorcycle"></i> Home Delivery Available</div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="bot-col reveal" id="faq">
-    <div class="bot-title">Frequently Asked <span style="color:var(--gold)">Questions</span></div>
-    <div class="faq-item open">
-      <div class="faq-q" onclick="toggleFaq(this)">How do I subscribe to the tiffin service? <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-a">Contact us via WhatsApp at 9981811407 or call directly. We'll set up your plan and start delivery from the next day.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What are the delivery timings? <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-a">Lunch: 12:00 PM – 1:30 PM, Dinner: 7:00 PM – 8:30 PM (Monday to Sunday).</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Do you provide dinner as well? <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-a">Yes! Our Premium Plan includes 2 meals per day — both lunch and dinner.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How can I place an order? <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-a">Click "Order on WhatsApp" or call 9981811407. We'll confirm delivery details immediately.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Do you serve non-veg food? <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-a">Yes, both veg and non-veg tiffins available. Standard & Premium plans include non-veg options.</div>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  <div class="bot-col reveal" id="contact">
-    <div class="bot-title">Contact <span style="color:var(--gold)">Us</span></div>
-    <div class="ct-item">
-      <div class="ct-icon user"><i class="fas fa-user"></i></div>
-      <div><div class="ct-name">Suhail Khan</div><div class="ct-sub">Owner</div></div>
-    </div>
-    <div class="ct-item">
-      <div class="ct-icon ph"><i class="fas fa-phone"></i></div>
-      <div class="ct-val"><a href="tel:+919981811407" style="color:inherit">9981811407</a></div>
-    </div>
-    <div class="ct-item">
-      <div class="ct-icon wa"><i class="fab fa-whatsapp"></i></div>
-      <div class="ct-val"><a href="https://wa.me/919981811407" style="color:inherit" target="_blank">9981811407</a></div>
-    </div>
-    <div class="ct-item">
-      <div class="ct-icon pin"><i class="fas fa-map-marker-alt"></i></div>
-      <div class="ct-addr">Mamta Colony, Gali No. 3,<br>Khan Photo Copy Ke Pass,<br>Khajrana, Indore</div>
-    </div>
-    <div class="ct-btns" style="margin-top:14px">
-      <a href="https://wa.me/919981811407" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
-      <a href="tel:+919981811407" class="btn btn-call"><i class="fas fa-phone"></i> Call Now</a>
-      <a href="https://maps.google.com/?q=Mamta+Colony+Khajrana+Indore" target="_blank" class="btn btn-dirs"><i class="fas fa-location-arrow"></i> Get Directions</a>
-    </div>
-  </div>
-</div>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="foot-grid">
-    <div class="reveal">
-      <div class="foot-logo" style="margin-bottom: 12px;">
-        <img src="mealmitra-logo.png" alt="MealMitra Logo">
-      </div>
-      <p class="foot-desc">Fresh, hygienic &amp; tasty food<br>delivered with love.</p>
-    </div>
-    <div class="foot-col reveal">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#plans">Plans</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="foot-col reveal">
-      <h4>Our Services</h4>
-      <ul>
-        <li><a href="#menu">Veg Tiffin</a></li>
-        <li><a href="#menu">Non-Veg Tiffin</a></li>
-        <li><a href="#plans">Monthly Plans</a></li>
-        <li><a href="#menu">Sunday Special</a></li>
-        <li><a href="#menu">Bulk Orders</a></li>
-      </ul>
-    </div>
-    <div class="foot-col reveal">
-      <h4>Follow Us</h4>
-      <div class="socials">
-        <a href="https://wa.me/919981811407" class="soc-btn soc-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="tel:+919981811407" class="soc-btn soc-ph"><i class="fas fa-phone"></i></a>
-        <a href="#" class="soc-btn soc-ig"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom row -->
-  <div class="foot-bottom" style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #1a3020;padding-top:18px;flex-wrap:wrap;gap:16px">
-    <p style="font-size:11px;color:#444">© 2024 MealMitra Tiffin Center. All Rights Reserved.</p>
-    <div class="foot-seal">
-      <div class="line">FRESH</div>
-      <div class="line">HYGIENIC</div>
-      <div class="line">TASTY</div>
-      <div style="font-size:14px;margin-top:2px">🌿</div>
-    </div>
-
-    <div style="text-align:right">
-      <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:6px">
-        <img src="mealmitra-logo.png" alt="MealMitra Logo" style="height: 28px; width: auto; object-fit: contain;">
-      </div>
-      <div style="font-size:10px;color:#555">Tiffin Service</div>
-      <p class="made" style="margin-top:4px">Made with <span>❤</span> for Khajrana</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-// ── Loader ──
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('hidden'),600);
-});
-
-// ── Hamburger Menu ──
-const hamburger=document.getElementById('hamburger');
-const mobileMenu=document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
-});
-// Close mobile menu on link click
-mobileMenu.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',()=>{
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow='';
-  });
-});
-
-// ── FAQ Toggle ──
-function toggleFaq(el){
-  const item=el.parentElement;
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
-
-// ── Smooth Scroll for anchors ──
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
-  });
-});
-
-// ── Active Nav Highlighting ──
-const secs=document.querySelectorAll('[id]');
-const nls=document.querySelectorAll('.nav-links a');
-const mobileLinks=mobileMenu.querySelectorAll('a[href^="#"]');
-function updateActiveNav(){
-  let cur='';
-  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id});
-  nls.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active')});
-  mobileLinks.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active')});
-}
-
-// ── Navbar scroll effect ──
-const navbar=document.getElementById('navbar');
-function handleScroll(){
-  navbar.classList.toggle('scrolled',window.scrollY>50);
-  // Scroll-to-top button
-  const btn=document.getElementById('scrollTop');
-  btn.classList.toggle('visible',window.scrollY>400);
-  updateActiveNav();
-}
-window.addEventListener('scroll',handleScroll,{passive:true});
-
-// ── Scroll to Top ──
-document.getElementById('scrollTop').addEventListener('click',()=>{
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-// ── Scroll Reveal Animations ──
-const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
-const revealObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+      container.innerHTML = html;
     }
-  });
-},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-revealEls.forEach(el=>revealObserver.observe(el));
 
-// ── Real-Time Google Maps Reviews Fetcher ──
-const MEALMITRA_PLACE_ID = 'ChIJB77zpCrrYjkR1g3419fxY4c'; // Google Maps Place ID for MealMitra
-
-function renderRealtimeReviews(reviews, rating, totalReviews) {
-  const container = document.getElementById('g-reviews-list');
-  if (!container) return;
-  
-  if (!reviews || reviews.length === 0) {
-    container.innerHTML = `
-      <div style="text-align:center;padding:16px;background:#f9fbf8;border-radius:10px;border:1px solid #e2ece0;margin-bottom:10px">
-        <div style="font-size:14px;font-weight:800;color:#1b5e20;margin-bottom:4px">⭐ Live Google Rating: ${rating || '5.0'} / 5</div>
-        <div style="color:#f5a623;font-size:13px;margin-bottom:6px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p style="font-size:11.5px;color:#555;margin-bottom:0">Connected to Google Maps real-time review feed</p>
-      </div>`;
-    return;
-  }
-  
-  let html = `<div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
-    <span style="font-size:16px;font-weight:800;color:#333">${rating}</span>
-    <div style="color:#f5a623;font-size:13px"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-    <span style="font-size:11px;color:#777">(${totalReviews} Google reviews)</span>
-  </div>`;
-  
-  reviews.forEach(r => {
-    const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
-    html += `
-      <div class="review-card" style="background:#f9fbf8;border-radius:10px;border-left:3px solid #4285f4;padding:12px;margin-bottom:10px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-          <div style="font-size:12px;font-weight:700;color:#222;display:flex;align-items:center;gap:5px">
-            <img src="${r.profile_photo_url || 'https://lh3.googleusercontent.com/a/default-user'}" style="width:22px;height:22px;border-radius:50%;object-fit:cover">
-            ${r.author_name}
-          </div>
-          <div style="color:#f5a623;font-size:11px">${stars}</div>
-        </div>
-        <p style="font-size:11.5px;color:#444;line-height:1.5;margin:0;font-style:italic">"${r.text}"</p>
-        <div style="font-size:9.5px;color:#888;margin-top:4px;text-align:right">${r.relative_time_description || 'Google Maps review'}</div>
-      </div>`;
-  });
-  
-  container.innerHTML = html;
-}
-
-function initGooglePlacesLiveReviews() {
-  if (typeof google !== 'undefined' && google.maps && google.maps.places) {
-    const mapDiv = document.createElement('div');
-    const service = new google.maps.places.PlacesService(mapDiv);
-    service.getDetails({
-      placeId: MEALMITRA_PLACE_ID,
-      fields: ['reviews', 'rating', 'user_ratings_total']
-    }, (place, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && place) {
-        renderRealtimeReviews(place.reviews, place.rating, place.user_ratings_total);
-      } else {
-        renderRealtimeReviews([], '5.0', 'Live');
+    function initGooglePlacesLiveReviews() {
+      if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+        const mapDiv = document.createElement('div');
+        const service = new google.maps.places.PlacesService(mapDiv);
+        service.getDetails({
+          placeId: MEALMITRA_PLACE_ID,
+          fields: ['reviews', 'rating', 'user_ratings_total']
+        }, (place, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK && place) {
+            renderRealtimeReviews(place.reviews, place.rating, place.user_ratings_total);
+          }
+        });
       }
-    });
-  } else {
-    setTimeout(() => renderRealtimeReviews([], '5.0', 'Live'), 600);
-  }
-}
-window.addEventListener('DOMContentLoaded', initGooglePlacesLiveReviews);
-</script>
-</body>
-</html>
+    }
+    window.addEventListener('DOMContentLoaded', initGooglePlacesLiveReviews);
 
+  </script>
+</body>
+
+</html>
