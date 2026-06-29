@@ -446,12 +446,37 @@
       font-size: 36px;
       font-weight: 900;
       color: #fff;
-      line-height: 1.12;
+      line-height: 1.15;
       margin-bottom: 8px
     }
 
-    .hero h1 span {
-      color: var(--gold2)
+    .hero h1 span.brand-title {
+      color: var(--gold2);
+      font-size: 1em;
+    }
+
+    .tiffin-title {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 56px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(46, 125, 50, 0.6));
+      padding: 8px 24px;
+      border-radius: 10px;
+      border: 2.5px solid var(--gold2);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .5);
+      margin-bottom: 10px;
+      line-height: 1.15;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, .6);
+    }
+
+    .tagline-sub {
+      font-size: 0.85em;
+      font-weight: 700;
+      color: #e8f5e9;
     }
 
     .hero-sub {
@@ -550,34 +575,66 @@
       z-index: 1
     }
 
+    .aesthetic-face-blur {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .blur-spot {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      backdrop-filter: blur(16px) saturate(0.8);
+      -webkit-backdrop-filter: blur(16px) saturate(0.8);
+      background: rgba(255, 255, 255, 0.05);
+      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
+      mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
+    }
+
+    .blur-spot.spot-left {
+      top: 10%;
+      left: 18%;
+    }
+
+    .blur-spot.spot-right {
+      top: 12%;
+      right: 18%;
+    }
+
     /* Brushstroke quote banner */
     .brushstroke-tag {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 3;
-      background: linear-gradient(135deg, #0f3813, #19521e);
+      background: rgba(15, 56, 19, 0.88);
       color: #fff;
-      padding: 10px 18px;
-      border-radius: 8px 20px 8px 20px;
-      border-left: 4px solid var(--gold2);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, .4);
-      max-width: 250px;
-      backdrop-filter: blur(4px)
+      padding: 14px 22px;
+      border-radius: 12px;
+      border: 2px solid var(--gold2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .6);
+      width: 88%;
+      max-width: 360px;
+      text-align: center;
+      backdrop-filter: blur(8px);
     }
 
     .brushstroke-tag p {
-      font-size: 12.5px;
-      font-weight: 700;
-      line-height: 1.35;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.4;
       color: #fff;
-      font-style: italic
+      font-style: italic;
     }
 
     .brushstroke-tag span.brand-hl {
       color: var(--gold2);
       font-weight: 900;
-      font-style: normal
+      font-style: normal;
     }
 
     /* Free delivery badge */
@@ -1810,6 +1867,10 @@
         font-size: 32px
       }
 
+      .tiffin-title {
+        font-size: 48px
+      }
+
       .sec {
         padding: 36px
       }
@@ -1887,6 +1948,11 @@
         order: 2;
         font-size: 30px;
         margin-bottom: 8px
+      }
+
+      .tiffin-title {
+        font-size: 40px;
+        padding: 6px 18px;
       }
 
       .hero-sub {
@@ -2021,6 +2087,12 @@
         font-size: 26px
       }
 
+      .tiffin-title {
+        font-size: 32px;
+        padding: 5px 14px;
+        margin-bottom: 6px;
+      }
+
       .hero-sub {
         font-size: 13px
       }
@@ -2034,14 +2106,17 @@
       }
 
       .brushstroke-tag {
-        padding: 8px 14px;
-        max-width: 210px;
-        top: 14px;
-        right: 14px
+        padding: 10px 16px;
+        width: 90%;
+        max-width: 310px;
+        top: 30%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
       }
 
       .brushstroke-tag p {
-        font-size: 11px
+        font-size: 14px;
       }
 
       .free-delivery-badge {
@@ -2362,6 +2437,12 @@
         line-height: 1.15
       }
 
+      .tiffin-title {
+        font-size: 26px;
+        padding: 4px 10px;
+        border-width: 1.5px;
+      }
+
       .hero-sub {
         font-size: 12px;
         margin-bottom: 14px
@@ -2404,15 +2485,18 @@
       }
 
       .brushstroke-tag {
-        max-width: 170px;
-        padding: 6px 10px;
-        top: 10px;
-        right: 10px;
-        border-left-width: 3px
+        width: 90%;
+        max-width: 280px;
+        padding: 8px 12px;
+        top: 28%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        border-width: 1.5px;
       }
 
       .brushstroke-tag p {
-        font-size: 9.5px;
+        font-size: 12px;
         line-height: 1.3
       }
 
@@ -2852,6 +2936,10 @@
         font-size: 22px
       }
 
+      .tiffin-title {
+        font-size: 22px
+      }
+
       .hero-sub {
         font-size: 12px
       }
@@ -3004,6 +3092,10 @@
         font-size: 20px
       }
 
+      .tiffin-title {
+        font-size: 20px
+      }
+
       .hero-sub {
         font-size: 11.5px
       }
@@ -3140,8 +3232,8 @@
   <div class="hero-wrapper" id="home">
     <section class="hero">
       <div class="hero-left">
-        <div class="hero-top-tag"><i class="fas fa-crown"></i> SERVING SINCE 2023</div>
-        <h1>TIFFIN CENTER<br><span>MealMitra</span><br>Fresh, Hygienic & Tasty Food</h1>
+        <div class="hero-top-tag"><i class="fas fa-crown"></i> SERVING SINCE 2026</div>
+        <h1><span class="tiffin-title">TIFFIN CENTER</span><br><span class="brand-title">MealMitra</span><br><span class="tagline-sub">Fresh, Hygienic & Tasty Food</span></h1>
         <p class="hero-sub">Ghar Jaisa Taste, Delivered Fresh Everyday!</p>
 
         <!-- 5 Feature Badges Grid -->
@@ -3177,6 +3269,10 @@
 
       <div class="hero-right">
         <img src="student-tiffin.png" alt="MealMitra Students Holding Tiffin" class="main-hero-img">
+        <div class="aesthetic-face-blur">
+          <div class="blur-spot spot-left"></div>
+          <div class="blur-spot spot-right"></div>
+        </div>
 
         <!-- Brushstroke quote banner -->
         <div class="brushstroke-tag">
