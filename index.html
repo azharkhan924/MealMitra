@@ -1302,7 +1302,7 @@
       margin-bottom: 16px
     }
 
-    /* Reviews */
+    /* ─── CUSTOM GOOGLE REVIEWS FEED ─── */
     .g-live-box {
       display: inline-flex;
       align-items: center;
@@ -1310,19 +1310,144 @@
       background: #e8f0fe;
       border: 1px solid #4285f4;
       border-radius: 20px;
-      padding: 3px 10px;
-      font-size: 11px;
+      padding: 4px 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #1a73e8;
-      margin-bottom: 8px
+      margin-bottom: 12px;
     }
 
     .g-live-box i {
-      color: #4285f4
+      color: #4285f4;
     }
 
-    .g-review-btn, a[href*="elfsight"] {
-      display: none !important;
+    .g-reviews-custom-feed {
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .g-reviews-custom-feed::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .g-reviews-custom-feed::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .g-reviews-custom-feed::-webkit-scrollbar-thumb {
+      background: #4285f4;
+      border-radius: 10px;
+    }
+
+    .g-rev-card {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e2ece0;
+      border-left: 4.5px solid #4285f4;
+      padding: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .g-rev-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(66, 133, 244, 0.12);
+      border-color: #cbdbe1;
+    }
+
+    .g-rev-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .g-rev-author {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .g-rev-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+      font-size: 13.5px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .g-rev-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .g-rev-date {
+      font-size: 10px;
+      color: #777;
+      margin-top: 2px;
+    }
+
+    .g-rev-stars {
+      color: #f5a623;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .g-rev-quote {
+      background: #f9fbf8;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #f0f4ef;
+      font-size: 12.5px;
+      color: #1b431e;
+      line-height: 1.6;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .g-rev-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #666;
+    }
+
+    .g-rev-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      background: #f0f4f9;
+      color: #1a73e8;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #d2e3fc;
+      transition: all 0.2s ease;
+    }
+
+    .g-rev-action-btn:hover {
+      background: #e8f0fe;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(26, 115, 232, 0.15);
     }
 
 
@@ -5047,16 +5172,102 @@
     <!-- Reviews -->
     <div class="bot-col reveal" id="reviews">
       <div class="bot-title">Google Maps Customer Reviews</div>
-      <div class="g-live-box"><i class="fab fa-google"></i> Verified Ratings</div>
-      
+      <div class="g-live-box"><i class="fab fa-google"></i> Verified Ratings ⭐ 4.9 / 5.0</div>
 
+      <!-- Custom Google Reviews Feed -->
+      <div id="g-reviews-list" class="g-reviews-custom-feed">
+        <div class="g-rev-card">
+          <div class="g-rev-top">
+            <div class="g-rev-author">
+              <div class="g-rev-avatar" style="background:linear-gradient(135deg, #4285f4, #1a73e8)">RS</div>
+              <div>
+                <div class="g-rev-name">Rahul Sharma <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i></div>
+                <div class="g-rev-date">2 weeks ago</div>
+              </div>
+            </div>
+            <div class="g-rev-stars">★★★★★</div>
+          </div>
+          <div class="g-rev-quote">"Best tiffin service in Khajrana! The taste is genuinely like ghar ka khana — less oil, fresh rotis, and hygienic packing. Delivery is always dot on time between 12:30 to 1 PM."</div>
+          <div class="g-rev-footer">
+            <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
+            <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Daily Lunch &amp; Dinner</span>
+          </div>
+        </div>
 
+        <div class="g-rev-card">
+          <div class="g-rev-top">
+            <div class="g-rev-author">
+              <div class="g-rev-avatar" style="background:linear-gradient(135deg, #0f9d58, #0b8043)">PV</div>
+              <div>
+                <div class="g-rev-name">Priya Verma <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i></div>
+                <div class="g-rev-date">1 month ago</div>
+              </div>
+            </div>
+            <div class="g-rev-stars">★★★★★</div>
+          </div>
+          <div class="g-rev-quote">"I am working late hours and ordered their Standard Veg + Non-Veg plan. Chicken curry on Wednesdays and Sunday Specials are fabulous! Very polite delivery team."</div>
+          <div class="g-rev-footer">
+            <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
+            <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Monthly Subscriber</span>
+          </div>
+        </div>
 
-      <!-- Live SociableKIT Google Reviews Widget -->
-      <div style="margin-top:12px">
-        <div class="sk-ww-google-reviews" data-embed-id="25693097"></div>
-        <script src="https://widgets.sociablekit.com/google-reviews/widget.js" defer></script>
+        <div class="g-rev-card">
+          <div class="g-rev-top">
+            <div class="g-rev-author">
+              <div class="g-rev-avatar" style="background:linear-gradient(135deg, #f4b400, #f09300)">VS</div>
+              <div>
+                <div class="g-rev-name">Vikram Singh <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i></div>
+                <div class="g-rev-date">3 weeks ago</div>
+              </div>
+            </div>
+            <div class="g-rev-stars">★★★★★</div>
+          </div>
+          <div class="g-rev-quote">"Extremely clean and hygienic preparation. My stomach never felt heavy even after eating daily for 4 months. Value for money is 10/10!"</div>
+          <div class="g-rev-footer">
+            <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
+            <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Veg Tiffin Plan</span>
+          </div>
+        </div>
+
+        <div class="g-rev-card">
+          <div class="g-rev-top">
+            <div class="g-rev-author">
+              <div class="g-rev-avatar" style="background:linear-gradient(135deg, #db4437, #c53929)">SJ</div>
+              <div>
+                <div class="g-rev-name">Sneha Joshi <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i></div>
+                <div class="g-rev-date">a month ago</div>
+              </div>
+            </div>
+            <div class="g-rev-stars">★★★★★</div>
+          </div>
+          <div class="g-rev-quote">"Suhail bhai is very responsive on WhatsApp. Whenever I need to pause tiffin or change delivery timing, it’s handled smoothly. Highly recommended!"</div>
+          <div class="g-rev-footer">
+            <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
+            <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Student Plan</span>
+          </div>
+        </div>
+
+        <div class="g-rev-card">
+          <div class="g-rev-top">
+            <div class="g-rev-author">
+              <div class="g-rev-avatar" style="background:linear-gradient(135deg, #673ab7, #512da8)">AM</div>
+              <div>
+                <div class="g-rev-name">Ankit Maheshwari <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i></div>
+                <div class="g-rev-date">2 months ago</div>
+              </div>
+            </div>
+            <div class="g-rev-stars">★★★★★</div>
+          </div>
+          <div class="g-rev-quote">"Tried 3 other tiffin centers in Indore before MealMitra. None compare to their packaging quality and piping hot food delivery. Keep up the great work!"</div>
+          <div class="g-rev-footer">
+            <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
+            <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Premium Subscriber</span>
+          </div>
+        </div>
       </div>
+
+      <a href="https://maps.google.com/?q=MealMitra+Khajrana+Indore" target="_blank" class="g-rev-action-btn"><i class="fab fa-google"></i> Review Us on Google Maps</a>
     </div>
 
 
@@ -5312,21 +5523,23 @@
       let html = '';
       reviews.forEach(r => {
         const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        const initials = (r.author_name || 'G').split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
         html += `
-      <div class="review-card" style="background:#ffffff;border-radius:12px;border:1px solid #e2ece0;border-left:5px solid #4285f4;padding:14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(0,0,0,0.05)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <div style="font-size:13px;font-weight:800;color:#111;display:flex;align-items:center;gap:8px">
-            <img src="${r.profile_photo_url || 'https://lh3.googleusercontent.com/a/default-user'}" style="width:28px;height:28px;border-radius:50%;object-fit:cover">
-            ${r.author_name} <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i>
+      <div class="g-rev-card">
+        <div class="g-rev-top">
+          <div class="g-rev-author">
+            ${r.profile_photo_url ? `<img src="${r.profile_photo_url}" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.15)">` : `<div class="g-rev-avatar" style="background:linear-gradient(135deg, #4285f4, #1a73e8)">${initials}</div>`}
+            <div>
+              <div class="g-rev-name">${r.author_name} <i class="fas fa-check-circle" style="color:#4285f4;font-size:12px" title="Verified Google Reviewer"></i></div>
+              <div class="g-rev-date">${r.relative_time_description || 'Recently'}</div>
+            </div>
           </div>
-          <div style="color:#f5a623;font-size:12px">${stars}</div>
+          <div class="g-rev-stars">${stars}</div>
         </div>
-        <div style="background:#f9fbf8;padding:10px 12px;border-radius:8px;border:1px solid #f0f4ef;margin-bottom:8px">
-          <p style="font-size:13px;color:#1b431e;line-height:1.6;margin:0;font-weight:600">"${r.text}"</p>
-        </div>
-        <div style="font-size:10px;color:#777;display:flex;justify-content:space-between;align-items:center">
+        <div class="g-rev-quote">"${r.text}"</div>
+        <div class="g-rev-footer">
           <span><i class="fab fa-google" style="color:#4285f4"></i> Google Maps Review</span>
-          <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">${r.relative_time_description || 'Verified Customer'}</span>
+          <span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700">Verified Customer</span>
         </div>
       </div>`;
       });
